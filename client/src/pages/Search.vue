@@ -46,6 +46,7 @@
                 <select
                   name="activities"
                   id="activities"
+                  :ref="activities"
                   v-model="activities"
                   multiple
                   data-style="btn-selectpicker"
@@ -474,7 +475,7 @@
         </div>
         <div class="col-lg-6 map-side-lg pr-lg-0 pl-lg-0">
           <div class="map-full shadow-left">
-            <GoogleMap :list="list_data" :lat="latitude" :lon="longitude"></GoogleMap>
+            <GoogleMap :list="list_data" :lat="latitude" :lon="longitude" :zoom="12"></GoogleMap>
           </div>
         </div>
       </div>
@@ -485,9 +486,6 @@
 </template>
 
 <script>
-require("../assets/js/theme.js");
-require("../assets/vendor/nouislider/nouislider.min.js");
-require("../assets/js/price_slider.js");
 import CampsitesAPI from "../services/CampsitesAPI";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
@@ -520,7 +518,8 @@ export default {
       result_query: "",
       favourites: [],
       isLoading: false,
-      fullPage: true
+      fullPage: true,
+      selectedValue: null
     };
   },
   watch: {
@@ -539,15 +538,62 @@ export default {
     }
   },
   mounted() {
-    if (localStorage.getItem("reloaded")) {
-      // The page was just reloaded. Clear the value from local storage
-      // so that it will reload the next time this page is visited.
-      localStorage.removeItem("reloaded");
-    } else {
-      // Set a flag so that we know not to reload the page twice.
-      localStorage.setItem("reloaded", "1");
-      location.reload();
-    }
+    this.$nextTick(function() {
+      $(".selectpicker").selectpicker();
+      var snapSlider = document.getElementById("slider-snap");
+
+      noUiSlider.create(snapSlider, {
+        start: [
+          parseInt(localStorage.getItem("price_0"))
+            ? parseInt(localStorage.getItem("price_0"))
+            : 0,
+          parseInt(localStorage.getItem("price_1"))
+            ? parseInt(localStorage.getItem("price_1"))
+            : 100
+        ],
+        snap: false,
+        connect: true,
+        padding: [15, 0],
+        step: 1,
+        range: {
+          min: -15,
+          max: 100
+        }
+      });
+      var snapValues = [
+        document.getElementById("slider-snap-value-from"),
+        document.getElementById("slider-snap-value-to")
+      ];
+      var inputValues = [
+        document.getElementById("slider-snap-input-from"),
+        document.getElementById("slider-snap-input-to")
+      ];
+      snapSlider.noUiSlider.on("update", function(values, handle) {
+        snapValues[handle].innerHTML = values[handle];
+        inputValues[handle].value = values[handle];
+        //console.log(handle + ', ' + values[handle]);
+        localStorage.setItem("price_" + handle, values[handle]);
+      });
+      $(".btn-items-decrease").on("click", function() {
+        var input = $(this).siblings(".input-items");
+        if (parseInt(input.val(), 10) >= 1) {
+          if (input.hasClass("input-items-greaterthan")) {
+            input.val(parseInt(input.val(), 10) - 1 + "+");
+          } else {
+            input.val(parseInt(input.val(), 10) - 1);
+          }
+        }
+      });
+
+      $(".btn-items-increase").on("click", function() {
+        var input = $(this).siblings(".input-items");
+        if (input.hasClass("input-items-greaterthan")) {
+          input.val(parseInt(input.val(), 10) + 1 + "+");
+        } else {
+          input.val(parseInt(input.val(), 10) + 1);
+        }
+      });
+    });
     this.loadCampsites();
     if (localStorage.favourites) {
       this.favourites = JSON.parse(localStorage.getItem("favourites"));

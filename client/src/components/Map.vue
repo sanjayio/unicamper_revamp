@@ -1,6 +1,6 @@
 <template>
   <div>
-    <gmap-map :center="center" :zoom="12" :options="mapStyle" style="width:100%; height:100vh;">
+    <gmap-map :center="center" :zoom="zoom" :options="mapStyle" style="width:100%; height:100vh;">
       <gmap-info-window
         :options="infoOptions"
         :position="infoPosition"
@@ -49,6 +49,7 @@ export default {
   data() {
     return {
       center: { lat: this.$props.lat, lng: this.$props.lon },
+      zoom: this.$props.zoom,
       markers: [],
       places: [],
       currentPlace: null,
@@ -263,7 +264,8 @@ export default {
   props: {
     list: Array,
     lat: Number,
-    lon: Number
+    lon: Number,
+    zoom: Number
   },
   mounted() {
     if (localStorage.favourites) {

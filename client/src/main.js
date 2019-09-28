@@ -9,6 +9,7 @@ import './assets/vendor/magnific-popup/magnific-popup.css';
 import './assets/css/custom.css';
 import './assets/vendor/nouislider/nouislider.css';
 import * as VueGoogleMaps from 'vue2-google-maps';
+import firebase from 'firebase';
 
 if (window.google.maps) {
   Vue.use(VueGoogleMaps, {
@@ -20,8 +21,27 @@ if (window.google.maps) {
 }
 
 Vue.config.productionTip = false;
+let app = '';
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app');
+//keep the config out of this file in prod.
+const config = {
+  apiKey: 'AIzaSyBOYCBiW2b4DYJQQWkFGl68DU-sSSsBxtg',
+  authDomain: 'unicamper-firebase.firebaseapp.com',
+  databaseURL: 'https://unicamper-firebase.firebaseio.com',
+  projectId: 'unicamper-firebase',
+  storageBucket: '',
+  messagingSenderId: '689606992745',
+  appId: '1:689606992745:web:661b42b66c42569f8713f8',
+  measurementId: 'G-PX7EEGJW1F'
+};
+
+firebase.initializeApp(config);
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      render: h => h(App)
+    }).$mount('#app');
+  }
+});

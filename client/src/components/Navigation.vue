@@ -14,89 +14,50 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/search">Search</router-link>
           </li>
-          <li class="nav-item">
-            <a href class="nav-link">Planner</a>
+          <li class="nav-item dropdown ml-lg-3">
+            <a
+              id="userDropdownMenuLink"
+              class="nav-link"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >Planner</a>
+            <div aria-labelledby="userDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
+              <a href class="dropdown-item">
+                <router-link class="nav-link" to="/createPlan">Create a new plan</router-link>
+              </a>
+              <a href class="dropdown-item">
+                <router-link class="nav-link" to="/planner">Existing plans</router-link>
+              </a>
+            </div>
           </li>
-          <li class="nav-item mt-3 mt-lg-0 ml-lg-3 d-lg-none d-xl-inline-block">
-            <a href class="btn btn-primary" v-if="server_status == 0" @click.prevent="checkStatus">
-              Server Status
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="16"
-                height="16"
-                viewBox="0 0 172 172"
-                style=" fill:#000000;"
-              >
-                <g
-                  fill="none"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <path d="M0,172v-172h172v172z" fill="none" />
-                  <g fill="#e74c3c">
-                    <path
-                      d="M157.66667,86c0,39.57433 -32.09233,71.66667 -71.66667,71.66667c-39.57433,0 -71.66667,-32.09233 -71.66667,-71.66667c0,-39.57433 32.09233,-71.66667 71.66667,-71.66667c39.57433,0 71.66667,32.09233 71.66667,71.66667z"
-                    />
-                    <path
-                      d="M118.25,86c0,17.81633 -14.43367,32.25 -32.25,32.25c-17.81633,0 -32.25,-14.43367 -32.25,-32.25c0,-17.81633 14.43367,-32.25 32.25,-32.25c17.81633,0 32.25,14.43367 32.25,32.25z"
-                    />
-                  </g>
-                </g>
-              </svg>
+          <router-link class="nav-link" to="/login" v-if="!this.loggedIn">Login</router-link>
+          <li class="nav-item dropdown ml-lg-3" v-else>
+            <a
+              id="userDropdownMenuLink"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                :src="currentUser.photoURL"
+                alt="Jack London"
+                class="avatar avatar-sm avatar-border-white mr-2"
+              />
             </a>
-            <a href class="btn btn-primary" v-else @click.prevent="checkStatus">
-              Server Status
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="16"
-                height="16"
-                viewBox="0 0 172 172"
-                style=" fill:#000000;"
-              >
-                <g
-                  fill="none"
-                  fill-rule="nonzero"
-                  stroke="none"
-                  stroke-width="1"
-                  stroke-linecap="butt"
-                  stroke-linejoin="miter"
-                  stroke-miterlimit="10"
-                  stroke-dasharray
-                  stroke-dashoffset="0"
-                  font-family="none"
-                  font-weight="none"
-                  font-size="none"
-                  text-anchor="none"
-                  style="mix-blend-mode: normal"
-                >
-                  <path d="M0,172v-172h172v172z" fill="none" />
-                  <g fill="#2ecc71">
-                    <path
-                      d="M157.66667,86c0,39.57433 -32.09233,71.66667 -71.66667,71.66667c-39.57433,0 -71.66667,-32.09233 -71.66667,-71.66667c0,-39.57433 32.09233,-71.66667 71.66667,-71.66667c39.57433,0 71.66667,32.09233 71.66667,71.66667z"
-                    />
-                    <path
-                      d="M118.25,86c0,17.81633 -14.43367,32.25 -32.25,32.25c-17.81633,0 -32.25,-14.43367 -32.25,-32.25c0,-17.81633 14.43367,-32.25 32.25,-32.25c17.81633,0 32.25,14.43367 32.25,32.25z"
-                    />
-                  </g>
-                </g>
-              </svg>
-            </a>
+            <div aria-labelledby="userDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
+              <a href class="dropdown-item">
+                <b>{{this.currentUser.displayName}}</b>'s Profile
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href class="nav-link" @click="logout">
+                <i class="fas fa-sign-out-alt mr-2 text-muted"></i>Logout
+              </a>
+            </div>
           </li>
+          <li class="nav-item"></li>
         </ul>
       </div>
     </div>
@@ -105,15 +66,20 @@
 
 <script>
 import CampsitesAPI from "../services/CampsitesAPI";
+import firebase from "firebase";
 export default {
   name: "Navigation",
   data() {
     return {
-      server_status: 0
+      server_status: 0,
+      loggedIn: false,
+      currentUser: null
     };
   },
   mounted() {
     this.checkStatus();
+    this.checkLogin();
+    //console.log(this.$router.currentRoute);
   },
   methods: {
     async checkStatus() {
@@ -121,6 +87,29 @@ export default {
       console.log(response.status);
       if (response.status == 200) {
         this.server_status = 1;
+      }
+    },
+    checkLogin() {
+      var currUser = firebase.auth().currentUser;
+      if (currUser) {
+        this.loggedIn = true;
+        this.currentUser = currUser;
+        console.log(this.currentUser);
+      }
+    },
+    logout() {
+      var _this = this;
+      if (this.currentUser) {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            _this.$router.push({
+              name: "home"
+            });
+            this.loggedIn = false;
+            this.currentUser = null;
+          });
       }
     }
   }
