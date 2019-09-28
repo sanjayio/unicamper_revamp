@@ -8,13 +8,34 @@
           <b style="font-size: 18px;">Unicamper</b>
         </router-link>
       </div>
+      <button
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        class="navbar-toggler navbar-toggler-right"
+      >
+        <i class="fa fa-bars"></i>
+      </button>
       <!-- Navbar Collapse -->
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link class="nav-link" to="/search">Search</router-link>
+            <router-link class="nav-link active" to="/search" v-if="currentRoute == 'Search'">Search</router-link>
+            <router-link class="nav-link" to="/search" v-else>Search</router-link>
           </li>
           <li class="nav-item dropdown ml-lg-3">
+            <a
+              id="userDropdownMenuLink"
+              class="nav-link active"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              v-if="currentRoute == 'Planner' || currentRoute == 'CreatePlan'"
+            >Planner</a>
             <a
               id="userDropdownMenuLink"
               class="nav-link"
@@ -22,13 +43,24 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
+              v-else
             >Planner</a>
             <div aria-labelledby="userDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
               <a href class="dropdown-item">
-                <router-link class="nav-link" to="/createPlan">Create a new plan</router-link>
+                <router-link
+                  class="nav-link active"
+                  to="/createPlan"
+                  v-if="currentRoute == 'CreatePlan'"
+                >Create a new plan</router-link>
+                <router-link class="nav-link" to="/createPlan" v-else>Create a new plan</router-link>
               </a>
               <a href class="dropdown-item">
-                <router-link class="nav-link" to="/planner">Existing plans</router-link>
+                <router-link
+                  class="nav-link active"
+                  to="/planner"
+                  v-if="currentRoute == 'Planner'"
+                >Existing plans</router-link>
+                <router-link class="nav-link" to="/planner" v-else>Existing plans</router-link>
               </a>
             </div>
           </li>
@@ -73,13 +105,14 @@ export default {
     return {
       server_status: 0,
       loggedIn: false,
-      currentUser: null
+      currentUser: null,
+      currentRoute: ""
     };
   },
   mounted() {
     this.checkStatus();
     this.checkLogin();
-    //console.log(this.$router.currentRoute);
+    this.currentRoute = this.$router.currentRoute.name;
   },
   methods: {
     async checkStatus() {
