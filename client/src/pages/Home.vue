@@ -259,25 +259,26 @@
                 </div>
               </div>
             </div>
+            <!-- Slides-->
             <div class="swiper-slide h-auto px-2">
               <!-- place item-->
-              <div data-marker-id="59c0c8e322f3375db4d89128" class="w-100 h-100 hover-animate">
+              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
                 <div class="card h-100 border-0 shadow">
                   <div class="card-img-top overflow-hidden gradient-overlay">
                     <img
-                      src="img/photo/photo-1426122402199-be02db90eb90.jpg"
-                      alt="Cute Quirky Garden apt, NYC adjacent"
+                      src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg"
+                      alt="Modern, Well-Appointed Room"
                       class="img-fluid"
                     />
                     <a href="detail-rooms.html" class="tile-link"></a>
                     <div class="card-img-overlay-bottom z-index-20">
                       <div class="media text-white text-sm align-items-center">
                         <img
-                          src="img/avatar/avatar-7.jpg"
-                          alt="John"
+                          src="../assets/img/avatar/avatar-0.jpg"
+                          alt="Pamela"
                           class="avatar avatar-border-white mr-2"
                         />
-                        <div class="media-body">John</div>
+                        <div class="media-body">Pamela</div>
                       </div>
                     </div>
                     <div class="card-img-overlay-top text-right">
@@ -297,239 +298,7 @@
                         <a
                           href="detail-rooms.html"
                           class="text-decoration-none text-dark"
-                        >Cute Quirky Garden apt, NYC adjacent</a>
-                      </h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-gray-300"></i>
-                        </p>
-                      </div>
-                      <p class="card-text text-muted">
-                        <span class="h4 text-primary">$121</span> per night
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <!-- place item-->
-              <div data-marker-id="59c0c8e3a31e62979bf147c9" class="w-100 h-100 hover-animate">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay">
-                    <img
-                      src="img/photo/photo-1512917774080-9991f1c4c750.jpg"
-                      alt="Modern Apt - Vibrant Neighborhood!"
-                      class="img-fluid"
-                    />
-                    <a href="detail-rooms.html" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center">
-                        <img
-                          src="img/avatar/avatar-8.jpg"
-                          alt="Julie"
-                          class="avatar avatar-border-white mr-2"
-                        />
-                        <div class="media-body">Julie</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right">
-                      <a
-                        href="javascript: void();"
-                        class="card-fav-icon position-relative z-index-40"
-                      >
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title">
-                        <a
-                          href="detail-rooms.html"
-                          class="text-decoration-none text-dark"
-                        >Modern Apt - Vibrant Neighborhood!</a>
-                      </h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">Entire apartment</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-gray-300"></i>
-                          <i class="fa fa-star text-gray-300"></i>
-                        </p>
-                      </div>
-                      <p class="card-text text-muted">
-                        <span class="h4 text-primary">$75</span> per night
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <!-- place item-->
-              <div data-marker-id="59c0c8e3503eb77d487e8082" class="w-100 h-100 hover-animate">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay">
-                    <img
-                      src="img/photo/photo-1494526585095-c41746248156.jpg"
-                      alt="Sunny Private Studio-Apartment"
-                      class="img-fluid"
-                    />
-                    <a href="detail-rooms.html" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center">
-                        <img
-                          src="img/avatar/avatar-9.jpg"
-                          alt="Barbora"
-                          class="avatar avatar-border-white mr-2"
-                        />
-                        <div class="media-body">Barbora</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right">
-                      <a
-                        href="javascript: void();"
-                        class="card-fav-icon position-relative z-index-40"
-                      >
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title">
-                        <a
-                          href="detail-rooms.html"
-                          class="text-decoration-none text-dark"
-                        >Sunny Private Studio-Apartment</a>
-                      </h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">Shared room</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-gray-300"></i>
-                        </p>
-                      </div>
-                      <p class="card-text text-muted">
-                        <span class="h4 text-primary">$93</span> per night
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <!-- place item-->
-              <div data-marker-id="59c0c8e39aa2eed0626e485d" class="w-100 h-100 hover-animate">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay">
-                    <img
-                      src="img/photo/photo-1522771739844-6a9f6d5f14af.jpg"
-                      alt="Mid-Century Modern Garden Paradise"
-                      class="img-fluid"
-                    />
-                    <a href="detail-rooms.html" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center">
-                        <img
-                          src="img/avatar/avatar-10.jpg"
-                          alt="Jack"
-                          class="avatar avatar-border-white mr-2"
-                        />
-                        <div class="media-body">Jack</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right">
-                      <a
-                        href="javascript: void();"
-                        class="card-fav-icon position-relative z-index-40"
-                      >
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title">
-                        <a
-                          href="detail-rooms.html"
-                          class="text-decoration-none text-dark"
-                        >Mid-Century Modern Garden Paradise</a>
-                      </h6>
-                      <div class="d-flex card-subtitle mb-3">
-                        <p class="flex-grow-1 mb-0 text-muted text-sm">Entire house</p>
-                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-warning"></i>
-                        </p>
-                      </div>
-                      <p class="card-text text-muted">
-                        <span class="h4 text-primary">$115</span> per night
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto px-2">
-              <!-- place item-->
-              <div data-marker-id="59c0c8e39aa2edasd626e485d" class="w-100 h-100 hover-animate">
-                <div class="card h-100 border-0 shadow">
-                  <div class="card-img-top overflow-hidden gradient-overlay">
-                    <img
-                      src="img/photo/photo-1488805990569-3c9e1d76d51c.jpg"
-                      alt="Brooklyn Life, Easy to Manhattan"
-                      class="img-fluid"
-                    />
-                    <a href="detail-rooms.html" class="tile-link"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <div class="media text-white text-sm align-items-center">
-                        <img
-                          src="img/avatar/avatar-11.jpg"
-                          alt="Stuart"
-                          class="avatar avatar-border-white mr-2"
-                        />
-                        <div class="media-body">Stuart</div>
-                      </div>
-                    </div>
-                    <div class="card-img-overlay-top text-right">
-                      <a
-                        href="javascript: void();"
-                        class="card-fav-icon position-relative z-index-40"
-                      >
-                        <svg class="svg-icon text-white">
-                          <use xlink:href="#heart-1" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="card-body d-flex align-items-center">
-                    <div class="w-100">
-                      <h6 class="card-title">
-                        <a
-                          href="detail-rooms.html"
-                          class="text-decoration-none text-dark"
-                        >Brooklyn Life, Easy to Manhattan</a>
+                        >Modern, Well-Appointed Room</a>
                       </h6>
                       <div class="d-flex card-subtitle mb-3">
                         <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
@@ -538,11 +307,306 @@
                           <i class="fa fa-star text-warning"></i>
                           <i class="fa fa-star text-warning"></i>
                           <i class="fa fa-star text-warning"></i>
-                          <i class="fa fa-star text-gray-300"></i>
+                          <i class="fa fa-star text-warning"></i>
                         </p>
                       </div>
                       <p class="card-text text-muted">
-                        <span class="h4 text-primary">$123</span> per night
+                        <span class="h4 text-primary">$80</span> per night
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slides-->
+            <div class="swiper-slide h-auto px-2" style="max-height: 300px; max-width: 200px;">
+              <!-- place item-->
+              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden gradient-overlay">
+                    <img
+                      src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg"
+                      alt="Modern, Well-Appointed Room"
+                      class="img-fluid"
+                    />
+                    <a href="detail-rooms.html" class="tile-link"></a>
+                    <div class="card-img-overlay-bottom z-index-20">
+                      <div class="media text-white text-sm align-items-center">
+                        <img
+                          src="../assets/img/avatar/avatar-0.jpg"
+                          alt="Pamela"
+                          class="avatar avatar-border-white mr-2"
+                        />
+                        <div class="media-body">Pamela</div>
+                      </div>
+                    </div>
+                    <div class="card-img-overlay-top text-right">
+                      <a
+                        href="javascript: void();"
+                        class="card-fav-icon position-relative z-index-40"
+                      >
+                        <svg class="svg-icon text-white">
+                          <use xlink:href="#heart-1" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title">
+                        <a
+                          href="detail-rooms.html"
+                          class="text-decoration-none text-dark"
+                        >Modern, Well-Appointed Room</a>
+                      </h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                        </p>
+                      </div>
+                      <p class="card-text text-muted">
+                        <span class="h4 text-primary">$80</span> per night
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slides-->
+            <div class="swiper-slide h-auto px-2" style="max-height: 300px; max-width: 200px;">
+              <!-- place item-->
+              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden gradient-overlay">
+                    <img
+                      src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg"
+                      alt="Modern, Well-Appointed Room"
+                      class="img-fluid"
+                    />
+                    <a href="detail-rooms.html" class="tile-link"></a>
+                    <div class="card-img-overlay-bottom z-index-20">
+                      <div class="media text-white text-sm align-items-center">
+                        <img
+                          src="../assets/img/avatar/avatar-0.jpg"
+                          alt="Pamela"
+                          class="avatar avatar-border-white mr-2"
+                        />
+                        <div class="media-body">Pamela</div>
+                      </div>
+                    </div>
+                    <div class="card-img-overlay-top text-right">
+                      <a
+                        href="javascript: void();"
+                        class="card-fav-icon position-relative z-index-40"
+                      >
+                        <svg class="svg-icon text-white">
+                          <use xlink:href="#heart-1" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title">
+                        <a
+                          href="detail-rooms.html"
+                          class="text-decoration-none text-dark"
+                        >Modern, Well-Appointed Room</a>
+                      </h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                        </p>
+                      </div>
+                      <p class="card-text text-muted">
+                        <span class="h4 text-primary">$80</span> per night
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slides-->
+            <div class="swiper-slide h-auto px-2" style="max-height: 300px; max-width: 200px;">
+              <!-- place item-->
+              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden gradient-overlay">
+                    <img
+                      src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg"
+                      alt="Modern, Well-Appointed Room"
+                      class="img-fluid"
+                    />
+                    <a href="detail-rooms.html" class="tile-link"></a>
+                    <div class="card-img-overlay-bottom z-index-20">
+                      <div class="media text-white text-sm align-items-center">
+                        <img
+                          src="../assets/img/avatar/avatar-0.jpg"
+                          alt="Pamela"
+                          class="avatar avatar-border-white mr-2"
+                        />
+                        <div class="media-body">Pamela</div>
+                      </div>
+                    </div>
+                    <div class="card-img-overlay-top text-right">
+                      <a
+                        href="javascript: void();"
+                        class="card-fav-icon position-relative z-index-40"
+                      >
+                        <svg class="svg-icon text-white">
+                          <use xlink:href="#heart-1" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title">
+                        <a
+                          href="detail-rooms.html"
+                          class="text-decoration-none text-dark"
+                        >Modern, Well-Appointed Room</a>
+                      </h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                        </p>
+                      </div>
+                      <p class="card-text text-muted">
+                        <span class="h4 text-primary">$80</span> per night
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slides-->
+            <div class="swiper-slide h-auto px-2" style="max-height: 300px; max-width: 200px;">
+              <!-- place item-->
+              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden gradient-overlay">
+                    <img
+                      src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg"
+                      alt="Modern, Well-Appointed Room"
+                      class="img-fluid"
+                    />
+                    <a href="detail-rooms.html" class="tile-link"></a>
+                    <div class="card-img-overlay-bottom z-index-20">
+                      <div class="media text-white text-sm align-items-center">
+                        <img
+                          src="../assets/img/avatar/avatar-0.jpg"
+                          alt="Pamela"
+                          class="avatar avatar-border-white mr-2"
+                        />
+                        <div class="media-body">Pamela</div>
+                      </div>
+                    </div>
+                    <div class="card-img-overlay-top text-right">
+                      <a
+                        href="javascript: void();"
+                        class="card-fav-icon position-relative z-index-40"
+                      >
+                        <svg class="svg-icon text-white">
+                          <use xlink:href="#heart-1" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title">
+                        <a
+                          href="detail-rooms.html"
+                          class="text-decoration-none text-dark"
+                        >Modern, Well-Appointed Room</a>
+                      </h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                        </p>
+                      </div>
+                      <p class="card-text text-muted">
+                        <span class="h4 text-primary">$80</span> per night
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Slides-->
+            <div class="swiper-slide h-auto px-2" style="max-height: 300px; max-width: 200px;">
+              <!-- place item-->
+              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden gradient-overlay">
+                    <img
+                      src="../assets/img/photo/photo-1484154218962-a197022b5858.jpg"
+                      alt="Modern, Well-Appointed Room"
+                      class="img-fluid"
+                    />
+                    <a href="detail-rooms.html" class="tile-link"></a>
+                    <div class="card-img-overlay-bottom z-index-20">
+                      <div class="media text-white text-sm align-items-center">
+                        <img
+                          src="../assets/img/avatar/avatar-0.jpg"
+                          alt="Pamela"
+                          class="avatar avatar-border-white mr-2"
+                        />
+                        <div class="media-body">Pamela</div>
+                      </div>
+                    </div>
+                    <div class="card-img-overlay-top text-right">
+                      <a
+                        href="javascript: void();"
+                        class="card-fav-icon position-relative z-index-40"
+                      >
+                        <svg class="svg-icon text-white">
+                          <use xlink:href="#heart-1" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title">
+                        <a
+                          href="detail-rooms.html"
+                          class="text-decoration-none text-dark"
+                        >Modern, Well-Appointed Room</a>
+                      </h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p class="flex-grow-1 mb-0 text-muted text-sm">Private room</p>
+                        <p class="flex-shrink-1 mb-0 card-stars text-xs text-right">
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                          <i class="fa fa-star text-warning"></i>
+                        </p>
+                      </div>
+                      <p class="card-text text-muted">
+                        <span class="h4 text-primary">$80</span> per night
                       </p>
                     </div>
                   </div>
@@ -916,7 +980,7 @@ export default {
       address: "Melbourne CBD, VIC",
       lat: -37.8136,
       lon: 144.9631,
-      isLoading: false,
+      isLoading: true,
       fullPage: true
     };
   },
@@ -942,19 +1006,76 @@ export default {
         "address",
         placeResultData.address_components[0].long_name
       );
-    }
+    },
+    onCancel: function() {}
   },
   mounted() {
-    this.isLoading = true;
-    if (localStorage.getItem("reloaded")) {
-      // The page was just reloaded. Clear the value from local storage
-      // so that it will reload the next time this page is visited.
-      localStorage.removeItem("reloaded");
-    } else {
-      // Set a flag so that we know not to reload the page twice.
-      localStorage.setItem("reloaded", "1");
-      location.reload();
-    }
+    this.$nextTick(function() {
+      $(".swiper-init").each(function() {
+        var slider = $(this),
+          configuration = JSON.parse($(this).attr("data-swiper"));
+
+        new Swiper(slider, configuration);
+      });
+
+      var homeSlider = new Swiper(".home-slider", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true,
+        loop: true,
+        speed: 1500,
+        parallax: true,
+        /*
+        autoplay: {
+            delay: 5000,
+        },
+        */
+        // If we need pagination
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: true
+        },
+        // Navigation arrows
+        navigation: {
+          nextEl: "#homeNext",
+          prevEl: "#homePrev"
+        }
+      });
+      var swiper = new Swiper(".hero-slider", {
+        effect: "fade",
+        speed: 2000,
+        allowTouchMove: false,
+        autoplay: {
+          delay: 10000
+        }
+      });
+      var guidesSlider = new Swiper(".guides-slider", {
+        slidesPerView: 5,
+        spaceBetween: 15,
+        loop: true,
+        roundLengths: true,
+        breakpoints: {
+          1200: {
+            slidesPerView: 4
+          },
+          991: {
+            slidesPerView: 3
+          },
+          768: {
+            slidesPerView: 2
+          },
+          400: {
+            slidesPerView: 1
+          }
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          dynamicBullets: true
+        }
+      });
+    });
     this.isLoading = false;
     this.typing();
   }

@@ -143,40 +143,41 @@
                 <div class="swiper-wrapper pb-5">
                   <!-- Slides-->
                   <div class="swiper-slide h-auto px-2" v-for="(item, key) in list_data" :key="key">
-                    <!-- venue item-->
+                    <!-- place item-->
                     <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100">
-                      <div class="card w-100 h-100 border-0 shadow">
-                        <div
-                          style="max-height: 200px;"
-                          class="card-img-top overflow-hidden dark-overlay bg-cover"
-                        >
-                          <img :src="item.image_urls[0]" alt="No Image Available" class="img-fluid" />
-                          <div class="card-img-overlay-bottom z-index-20">
-                            <h4 class="text-white text-shadow">{{item.name}}</h4>
-                            <p class="mb-2 text-xs">
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-warning"></i>
-                              <i class="fa fa-star text-gray-300"></i>
-                            </p>
-                          </div>
-                          <div
-                            class="card-img-overlay-top d-flex justify-content-between align-items-center"
-                          >
-                            <div class="badge badge-transparent badge-pill px-3 py-2">Campsite</div>
-                          </div>
+                      <div class="card h-100 border-0 shadow">
+                        <div class="card-img-top overflow-hidden gradient-overlay">
+                          <img
+                            :src="item.image_urls[0]"
+                            alt="Modern, Well-Appointed Room"
+                            class="img-fluid"
+                          />
+                          <a href="detail-rooms.html" class="tile-link"></a>
                         </div>
-                        <div class="card-body">
-                          <p
-                            class="text-sm text-muted mb-3"
-                          >{{item.description.substring(0, 100)}}...</p>
-                          <a
-                            href
-                            :ref="'addToPlan_' + item._id"
-                            class="btn btn-primary"
-                            @click.prevent="addToPlan(item)"
-                          >Add to Plan</a>
+                        <div class="card-body d-flex align-items-center">
+                          <div class="w-100">
+                            <h6 class="card-title">
+                              <a
+                                href="detail-rooms.html"
+                                class="text-decoration-none text-dark"
+                              >{{item.name}}</a>
+                            </h6>
+                            <div class="d-flex card-subtitle mb-3">
+                              <p class="flex-shrink-1 mb-0 card-stars text-xs">
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                                <i class="fa fa-star text-warning"></i>
+                              </p>
+                            </div>
+                            <a
+                              href
+                              :ref="'addToPlan_' + item._id"
+                              class="btn btn-primary"
+                              @click.prevent="addToPlan(item)"
+                            >Add to Plan</a>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -395,6 +396,30 @@ export default {
           // If we need pagination
           pagination: {
             el: ".swiper-pagination"
+          }
+        });
+        var itemsSlider = new Swiper(".items-slider", {
+          slidesPerView: 4,
+          spaceBetween: 20,
+          loop: false,
+          roundLengths: true,
+          breakpoints: {
+            1200: {
+              slidesPerView: 3
+            },
+            991: {
+              slidesPerView: 2
+            },
+            565: {
+              slidesPerView: 1
+            }
+          },
+
+          // If we need pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true
           }
         });
       });
