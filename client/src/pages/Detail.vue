@@ -257,6 +257,181 @@
                 </div>
               </div>
             </div>
+            <div class="text-block">
+              <p class="subtitle text-sm text-primary">Reviews</p>
+              <h5 class="mb-4">{{this.campsite_name}} Reviews</h5>
+              <div class="card border-0 shadow mb-5">
+                <div class="card-body py-4 border-0">
+                  <div class="media align-items-center">
+                    <div class="media-body">
+                      <p
+                        class="subtitle text-sm text-primary"
+                        v-if="reviews.length > 0"
+                      >{{this.reviews.length}} Review(s)</p>
+                      <h5
+                        class="subtitle text-lg text-dark"
+                        v-if="reviews.length > 0"
+                      >Overall Rating</h5>
+                      <div class="mb-2" v-if="reviews.length > 0">
+                        <i
+                          class="fa fa-xl fa-star text-warning"
+                          v-for="n in overall_rating"
+                          :key="n"
+                        ></i>
+                        <small>({{this.overall_rating}}/5)</small>
+                      </div>
+                      <h5 class="subtitle text-sm text-primary" v-else>No reviews yet</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="media d-block d-sm-flex review"
+                v-for="(item, key) in reviews"
+                :key="key"
+                v-if="reviews.length > 0"
+              >
+                <div class="text-md-center mr-4 mr-xl-5">
+                  <img
+                    :src="item.data.review_photoURL"
+                    alt
+                    class="d-block avatar avatar-xl p-2 mb-2"
+                  />
+                  <span class="text-uppercase text-muted text-sm">{{item.data.review_dt}}</span>
+                </div>
+                <div class="media-body align-self-center">
+                  <h6 class="mt-2 mb-1">{{item.data.review_displayName}}</h6>
+                  <div class="mb-2">
+                    <i
+                      class="fa fa-xs fa-star text-warning"
+                      v-for="n in parseInt(item.data.review_rating)"
+                      :key="n"
+                    ></i>
+                  </div>
+                  <ul class="list-inline">
+                    <li
+                      class="list-inline-item mb-2"
+                      v-for="(like_item, like_key) in item.data.review_likes"
+                      :key="like_key"
+                    >
+                      <span
+                        class="badge badge-pill badge-primary p-3 font-weight-normal"
+                        style="text-transform:capitalize;"
+                      >{{like_item.replace('_', ' ')}}</span>
+                    </li>
+                    <li
+                      class="list-inline-item mb-2"
+                      v-for="(dislike_item, dislike_key) in item.data.review_dislikes"
+                      :key="dislike_key"
+                    >
+                      <span
+                        class="badge badge-pill badge-light p-3 text-muted font-weight-normal"
+                        style="text-transform:capitalize;"
+                      >{{dislike_item.replace('_', ' ')}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="py-5">
+                <button
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#leaveReview"
+                  aria-expanded="false"
+                  aria-controls="leaveReview"
+                  class="btn btn-outline-primary"
+                  v-if="currentUser"
+                >Leave a review</button>
+                <router-link
+                  class="btn btn-outline-primary"
+                  to="/login"
+                  v-else
+                >Login to leave a review</router-link>
+                <div id="leaveReview" class="collapse mt-4">
+                  <h5 class="mb-4">Leave a review</h5>
+                  <form>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="youliked" class="form-label">You liked</label>
+                          <select
+                            name="youliked"
+                            id="youliked"
+                            :ref="youliked"
+                            v-model="youliked"
+                            multiple
+                            data-style="btn-selectpicker"
+                            data-live-search="true"
+                            data-selected-text-format="count &gt; 1"
+                            title
+                            @change="onYouLikedChange($event)"
+                            class="selectpicker form-control"
+                          >
+                            <option value="getting_there">Getting there</option>
+                            <option value="location">Location</option>
+                            <option value="facilities">Facilities</option>
+                            <option value="activities">Activities</option>
+                            <option value="nature">Nature</option>
+                            <option value="cleanliness">Cleanliness</option>
+                            <option value="people">People</option>
+                            <option value="weather">Weather</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="youdliked" class="form-label">You disliked</label>
+                          <select
+                            name="youdliked"
+                            id="youdliked"
+                            :ref="youdliked"
+                            v-model="youdliked"
+                            multiple
+                            data-style="btn-selectpicker"
+                            data-live-search="true"
+                            data-selected-text-format="count &gt; 1"
+                            title
+                            @change="onYouDLikedChange($event)"
+                            class="selectpicker form-control"
+                          >
+                            <option value="getting_there">Getting there</option>
+                            <option value="location">Location</option>
+                            <option value="facilities">Facilities</option>
+                            <option value="activities">Activities</option>
+                            <option value="nature">Nature</option>
+                            <option value="cleanliness">Cleanliness</option>
+                            <option value="people">People</option>
+                            <option value="weather">Weather</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="rating" class="form-label">Your rating</label>
+                          <select
+                            name="rating"
+                            id="rating"
+                            :ref="rating"
+                            v-model="rating"
+                            data-style="btn-selectpicker"
+                            title
+                            @change="onRatingChange($event)"
+                            class="selectpicker form-control"
+                          >
+                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; (5/5)</option>
+                            <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; (4/5)</option>
+                            <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; (3/5)</option>
+                            <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; (2/5)</option>
+                            <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; (1/5)</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="btn btn-primary" @click.prevent="onReviewClick">Post review</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-lg-4">
             <div style="top: 150px;" class="pl-xl-4 sticky-top">
@@ -696,6 +871,8 @@ import Footer from "../components/Footer";
 import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 import axios from "axios";
+import firebase from "firebase";
+
 export default {
   name: "Detail",
   components: {
@@ -746,7 +923,13 @@ export default {
       weather_recommendation: "The weather looks perfect! Happy Camping!",
       animals_nearby: [],
       animalSearchRadius: 10,
-      animalSearchName: ""
+      animalSearchName: "",
+      youliked: [],
+      youdliked: [],
+      rating: "",
+      reviews: [],
+      overall_rating: 0,
+      currentUser: null
     };
   },
   methods: {
@@ -918,25 +1101,91 @@ export default {
         this.animals_nearby = res.data.occurrences;
       });
     },
-    onCancel() {}
+    onCancel() {},
+    onYouLikedChange() {
+      //console.log(this.youliked);
+    },
+    onYouDLikedChange() {
+      //console.log(this.youdliked);
+    },
+    onRatingChange() {
+      //console.log(this.rating);
+    },
+    onReviewClick() {
+      var db = firebase.firestore();
+      var _this = this;
+      var today = new Date();
+      var date =
+        today.getDate() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getFullYear();
+      db.collection("review")
+        .add({
+          site_id: _this.campsite_id,
+          site_name: _this.campsite_name,
+          review_email: firebase.auth().currentUser.email,
+          review_displayName: firebase.auth().currentUser.displayName,
+          review_photoURL: firebase.auth().currentUser.photoURL,
+          review_likes: _this.youliked,
+          review_dislikes: _this.youdliked,
+          review_rating: _this.rating,
+          review_dt: date
+        })
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          _this.getReviews();
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
+    },
+    getReviews: function() {
+      this.reviews = [];
+      var db = firebase.firestore();
+      var _this = this;
+      db.collection("review")
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            var document = {};
+            document["id"] = doc.id;
+            document["data"] = doc.data();
+            if (document["data"]["site_id"] == _this.campsite_id) {
+              _this.overall_rating =
+                _this.overall_rating +
+                parseInt(document["data"]["review_rating"]);
+              _this.reviews.push(document);
+            }
+          });
+          if (this.reviews.length > 0) {
+            this.overall_rating = parseInt(
+              this.overall_rating / this.reviews.length
+            );
+          }
+        });
+      console.log(this.reviews);
+    },
+    checkLogin() {
+      var currUser = firebase.auth().currentUser;
+      if (currUser) {
+        this.currentUser = currUser;
+      }
+    }
   },
   mounted() {
     this.isLoading = true;
-    if (localStorage.getItem("reloaded")) {
-      // The page was just reloaded. Clear the value from local storage
-      // so that it will reload the next time this page is visited.
-      localStorage.removeItem("reloaded");
-    } else {
-      // Set a flag so that we know not to reload the page twice.
-      localStorage.setItem("reloaded", "1");
-      if (this.$route.params.detail) {
-        localStorage.setItem(
-          "routerParams",
-          JSON.stringify(this.$route.params.detail)
-        );
-      }
-      location.reload();
+    this.checkLogin();
+    if (this.$route.params.detail) {
+      localStorage.setItem(
+        "routerParams",
+        JSON.stringify(this.$route.params.detail)
+      );
     }
+    this.$nextTick(function() {
+      $(".selectpicker").selectpicker();
+    });
     if (localStorage.favourites) {
       this.favourites = JSON.parse(localStorage.getItem("favourites"));
     } else {
@@ -947,6 +1196,7 @@ export default {
     this.getPlacesToVisit();
     this.get_weather_forecast();
     this.getAnimalsNearby();
+    this.getReviews();
     this.isLoading = false;
   }
 };

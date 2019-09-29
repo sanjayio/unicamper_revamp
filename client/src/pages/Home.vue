@@ -621,13 +621,13 @@
     </section>
     <!-- Divider Section-->
     <section class="py-7 position-relative dark-overlay">
-      <img src="img/photo/photo-1497436072909-60f360e1d4b1.jpg" alt class="bg-image" />
+      <img src="../assets/img/photo/photo-1497436072909-60f360e1d4b1.jpg" alt class="bg-image" />
       <div class="container">
         <div class="overlay-content text-white py-lg-5">
           <h3
             class="display-3 font-weight-bold text-serif text-shadow mb-5"
           >Ready for your next holidays?</h3>
-          <a href="category-rooms.html" class="btn btn-light">Get started</a>
+          <a href class="btn btn-light">Get started</a>
         </div>
       </div>
     </section>
