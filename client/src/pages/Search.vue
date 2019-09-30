@@ -43,8 +43,8 @@
                     data-style="btn-selectpicker"
                     title
                     class="selectpicker"
-                    v-model="searchradius"
-                    @change="onSortChange($event)"
+                    v-model="search_radius"
+                    @change="onSearchRadiusChange($event)"
                   >
                     <option value="50">50 km</option>
                     <option value="100">100 km</option>
@@ -542,7 +542,7 @@ export default {
       priceFrom: 0,
       priceTo: 0,
       sort_by: 0,
-      searchradius: 100,
+      search_radius: parseInt(localStorage.getItem("search_radius")) || 100,
       campsites: [],
       list_data: [],
       result_count: 0,
@@ -657,6 +657,10 @@ export default {
       }
     },
     onCancel: function() {},
+    onSearchRadiusChange() {
+      this.getListInfosucc();
+      this.GoogleMapRender();
+    },
     getAddressData: function(addressData, placeResultData, id) {
       this.address = placeResultData.formatted_address;
       this.latitude = addressData.latitude;
@@ -678,6 +682,8 @@ export default {
       this.isLoading = false;
     },
     getListInfosucc() {
+      this.list_data = [];
+      console.log(this.search_radius);
       if (this.campsites.length > 0) {
         for (let i in this.campsites) {
           var dis = this.$options.methods.distance(
@@ -689,8 +695,13 @@ export default {
           dis = parseFloat(dis).toFixed(2);
           this.$set(this.campsites[i], "distance", dis);
         }
-        this.list_data = this.campsites;
-        this.result_count = this.campsites.length;
+        for (let j in this.campsites) {
+          if (parseFloat(this.campsites[j].distance) <= this.search_radius) {
+            this.list_data.push(this.campsites[j]);
+          }
+        }
+        console.log(this.list_data);
+        this.result_count = this.list_data.length;
       }
     },
     distance(lat1, lon1, lat2, lon2) {

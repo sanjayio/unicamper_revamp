@@ -45,11 +45,17 @@
             </div>
 
             <div class="col-lg-3 d-flex align-items-center form-group no-divider">
-              <select title="Within Radius (km)" data-style="btn-form-control" class="selectpicker">
+              <select
+                title="Within Radius (km)"
+                data-style="btn-form-control"
+                class="selectpicker"
+                v-model="search_radius"
+                @change="onSearchRadiusChange($event)"
+              >
                 <option value="50">50 km</option>
                 <option value="100">100 km</option>
                 <option value="500">500 km</option>
-                <option value="All">All</option>
+                <option value="-1">All</option>
               </select>
             </div>
             <div class="col-lg-2 form-group mb-0">
@@ -330,6 +336,7 @@ export default {
       address: "Melbourne CBD, VIC",
       lat: -37.8136,
       lon: 144.9631,
+      search_radius: 50,
       isLoading: true,
       fullPage: true,
       campsites: [],
@@ -362,6 +369,9 @@ export default {
       );
     },
     onCancel: function() {},
+    onSearchRadiusChange() {
+      localStorage.setItem("search_radius", this.search_radius);
+    },
     async loadCampsites() {
       const response = await CampsitesAPI.getCampsites();
       this.campsites = response.data;
