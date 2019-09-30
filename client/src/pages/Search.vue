@@ -20,6 +20,39 @@
           <hr class="my-4" />
           <form action="#" autocomplete="off">
             <div class="row">
+              <div class="col-xl-12 col-md-6 mb-4">
+                <label class="form-label" for="map">Search Location</label>
+                <vue-google-autocomplete
+                  ref="address"
+                  id="map"
+                  class="form-control"
+                  :placeholder="fullAddress"
+                  v-on:placechanged="getAddressData"
+                  types="(regions)"
+                  country="au"
+                  style="border: 1px solid #ced4da;"
+                ></vue-google-autocomplete>
+              </div>
+
+              <div class="col-xl-4 col-md-6 mb-4">
+                <label class="form-label">Search Radius</label>
+                <div class="d-flex align-items-center">
+                  <select
+                    name="searchradius"
+                    id="searchradius"
+                    data-style="btn-selectpicker"
+                    title
+                    class="selectpicker"
+                    v-model="searchradius"
+                    @change="onSortChange($event)"
+                  >
+                    <option value="50">50 km</option>
+                    <option value="100">100 km</option>
+                    <option value="500">500 km</option>
+                    <option value="All">All</option>
+                  </select>
+                </div>
+              </div>
               <div class="col-xl-4 col-md-6 mb-4">
                 <label class="form-label">Number of Sites</label>
                 <div class="d-flex align-items-center">
@@ -28,19 +61,7 @@
                   <div class="btn btn-items btn-items-increase">+</div>
                 </div>
               </div>
-              <div class="col-xl-4 col-md-6 mb-4">
-                <label class="form-label">Number of Powered Sites</label>
-                <div class="d-flex align-items-center">
-                  <div class="btn btn-items btn-items-decrease">-</div>
-                  <input
-                    type="text"
-                    disabled
-                    class="form-control input-items"
-                    v-model="numPoweredSites"
-                  />
-                  <div class="btn btn-items btn-items-increase">+</div>
-                </div>
-              </div>
+
               <div class="col-xl-4 col-md-6 mb-4">
                 <label for="form_type" class="form-label">Activities</label>
                 <select
@@ -475,7 +496,13 @@
         </div>
         <div class="col-lg-6 map-side-lg pr-lg-0 pl-lg-0">
           <div class="map-full shadow-left">
-            <GoogleMap :list="list_data" :lat="latitude" :lon="longitude" :zoom="12"></GoogleMap>
+            <GoogleMap
+              :key="GoogleMapRenderKey"
+              :list="list_data"
+              :lat="latitude"
+              :lon="longitude"
+              :zoom="12"
+            ></GoogleMap>
           </div>
         </div>
       </div>
@@ -491,6 +518,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import GoogleMap from "../components/Map";
 import Loading from "vue-loading-overlay";
+import VueGoogleAutocomplete from "vue-google-autocomplete";
 import "vue-loading-overlay/dist/vue-loading.css";
 
 export default {
@@ -499,19 +527,22 @@ export default {
     Navigation,
     Footer,
     GoogleMap,
-    Loading
+    Loading,
+    VueGoogleAutocomplete
   },
   data() {
     return {
       longitude: parseFloat(localStorage.getItem("lon")) || -37.814,
       latitude: parseFloat(localStorage.getItem("lat")) || 144.96332,
       address: localStorage.getItem("address") || "Melbourne CBD",
+      fullAddress: localStorage.getItem("full_address") || "Melbourne CBD",
       numSites: 0,
       numPoweredSites: 0,
       activities: [],
       priceFrom: 0,
       priceTo: 0,
       sort_by: 0,
+      searchradius: 100,
       campsites: [],
       list_data: [],
       result_count: 0,
@@ -519,7 +550,8 @@ export default {
       favourites: [],
       isLoading: false,
       fullPage: true,
-      selectedValue: null
+      selectedValue: null,
+      GoogleMapRenderKey: 0
     };
   },
   watch: {
@@ -604,6 +636,9 @@ export default {
     hello() {
       console.log("hello");
     },
+    GoogleMapRender() {
+      this.GoogleMapRenderKey += 1;
+    },
     onNumPoweredSitesChange(event) {
       console.log(this.numPoweredSites);
     },
@@ -620,6 +655,20 @@ export default {
       } else {
         this.allData();
       }
+    },
+    onCancel: function() {},
+    getAddressData: function(addressData, placeResultData, id) {
+      this.address = placeResultData.formatted_address;
+      this.latitude = addressData.latitude;
+      this.longitude = addressData.longitude;
+      localStorage.setItem("lat", this.latitude);
+      localStorage.setItem("lon", this.longitude);
+      localStorage.setItem("full_address", this.address);
+      localStorage.setItem(
+        "address",
+        placeResultData.address_components[0].long_name
+      );
+      this.GoogleMapRender();
     },
     async loadCampsites() {
       this.isLoading = true;

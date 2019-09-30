@@ -44,7 +44,14 @@
             <div class="text-block">
               <!-- Listing Location-->
               <h3 class="mb-3">Location</h3>
-              <img :src="static_map" alt srcset style="max-height:100%; max-width:100%;" />
+              <DetailMap
+                :key="GoogleMapRenderKey"
+                :ff_list="nearby_ff"
+                :pv_list="nearby_pv"
+                :lat="lat"
+                :lon="lon"
+                :zoom="12"
+              ></DetailMap>
             </div>
             <div class="text-block">
               <!-- Gallery-->
@@ -872,13 +879,15 @@ import Loading from "vue-loading-overlay";
 import "vue-loading-overlay/dist/vue-loading.css";
 import axios from "axios";
 import firebase from "firebase";
+import DetailMap from "../components/DetailMap";
 
 export default {
   name: "Detail",
   components: {
     Navigation,
     Footer,
-    Loading
+    Loading,
+    DetailMap
   },
   computed: {
     header_image() {
@@ -911,8 +920,8 @@ export default {
       image_urls: [],
       phone: "",
       website: "",
-      lat: null,
-      lon: null,
+      lat: JSON.parse(localStorage.getItem("routerParams")).lat,
+      lon: JSON.parse(localStorage.getItem("routerParams")).lon,
       isLoading: false,
       fullPage: true,
       favourites: [],
@@ -929,7 +938,8 @@ export default {
       rating: "",
       reviews: [],
       overall_rating: 0,
-      currentUser: null
+      currentUser: null,
+      GoogleMapRenderKey: 0
     };
   },
   methods: {
@@ -994,6 +1004,7 @@ export default {
           ff_item["address"] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ", ");
           this.nearby_ff.push(ff_item);
         }
+        this.GoogleMapRender();
       });
     },
     getPlacesToVisit() {
@@ -1017,7 +1028,7 @@ export default {
           pv_item["average_rating"] = item.averageRating;
           this.nearby_pv.push(pv_item);
         }
-        console.log(this.nearby_pv);
+        this.GoogleMapRender();
       });
     },
     async get_weather_forecast() {
@@ -1100,6 +1111,9 @@ export default {
       axios.get(open_api_call).then(res => {
         this.animals_nearby = res.data.occurrences;
       });
+    },
+    GoogleMapRender() {
+      this.GoogleMapRenderKey += 1;
     },
     onCancel() {},
     onYouLikedChange() {
