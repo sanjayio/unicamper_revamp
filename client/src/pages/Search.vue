@@ -503,9 +503,9 @@ export default {
   },
   data() {
     return {
-      longitude: parseFloat(localStorage.getItem("lon")),
-      latitude: parseFloat(localStorage.getItem("lat")),
-      address: localStorage.getItem("address"),
+      longitude: parseFloat(localStorage.getItem("lon")) || -37.814,
+      latitude: parseFloat(localStorage.getItem("lat")) || 144.96332,
+      address: localStorage.getItem("address") || "Melbourne CBD",
       numSites: 0,
       numPoweredSites: 0,
       activities: [],

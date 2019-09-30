@@ -298,7 +298,8 @@ export default {
       favourites: [],
       upcomingPlans: [],
       pastPlans: [],
-      displayName: firebase.auth().currentUser.displayName
+      displayName: firebase.auth().currentUser.displayName,
+      user_email: firebase.auth().currentUser.email
     };
   },
   mounted() {
@@ -321,7 +322,9 @@ export default {
             var document = {};
             document["id"] = doc.id;
             document["data"] = doc.data();
-            this.upcomingPlans.push(document);
+            if (document["data"]["creator_email"] == _this.user_email) {
+              _this.upcomingPlans.push(document);
+            }
           });
         });
       console.log(this.upcomingPlans);
