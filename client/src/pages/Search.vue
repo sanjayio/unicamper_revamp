@@ -49,7 +49,7 @@
                     <option value="50">50 km</option>
                     <option value="100">100 km</option>
                     <option value="500">500 km</option>
-                    <option value="All">All</option>
+                    <option value="10000">All</option>
                   </select>
                 </div>
               </div>
