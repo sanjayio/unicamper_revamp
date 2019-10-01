@@ -8,6 +8,8 @@ import Signup from '../pages/Signup';
 import Login from '../pages/Login';
 import CreatePlan from '../pages/CreatePlan';
 import Plan from '../pages/Plan';
+import Bushfire from '../static/safety/Bushfire';
+import DrinkingWater from '../static/safety/DrinkingWater';
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -62,6 +64,16 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/safety/bushfire',
+      name: 'Bushfire',
+      component: Bushfire
+    },
+    {
+      path: '/safety/drinkingwater',
+      name: 'DrinkingWater',
+      component: DrinkingWater
     }
   ]
 });

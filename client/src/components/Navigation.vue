@@ -64,6 +64,44 @@
               </a>
             </div>
           </li>
+          <li class="nav-item dropdown ml-lg-3">
+            <a
+              id="userDropdownMenuLink"
+              class="nav-link active"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              v-if="currentRoute == 'Bushfire' || currentRoute == 'DrinkingWater'"
+            >Safety</a>
+            <a
+              id="userDropdownMenuLink"
+              class="nav-link"
+              href="#"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              v-else
+            >Safety</a>
+            <div aria-labelledby="userDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
+              <a href class="dropdown-item">
+                <router-link
+                  class="nav-link active"
+                  to="/safety/bushfire"
+                  v-if="currentRoute == 'Bushfire'"
+                >Bushfire Safety</router-link>
+                <router-link class="nav-link" to="/safety/bushfire" v-else>Bushfire Safety</router-link>
+              </a>
+              <a href class="dropdown-item">
+                <router-link
+                  class="nav-link active"
+                  to="/safety/drinkingwater"
+                  v-if="currentRoute == 'DrinkingWater'"
+                >Drinking Water</router-link>
+                <router-link class="nav-link" to="/safety/drinkingwater" v-else>Drinking Water</router-link>
+              </a>
+            </div>
+          </li>
           <router-link class="nav-link" to="/login" v-if="!this.loggedIn">Login</router-link>
           <li class="nav-item dropdown ml-lg-3" v-else>
             <a
