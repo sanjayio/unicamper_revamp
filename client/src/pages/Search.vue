@@ -357,7 +357,7 @@
             <div
               data-marker-id="59c0c8e33b1527bfe2abaf92"
               class="col-sm-6 mb-5 hover-animate"
-              v-for="(item, key) in list_data"
+              v-for="(item, key) in pageOfItems"
               :key="key"
             >
               <div class="card h-100 border-0 shadow">
@@ -470,29 +470,15 @@
             </div>
           </div>
           <!-- Pagination -->
-          <nav aria-label="Page navigation example">
-            <ul class="pagination pagination-template d-flex justify-content-center">
-              <li class="page-item">
-                <a href="#" class="page-link">
-                  <i class="fa fa-angle-left"></i>
-                </a>
-              </li>
-              <li class="page-item active">
-                <a href="#" class="page-link">1</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">2</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">3</a>
-              </li>
-              <li class="page-item">
-                <a href="#" class="page-link">
-                  <i class="fa fa-angle-right"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <jw-pagination
+            v-if="computedItems.length"
+            :items="computedItems"
+            @changePage="onChangePage"
+            :labels="customLabels"
+            :pageSize="8"
+            :maxPages="5"
+            :key="paginationRenderKey"
+          ></jw-pagination>
         </div>
         <div class="col-lg-6 map-side-lg pr-lg-0 pl-lg-0">
           <div class="map-full shadow-left">
@@ -520,6 +506,14 @@ import GoogleMap from "../components/Map";
 import Loading from "vue-loading-overlay";
 import VueGoogleAutocomplete from "vue-google-autocomplete";
 import "vue-loading-overlay/dist/vue-loading.css";
+import JwPagination from "jw-vue-pagination";
+
+const customLabels = {
+  first: "<<",
+  last: ">>",
+  previous: "<",
+  next: ">"
+};
 
 export default {
   name: "Search",
@@ -528,7 +522,8 @@ export default {
     Footer,
     GoogleMap,
     Loading,
-    VueGoogleAutocomplete
+    VueGoogleAutocomplete,
+    JwPagination
   },
   data() {
     return {
@@ -551,7 +546,10 @@ export default {
       isLoading: false,
       fullPage: true,
       selectedValue: null,
-      GoogleMapRenderKey: 0
+      GoogleMapRenderKey: 0,
+      paginationRenderKey: 0,
+      pageOfItems: [],
+      customLabels
     };
   },
   watch: {
@@ -638,6 +636,7 @@ export default {
     },
     GoogleMapRender() {
       this.GoogleMapRenderKey += 1;
+      this.paginationRenderKey += 1;
     },
     onNumPoweredSitesChange(event) {
       console.log(this.numPoweredSites);
@@ -672,6 +671,7 @@ export default {
         "address",
         placeResultData.address_components[0].long_name
       );
+      this.getListInfosucc();
       this.GoogleMapRender();
     },
     async loadCampsites() {
@@ -757,6 +757,15 @@ export default {
           detail: item
         }
       });
+    },
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems;
+    }
+  },
+  computed: {
+    computedItems() {
+      return this.list_data;
     }
   }
 };

@@ -340,7 +340,7 @@ export default {
       isLoading: true,
       fullPage: true,
       campsites: [],
-      list_data: [1, 2, 3, 4, 5],
+      list_data: [],
       result_count: 0,
       reviews: []
     };
@@ -413,6 +413,7 @@ export default {
       console.log(this.result_count);
     },
     getListInfosucc() {
+      this.list_data = [];
       if (this.campsites.length > 0) {
         for (let i in this.campsites) {
           var dis = this.$options.methods.distance(
@@ -446,7 +447,7 @@ export default {
       for (var i = 0; i < this.reviews.length; i++) {
         if (this.reviews[i].site_id == id) {
           counter++;
-          rating = rating + this.reviews[i].review_rating;
+          rating = rating + parseInt(this.reviews[i].review_rating);
         }
       }
       if (counter > 0) {
@@ -466,7 +467,6 @@ export default {
           querySnapshot.forEach(doc => {
             _this.reviews.push(doc.data());
           });
-          this.loadCampsites();
         });
     },
     sortRating() {
@@ -493,9 +493,7 @@ export default {
     }
   },
   mounted() {
-    this.$nextTick(function() {
-      $(".selectpicker").selectpicker();
-    });
+    this.loadCampsites();
     this.getReviews();
     this.typing();
     this.isLoading = false;

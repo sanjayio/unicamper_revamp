@@ -16,6 +16,7 @@
     "firebase": "^7.0.0",
     "firebase-admin": "^8.6.0",
     "http2": "^3.3.7",
+    "jw-vue-pagination": "^1.0.1",
     "nouislider": "^14.0.2",
     "object-fit-images": "^3.2.4",
     "vue": "^2.6.10",
