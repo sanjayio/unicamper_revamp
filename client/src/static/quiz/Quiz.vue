@@ -30,7 +30,7 @@
                   <div class="media-body">
                     <p class="subtitle text-sm text-primary">Time to complete: 5 mins</p>
                     <p class="subtitle text-sm text-secondary">XP Gain: +{{this.quiz_points}}</p>
-                    <h4 class="mb-0">Bushfire Safety Quiz</h4>
+                    <h4 class="mb-0">{{this.quiz_title}}</h4>
                   </div>
                   <img
                     src="../../assets/img/badges/bushfire.png"
