@@ -10,6 +10,7 @@ import CreatePlan from '../pages/CreatePlan';
 import Plan from '../pages/Plan';
 import Bushfire from '../static/safety/Bushfire';
 import DrinkingWater from '../static/safety/DrinkingWater';
+import Quiz from '../static/quiz/Quiz';
 import firebase from 'firebase';
 
 Vue.use(Router);
@@ -74,6 +75,11 @@ const router = new Router({
       path: '/safety/drinkingwater',
       name: 'DrinkingWater',
       component: DrinkingWater
+    },
+    {
+      path: '/quiz',
+      name: 'Quiz',
+      component: Quiz
     }
   ]
 });

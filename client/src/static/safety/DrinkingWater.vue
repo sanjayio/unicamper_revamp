@@ -93,14 +93,17 @@
                       <p class="subtitle text-sm text-primary">Time to complete: 5 mins</p>
                       <h4 class="mb-0">Drinking Water Quiz</h4>
                     </div>
-                    <img src="../../assets/img/badges/water_badge.png" alt="" srcset="" style="height: 100px;">
+                    <img src="../../assets/img/badges/water_badge.png" alt="" srcset="" style="height: 100px; -webkit-filter: drop-shadow(5px 5px 5px #a8a8a8); filter: drop-shadow(5px 5px 5px #a8a8a8);">
                   </div>
                 </div>
                 <div class="card-body">
                   <p>
                       Complete the Drinking Water quiz to level up and get the Drinking Water Expert badge. Completing quizzes help you level up as a user and earn more badges.
                   </p>
-                  <button class="btn btn-primary">Take the quiz</button>
+                  <router-link
+                    :to="{ path: '/quiz', query: { quiz_id: 'aZfltKE13w1cjmh1TIZK' }}"
+                    class="btn btn-primary"
+                  >Take the quiz</router-link>
                 </div>
               </div>
           </div>
