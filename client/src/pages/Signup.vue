@@ -114,57 +114,57 @@
 </template>
 
 <script>
-import firebase from "firebase";
-import router from "../router";
+import firebase from 'firebase'
+import router from '../router'
 
 export default {
-  name: "Signup",
+  name: 'Signup',
   components: {},
-  data() {
+  data () {
     return {
-      loginUsername: "",
-      loginPassword: "",
-      displayName: ""
-    };
+      loginUsername: '',
+      loginPassword: '',
+      displayName: ''
+    }
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    signUp: function() {
-      var _this = this;
+    signUp: function () {
+      var _this = this
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.loginUsername, this.loginPassword)
         .then(
-          function(user) {
-            //alert("user created");
-            console.log("user created");
-            _this.updateUserProfile();
-            router.replace("login");
+          function (user) {
+            // alert("user created");
+            console.log('user created')
+            _this.updateUserProfile()
+            router.replace('login')
           },
-          function(err) {
-            console.log("error: " + err.message);
+          function (err) {
+            console.log('error: ' + err.message)
           }
-        );
+        )
     },
-    updateUserProfile: function() {
-      var currUser = firebase.auth().currentUser;
+    updateUserProfile: function () {
+      var currUser = firebase.auth().currentUser
       currUser
         .updateProfile({
           displayName: this.displayName,
-          photoURL: "https://img.icons8.com/color/48/000000/bot.png"
+          photoURL: 'https://img.icons8.com/color/48/000000/bot.png'
         })
-        .then(function() {
-          console.log("user details updated");
+        .then(function () {
+          console.log('user details updated')
         })
-        .catch(function(err) {
-          console.log("error: " + err.message);
-        });
+        .catch(function (err) {
+          console.log('error: ' + err.message)
+        })
     },
-    goBack: function() {
-      router.go(-1);
+    goBack: function () {
+      router.go(-1)
     }
   }
-};
+}
 </script>
 <style lang="css">
 </style>
