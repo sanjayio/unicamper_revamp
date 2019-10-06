@@ -89,28 +89,28 @@
                   <option value="paddling">Paddling</option>
                 </select>
               </div>
-              <div class="col-xl-4 col-md-6 mb-4">
-                <label class="form-label">Price range</label>
-                <div id="slider-snap" class="text-primary"></div>
-                <div class="nouislider-values">
-                  <div class="min">
-                    From $
-                    <span id="slider-snap-value-from"></span>
-                  </div>
-                  <div class="max">
-                    To $
-                    <span id="slider-snap-value-to"></span>
-                  </div>
-                </div>
-                <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="0" />
-                <input type="hidden" name="priceto" id="slider-snap-input-to" value="100" />
-              </div>
+<!--              <div class="col-xl-4 col-md-6 mb-4">-->
+<!--                <label class="form-label">Price range</label>-->
+<!--                <div id="slider-snap" class="text-primary"></div>-->
+<!--                <div class="nouislider-values">-->
+<!--                  <div class="min">-->
+<!--                    From $-->
+<!--                    <span id="slider-snap-value-from"></span>-->
+<!--                  </div>-->
+<!--                  <div class="max">-->
+<!--                    To $-->
+<!--                    <span id="slider-snap-value-to"></span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="0" />-->
+<!--                <input type="hidden" name="priceto" id="slider-snap-input-to" value="100" />-->
+<!--              </div>-->
               <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex justify-content-center">
                 <div>
                   <label class="form-label">Popular Filters</label>
                   <ul class="list-inline mb-0 mt-1">
                     <li class="list-inline-item">
-                      <div class="custom-control custom-switch">
+                      <div class="custom-control custom-switch ">
                         <input id="petFriendly" type="checkbox" class="custom-control-input" value="pets_allowed" v-model="checkPopular"/>
                         <label for="petFriendly" class="custom-control-label">
                           <span class="text-sm">Pet Friendly</span>
@@ -118,7 +118,7 @@
                       </div>
                     </li>
                     <li class="list-inline-item">
-                      <div class="custom-control custom-switch">
+                      <div class="custom-control custom-switch ">
                         <input id="freeSites" type="checkbox" class="custom-control-input" value="fees_and_booking" v-model="checkPopular"/>
                         <label for="freeSites" class="custom-control-label">
                           <span class="text-sm">Free Sites</span>
@@ -126,7 +126,7 @@
                       </div>
                     </li>
                     <li class="list-inline-item">
-                      <div class="custom-control custom-switch">
+                      <div class="custom-control custom-switch ">
                         <input id="disabledAccess" type="checkbox" class="custom-control-input" value="disabled_access" v-model="checkPopular" />
                         <label for="disabledAccess" class="custom-control-label">
                           <span class="text-sm">Disabled Access</span>
@@ -345,6 +345,7 @@
             </div>
           </form>
           <hr class="my-4" />
+          <div class="col-12 d-none d-lg-block">
           <div
             class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4"
           >
@@ -506,6 +507,7 @@
             :maxPages="5"
             :key="paginationRenderKey"
           ></jw-pagination>
+          </div>
         </div>
         <div class="col-lg-6 map-side-lg pr-lg-0 pl-lg-0">
           <div class="map-full shadow-left">
@@ -569,7 +571,7 @@ export default {
       checkFacilites: [],
       checkAccomodation: [],
 
-      sort_by:'0',
+      sort_by: '0',
       search_radius: parseInt(localStorage.getItem('search_radius')) || 100,
       campsites: [],
       list_data: [],
@@ -772,7 +774,7 @@ export default {
       var campsites = this.list_data
       var multifilte = this.activities.concat(this.checkPopular).concat(this.checkFacilites).concat(this.checkAccomodation)
       for (var i in multifilte) {
-        var campList = campsites.filter(item => item[multifilte[i]] !== 'U' && item[multifilte[i]] !== 'N')
+        var campList = campsites.filter(item => item[multifilte[i]] === 'Y' || item[multifilte[i]] === 'Free' || item[multifilte[i]] === 'All rubbish must be wrapped in bags and placed in the receptacles provided.')
         campsites = campList
       }
       console.log(campsites)
