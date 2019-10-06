@@ -100,50 +100,50 @@
 </template>
 
 <script>
-import firebase from "firebase";
+import firebase from 'firebase'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {},
-  data() {
+  data () {
     return {
-      loginUsername: "",
-      loginPassword: "",
+      loginUsername: '',
+      loginPassword: '',
       redirect_url: this.$route.query.redirect
-    };
+    }
   },
-  mounted() {},
+  mounted () {},
   methods: {
-    login: function() {
-      var _this = this;
+    login: function () {
+      var _this = this
       firebase
         .auth()
         .signInWithEmailAndPassword(this.loginUsername, this.loginPassword)
         .then(
-          function(user) {
-            _this.$router.push(_this.redirect_url || "/");
+          function (user) {
+            _this.$router.push(_this.redirect_url || '/')
           },
-          function(err) {
-            console.log("error: " + err.message);
+          function (err) {
+            console.log('error: ' + err.message)
           }
-        );
+        )
     },
-    googleSignIn: function() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      var _this = this;
+    googleSignIn: function () {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      var _this = this
       firebase
         .auth()
         .signInWithPopup(provider)
         .then(result => {
-          console.log(result);
-          _this.$router.push(_this.redirect_url || "/");
+          console.log(result)
+          _this.$router.push(_this.redirect_url || '/')
         })
         .catch(err => {
-          console.log("error: " + err.message);
-        });
+          console.log('error: ' + err.message)
+        })
     }
   }
-};
+}
 </script>
 <style lang="css">
 </style>

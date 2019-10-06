@@ -873,16 +873,16 @@
 </template>
 
 <script>
-import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
-import Loading from "vue-loading-overlay";
-import "vue-loading-overlay/dist/vue-loading.css";
-import axios from "axios";
-import firebase from "firebase";
-import DetailMap from "../components/DetailMap";
+import Navigation from '../components/Navigation'
+import Footer from '../components/Footer'
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/vue-loading.css'
+import axios from 'axios'
+import firebase from 'firebase'
+import DetailMap from '../components/DetailMap'
 
 export default {
-  name: "Detail",
+  name: 'Detail',
   components: {
     Navigation,
     Footer,
@@ -890,252 +890,252 @@ export default {
     DetailMap
   },
   computed: {
-    header_image() {
+    header_image () {
       if (this.routerParams) {
-        return "background-image: url(" + this.routerParams.image_urls[0] + ")";
+        return 'background-image: url(' + this.routerParams.image_urls[0] + ')'
       }
     },
-    static_map() {
+    static_map () {
       var url =
-        "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A";
+        'https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A'
       if (this.routerParams) {
-        var center = this.routerParams.lat + "," + this.routerParams.lon;
+        var center = this.routerParams.lat + ',' + this.routerParams.lon
         url =
-          "https://maps.googleapis.com/maps/api/staticmap?center=" +
+          'https://maps.googleapis.com/maps/api/staticmap?center=' +
           center +
-          "&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:sds%7C" +
+          '&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:sds%7C' +
           center +
-          "&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A";
+          '&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A'
       }
-      return url;
+      return url
     }
   },
-  data() {
+  data () {
     return {
       routerParams: null,
-      campsite_name: "",
-      campsite_id: "",
-      description: "",
-      access_description: "",
+      campsite_name: '',
+      campsite_id: '',
+      description: '',
+      access_description: '',
       image_urls: [],
-      phone: "",
-      website: "",
+      phone: '',
+      website: '',
       lat: 0,
       lon: 0,
       isLoading: false,
       fullPage: true,
       favourites: [],
-      campsite_address: "",
+      campsite_address: '',
       nearby_ff: [],
       nearby_pv: [],
       weather_forecast: [],
-      weather_recommendation: "The weather looks perfect! Happy Camping!",
+      weather_recommendation: 'The weather looks perfect! Happy Camping!',
       animals_nearby: [],
       animalSearchRadius: 10,
-      animalSearchName: "",
+      animalSearchName: '',
       youliked: [],
       youdliked: [],
-      rating: "",
+      rating: '',
       reviews: [],
       overall_rating: 0,
       currentUser: null,
       GoogleMapRenderKey: 0
-    };
+    }
   },
   methods: {
-    getParams() {
-      this.routerParams = JSON.parse(localStorage.getItem("routerParams"));
-      console.log(this.routerParams);
-      this.campsite_id = this.routerParams._id;
-      this.campsite_name = this.routerParams.name;
-      this.description = this.routerParams.description;
-      this.access_description = this.routerParams.access_desc;
-      this.image_urls = this.routerParams.image_urls;
-      this.phone = this.routerParams.phone;
-      this.website = this.routerParams.website;
-      this.lat = this.routerParams.lat;
-      this.lon = this.routerParams.lon;
+    getParams () {
+      this.routerParams = JSON.parse(localStorage.getItem('routerParams'))
+      console.log(this.routerParams)
+      this.campsite_id = this.routerParams._id
+      this.campsite_name = this.routerParams.name
+      this.description = this.routerParams.description
+      this.access_description = this.routerParams.access_desc
+      this.image_urls = this.routerParams.image_urls
+      this.phone = this.routerParams.phone
+      this.website = this.routerParams.website
+      this.lat = this.routerParams.lat
+      this.lon = this.routerParams.lon
     },
-    googleDirections(lat, lon) {
+    googleDirections (lat, lon) {
       var url =
-        "https://www.google.com/maps?saddr=My+Location&daddr=" +
+        'https://www.google.com/maps?saddr=My+Location&daddr=' +
         lat +
-        "," +
-        lon;
-      return url;
+        ',' +
+        lon
+      return url
     },
-    addFavourite(item) {
-      var refId = "favourites_btn";
-      var favButton = this.$refs[refId];
-      console.log(favButton);
+    addFavourite (item) {
+      var refId = 'favourites_btn'
+      var favButton = this.$refs[refId]
+      console.log(favButton)
       if (this.favourites.includes(this.campsite_id)) {
-        var index = this.favourites.indexOf(this.campsite_id);
-        this.favourites.splice(index, 1);
+        var index = this.favourites.indexOf(this.campsite_id)
+        this.favourites.splice(index, 1)
         favButton.innerHTML =
-          "<i class='fa fa-heart mr-3'></i> ADD TO FAVOURITES";
+          "<i class='fa fa-heart mr-3'></i> ADD TO FAVOURITES"
       } else {
-        this.favourites.push(this.campsite_id);
+        this.favourites.push(this.campsite_id)
         favButton.innerHTML =
-          "<i class='fa fa-heart mr-3'></i>REMOVE FROM FAVOURITES";
+          "<i class='fa fa-heart mr-3'></i>REMOVE FROM FAVOURITES"
       }
-      localStorage.setItem("favourites", JSON.stringify(this.favourites));
+      localStorage.setItem('favourites', JSON.stringify(this.favourites))
     },
-    getFoodAndFuel() {
+    getFoodAndFuel () {
       var url =
-        "https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=" +
+        'https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=' +
         this.lat +
-        "," +
+        ',' +
         this.lon +
-        ";r=10000&cat=petrol-station,eat-drink&pretty=";
+        ';r=10000&cat=petrol-station,eat-drink&pretty='
       axios.get(url).then(res => {
         this.campsite_address = res.data.search.context.location.address.text.replace(
           /<\/?[^>]+(>|$)/g,
-          ", "
-        );
+          ', '
+        )
         for (var i = 0; i < res.data.results.items.length; i++) {
-          var item = res.data.results.items[i];
-          var ff_item = {};
-          ff_item["title"] = item.title;
-          ff_item["category"] = item.category.title;
-          ff_item["distance"] = item.distance;
-          ff_item["lat"] = item.position[0];
-          ff_item["lon"] = item.position[1];
-          ff_item["icon"] = item.icon;
-          ff_item["address"] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ", ");
-          this.nearby_ff.push(ff_item);
+          var item = res.data.results.items[i]
+          var ff_item = {}
+          ff_item['title'] = item.title
+          ff_item['category'] = item.category.title
+          ff_item['distance'] = item.distance
+          ff_item['lat'] = item.position[0]
+          ff_item['lon'] = item.position[1]
+          ff_item['icon'] = item.icon
+          ff_item['address'] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ', ')
+          this.nearby_ff.push(ff_item)
         }
-        this.GoogleMapRender();
-      });
+        this.GoogleMapRender()
+      })
     },
-    getPlacesToVisit() {
+    getPlacesToVisit () {
       var url =
-        "https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=" +
+        'https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=' +
         this.lat +
-        "," +
+        ',' +
         this.lon +
-        ";r=10000&cat=sights-museums,natural-geographical&pretty=";
+        ';r=10000&cat=sights-museums,natural-geographical&pretty='
       axios.get(url).then(res => {
         for (var i = 0; i < res.data.results.items.length; i++) {
-          var item = res.data.results.items[i];
-          var pv_item = {};
-          pv_item["title"] = item.title;
-          pv_item["category"] = item.category.title;
-          pv_item["distance"] = item.distance;
-          pv_item["lat"] = item.position[0];
-          pv_item["lon"] = item.position[1];
-          pv_item["icon"] = item.icon;
-          pv_item["address"] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ", ");
-          pv_item["average_rating"] = item.averageRating;
-          this.nearby_pv.push(pv_item);
+          var item = res.data.results.items[i]
+          var pv_item = {}
+          pv_item['title'] = item.title
+          pv_item['category'] = item.category.title
+          pv_item['distance'] = item.distance
+          pv_item['lat'] = item.position[0]
+          pv_item['lon'] = item.position[1]
+          pv_item['icon'] = item.icon
+          pv_item['address'] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ', ')
+          pv_item['average_rating'] = item.averageRating
+          this.nearby_pv.push(pv_item)
         }
-        this.GoogleMapRender();
-      });
+        this.GoogleMapRender()
+      })
     },
-    async get_weather_forecast() {
+    async get_weather_forecast () {
       var open_api_call =
-        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+        'https://api.openweathermap.org/data/2.5/forecast?lat=' +
         this.lat +
-        "&lon=" +
+        '&lon=' +
         this.lon +
-        "&appid=fa250324b761890e884085debec36f35";
-      var weekday = new Array(7);
-      weekday[0] = "Sunday";
-      weekday[1] = "Monday";
-      weekday[2] = "Tuesday";
-      weekday[3] = "Wednesday";
-      weekday[4] = "Thursday";
-      weekday[5] = "Friday";
-      weekday[6] = "Saturday";
+        '&appid=fa250324b761890e884085debec36f35'
+      var weekday = new Array(7)
+      weekday[0] = 'Sunday'
+      weekday[1] = 'Monday'
+      weekday[2] = 'Tuesday'
+      weekday[3] = 'Wednesday'
+      weekday[4] = 'Thursday'
+      weekday[5] = 'Friday'
+      weekday[6] = 'Saturday'
       axios.get(open_api_call).then(res => {
         for (var i = 0; i < res.data.list.length; i += 8) {
-          var weather = {};
-          var day = new Date(res.data.list[i]["dt_txt"].substring(0, 10));
-          var dayOfWeek = weekday[day.getDay()];
-          weather["dayOfWeek"] = dayOfWeek;
-          weather["weather"] = res.data.list[i]["weather"][0]["description"];
-          weather["temperature"] = parseFloat(
-            parseFloat(res.data.list[i]["main"]["temp"]) - 273.15
-          ).toFixed(2);
-          weather["humidity"] = res.data.list[i]["main"]["humidity"];
-          weather["windspeed"] = res.data.list[i]["wind"]["speed"];
-          weather["icon"] =
-            "https://openweathermap.org/img/wn/" +
-            res.data.list[i]["weather"][0]["icon"] +
-            "@2x.png";
-          this.weather_forecast.push(weather);
+          var weather = {}
+          var day = new Date(res.data.list[i]['dt_txt'].substring(0, 10))
+          var dayOfWeek = weekday[day.getDay()]
+          weather['dayOfWeek'] = dayOfWeek
+          weather['weather'] = res.data.list[i]['weather'][0]['description']
+          weather['temperature'] = parseFloat(
+            parseFloat(res.data.list[i]['main']['temp']) - 273.15
+          ).toFixed(2)
+          weather['humidity'] = res.data.list[i]['main']['humidity']
+          weather['windspeed'] = res.data.list[i]['wind']['speed']
+          weather['icon'] =
+            'https://openweathermap.org/img/wn/' +
+            res.data.list[i]['weather'][0]['icon'] +
+            '@2x.png'
+          this.weather_forecast.push(weather)
         }
-        this.makeWeatherRecommendation();
-      });
+        this.makeWeatherRecommendation()
+      })
     },
-    makeWeatherRecommendation() {
-      var recomm = "The weather looks perfect! ";
-      var rain = 0;
-      var wind = 0;
-      var heat = 0;
+    makeWeatherRecommendation () {
+      var recomm = 'The weather looks perfect! '
+      var rain = 0
+      var wind = 0
+      var heat = 0
       for (var i = 0; i < this.weather_forecast.length; i++) {
-        if (this.weather_forecast[i].weather == "light rain") {
-          rain = 1;
+        if (this.weather_forecast[i].weather == 'light rain') {
+          rain = 1
         }
         if (this.weather_forecast[i].windspeed > 25) {
-          wind = 1;
+          wind = 1
         }
         if (parseFloat(this.weather_forecast[i].temperature) > 30) {
-          heat = 1;
+          heat = 1
         }
       }
       if (rain == 1) {
-        recomm = "We suggest you carry rain jackets. ";
+        recomm = 'We suggest you carry rain jackets. '
       }
       if (wind == 1) {
         recomm =
           recomm +
-          "Use extra guy ropes and pegs to secure the tent during wind. ";
+          'Use extra guy ropes and pegs to secure the tent during wind. '
       }
       if (heat == 1) {
-        recomm = recomm + "Carry extra water with you to bear the heat. ";
+        recomm = recomm + 'Carry extra water with you to bear the heat. '
       }
-      recomm = recomm + "Happy Camping!";
-      this.weather_recommendation = recomm;
+      recomm = recomm + 'Happy Camping!'
+      this.weather_recommendation = recomm
     },
-    getAnimalsNearby() {
+    getAnimalsNearby () {
       var open_api_call =
-        "https://biocache-ws.ala.org.au/ws/occurrences/search?q=" +
+        'https://biocache-ws.ala.org.au/ws/occurrences/search?q=' +
         this.animalSearchName +
-        "&lat=" +
+        '&lat=' +
         this.lat +
-        "&lon=" +
+        '&lon=' +
         this.lon +
-        "&radius=" +
+        '&radius=' +
         this.animalSearchRadius +
-        "&sort=year&dir=desc";
+        '&sort=year&dir=desc'
       axios.get(open_api_call).then(res => {
-        this.animals_nearby = res.data.occurrences;
-      });
+        this.animals_nearby = res.data.occurrences
+      })
     },
-    GoogleMapRender() {
-      this.GoogleMapRenderKey += 1;
+    GoogleMapRender () {
+      this.GoogleMapRenderKey += 1
     },
-    onCancel() {},
-    onYouLikedChange() {
-      //console.log(this.youliked);
+    onCancel () {},
+    onYouLikedChange () {
+      // console.log(this.youliked);
     },
-    onYouDLikedChange() {
-      //console.log(this.youdliked);
+    onYouDLikedChange () {
+      // console.log(this.youdliked);
     },
-    onRatingChange() {
-      //console.log(this.rating);
+    onRatingChange () {
+      // console.log(this.rating);
     },
-    onReviewClick() {
-      var db = firebase.firestore();
-      var _this = this;
-      var today = new Date();
+    onReviewClick () {
+      var db = firebase.firestore()
+      var _this = this
+      var today = new Date()
       var date =
         today.getDate() +
-        "-" +
+        '-' +
         (today.getMonth() + 1) +
-        "-" +
-        today.getFullYear();
-      db.collection("review")
+        '-' +
+        today.getFullYear()
+      db.collection('review')
         .add({
           site_id: _this.campsite_id,
           site_name: _this.campsite_name,
@@ -1147,73 +1147,73 @@ export default {
           review_rating: _this.rating,
           review_dt: date
         })
-        .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
-          _this.getReviews();
+        .then(function (docRef) {
+          console.log('Document written with ID: ', docRef.id)
+          _this.getReviews()
         })
-        .catch(function(error) {
-          console.error("Error adding document: ", error);
-        });
+        .catch(function (error) {
+          console.error('Error adding document: ', error)
+        })
     },
-    getReviews: function() {
-      this.reviews = [];
-      var db = firebase.firestore();
-      var _this = this;
-      db.collection("review")
+    getReviews: function () {
+      this.reviews = []
+      var db = firebase.firestore()
+      var _this = this
+      db.collection('review')
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
-            var document = {};
-            document["id"] = doc.id;
-            document["data"] = doc.data();
-            if (document["data"]["site_id"] == _this.campsite_id) {
+            var document = {}
+            document['id'] = doc.id
+            document['data'] = doc.data()
+            if (document['data']['site_id'] == _this.campsite_id) {
               _this.overall_rating =
                 _this.overall_rating +
-                parseInt(document["data"]["review_rating"]);
-              _this.reviews.push(document);
+                parseInt(document['data']['review_rating'])
+              _this.reviews.push(document)
             }
-          });
+          })
           if (this.reviews.length > 0) {
             this.overall_rating = parseInt(
               this.overall_rating / this.reviews.length
-            );
+            )
           }
-        });
-      console.log(this.reviews);
+        })
+      console.log(this.reviews)
     },
-    checkLogin() {
-      var currUser = firebase.auth().currentUser;
+    checkLogin () {
+      var currUser = firebase.auth().currentUser
       if (currUser) {
-        this.currentUser = currUser;
+        this.currentUser = currUser
       }
     }
   },
-  mounted() {
-    this.isLoading = true;
-    this.checkLogin();
+  mounted () {
+    this.isLoading = true
+    this.checkLogin()
     if (this.$route.params.detail) {
       localStorage.setItem(
-        "routerParams",
+        'routerParams',
         JSON.stringify(this.$route.params.detail)
-      );
+      )
     }
-    this.$nextTick(function() {
-      $(".selectpicker").selectpicker();
-    });
+    this.$nextTick(function () {
+      $('.selectpicker').selectpicker()
+    })
     if (localStorage.favourites) {
-      this.favourites = JSON.parse(localStorage.getItem("favourites"));
+      this.favourites = JSON.parse(localStorage.getItem('favourites'))
     } else {
-      this.favourites = [];
+      this.favourites = []
     }
-    this.getParams();
-    this.getFoodAndFuel();
-    this.getPlacesToVisit();
-    this.get_weather_forecast();
-    this.getAnimalsNearby();
-    this.getReviews();
-    this.isLoading = false;
+    this.getParams()
+    this.getFoodAndFuel()
+    this.getPlacesToVisit()
+    this.get_weather_forecast()
+    this.getAnimalsNearby()
+    this.getReviews()
+    this.isLoading = false
   }
-};
+}
 </script>
 
 <style>
