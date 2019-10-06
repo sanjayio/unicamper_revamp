@@ -779,7 +779,7 @@ export default {
       }
       console.log(campsites)
       if (this.numSites !== 0) {
-        campsites = campsites.filter(item => item['num_sites'] === this.numSites)
+        campsites = campsites.filter(item => item['num_sites'] === this.numSites.toString())
       }
       console.log(campsites)
       this.list_data = campsites
