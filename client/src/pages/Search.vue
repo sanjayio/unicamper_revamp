@@ -781,6 +781,7 @@ export default {
       if (this.numSites !== 0) {
         campsites = campsites.filter(item => item['num_sites'] === this.numSites)
       }
+      console.log(campsites)
       this.list_data = campsites
       this.reloadPagination()
       console.log('list_data:', this.list_data)
