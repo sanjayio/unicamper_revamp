@@ -118,9 +118,12 @@
               />
             </a>
             <div aria-labelledby="userDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
-              <a href class="dropdown-item">
+              <router-link
+                class="dropdown-item"
+                :to="{ path: 'profile', query: { redirect: currentRoute }}"
+              >
                 <b>{{this.currentUser.displayName}}</b>'s Profile
-              </a>
+              </router-link>
               <div class="dropdown-divider"></div>
               <a href class="nav-link" @click="logout">
                 <i class="fas fa-sign-out-alt mr-2 text-muted"></i>Logout

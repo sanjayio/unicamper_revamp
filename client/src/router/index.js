@@ -12,6 +12,7 @@ import Bushfire from '../static/safety/Bushfire';
 import DrinkingWater from '../static/safety/DrinkingWater';
 import Quiz from '../static/quiz/Quiz';
 import firebase from 'firebase';
+import Profile from '../pages/Profile';
 
 Vue.use(Router);
 
@@ -79,7 +80,18 @@ const router = new Router({
     {
       path: '/quiz',
       name: 'Quiz',
-      component: Quiz
+      component: Quiz,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });

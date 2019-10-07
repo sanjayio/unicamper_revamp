@@ -65,8 +65,63 @@
         </form>
       </div>
     </div>
+    <br />
+    <section class="pt-4 pb-6">
+      <div class="container">
+        <div class="pb-lg-4">
+          <p class="subtitle text-secondary">The best camping guide for students</p>
+          <h2 class="mb-5">Discover Victoria while studying</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+            <div class="px-0 pr-lg-3">
+              <div class="icon-rounded mb-3 bg-secondary-light">
+                <img src="https://img.icons8.com/nolan/48/000000/search.png" />
+              </div>
+              <h3 class="h6 text-uppercase">Find the perfect place</h3>
+              <p
+                class="text-muted text-sm"
+              >Discover the best camping sites in Victoria from our curated beginners guides or by searching for sites near you.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+            <div class="px-0 pr-lg-3">
+              <div class="icon-rounded mb-3 bg-primary-light">
+                <img src="https://img.icons8.com/nolan/48/000000/todo-list.png" />
+              </div>
+              <h3 class="h6 text-uppercase">Plan your trip</h3>
+              <p
+                class="text-muted text-sm"
+              >Plan your trip using our best in the industry trip planner, get expert recommendations for students and first time campers about things to carry and safety instructions.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+            <div class="px-0 pr-lg-3">
+              <div class="icon-rounded mb-3 bg-secondary-light">
+                <img src="https://img.icons8.com/nolan/48/000000/trekking.png" />
+              </div>
+              <h3 class="h6 text-uppercase">Enjoy your trip</h3>
+              <p
+                class="text-muted text-sm"
+              >You will never run out of places to see and food to try with our recommendations for each campsite. Also spot indigenous wildlife if you are lucky.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
+            <div class="px-0 pr-lg-3">
+              <div class="icon-rounded mb-3 bg-primary-light">
+                <img src="https://img.icons8.com/nolan/48/000000/poor-quality.png" />
+              </div>
+              <h3 class="h6 text-uppercase">Earn points</h3>
+              <p
+                class="text-muted text-sm"
+              >After your vacation, write reviews about your trip and earn points to increase your reputation in the Unicamper community.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- Our picks section-->
-    <section class="py-6">
+    <section class="py-6 bg-gray-100">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-8">
@@ -145,61 +200,7 @@
         </div>
       </div>
     </section>
-    <section class="pt-4 pb-6">
-      <div class="container">
-        <div class="pb-lg-4">
-          <p class="subtitle text-secondary">The best camping guide for students</p>
-          <h2 class="mb-5">Discover Victoria while studying</h2>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-            <div class="px-0 pr-lg-3">
-              <div class="icon-rounded mb-3 bg-secondary-light">
-                <img src="https://img.icons8.com/nolan/48/000000/search.png" />
-              </div>
-              <h3 class="h6 text-uppercase">Find the perfect place</h3>
-              <p
-                class="text-muted text-sm"
-              >Discover the best camping sites in Victoria from our curated beginners guides or by searching for sites near you.</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-            <div class="px-0 pr-lg-3">
-              <div class="icon-rounded mb-3 bg-primary-light">
-                <img src="https://img.icons8.com/nolan/48/000000/todo-list.png" />
-              </div>
-              <h3 class="h6 text-uppercase">Plan your trip</h3>
-              <p
-                class="text-muted text-sm"
-              >Plan your trip using our best in the industry trip planner, get expert recommendations for students and first time campers about things to carry and safety instructions.</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-            <div class="px-0 pr-lg-3">
-              <div class="icon-rounded mb-3 bg-secondary-light">
-                <img src="https://img.icons8.com/nolan/48/000000/trekking.png" />
-              </div>
-              <h3 class="h6 text-uppercase">Enjoy your trip</h3>
-              <p
-                class="text-muted text-sm"
-              >You will never run out of places to see and food to try with our recommendations for each campsite. Also spot indigenous wildlife if you are lucky.</p>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-3 mb-3 mb-lg-0">
-            <div class="px-0 pr-lg-3">
-              <div class="icon-rounded mb-3 bg-primary-light">
-                <img src="https://img.icons8.com/nolan/48/000000/poor-quality.png" />
-              </div>
-              <h3 class="h6 text-uppercase">Earn points</h3>
-              <p
-                class="text-muted text-sm"
-              >After your vacation, write reviews about your trip and earn points to increase your reputation in the Unicamper community.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-6 bg-gray-100">
+    <section class="py-6">
       <div class="container">
         <div class="text-center pb-lg-4">
           <p class="subtitle text-secondary">Trending on Unicamper</p>

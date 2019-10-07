@@ -155,7 +155,7 @@ export default {
       quiz_started: false,
       answers: {},
       score: 0,
-      badge_awarded: false,
+      badge_awarded: "",
       score_text:
         "Complete the Bushfire safety quiz to level up, gain 500XP and get the Bushfire Expert badge. Completing quizzes help you level up as a user and earn more badges."
     };
@@ -200,15 +200,54 @@ export default {
     start_quiz() {
       if (this.quiz_started) {
         if (this.score == this.plan_details.quiz_points) {
-          this.badge_awarded = true;
+          this.badge_awarded = this.quiz_id;
         }
         this.$refs["question_card_q1"][0].nextElementSibling.hidden = true;
         this.$refs["question_card_q2"][0].nextElementSibling.hidden = true;
         this.$refs["question_card_q3"][0].nextElementSibling.hidden = true;
         this.$refs["question_card_q4"][0].nextElementSibling.hidden = true;
         this.$refs["question_card_q5"][0].nextElementSibling.hidden = true;
-        this.score_text = "You gained " + this.score + " XP!";
-        this.$refs["startquizbutton"].innerText = "Check your profile";
+        this.score_text =
+          "You gained " +
+          this.score +
+          " XP!. Check your profile for any badges earned.";
+        this.$refs["startquizbutton"].hidden = true;
+        var currUser = firebase.auth().currentUser;
+        var db = firebase.firestore();
+        var _this = this;
+        // Add a new document in collection "user"
+        db.collection("user")
+          .doc(currUser.uid)
+          .set(
+            {
+              xp: firebase.firestore.FieldValue.arrayUnion(_this.score)
+            },
+            { merge: true }
+          )
+          .then(function() {
+            console.log("xp successfully written!");
+          })
+          .catch(function(error) {
+            console.error("Error writing document: ", error);
+          });
+        if (_this.badge_awarded != "") {
+          db.collection("user")
+            .doc(currUser.uid)
+            .set(
+              {
+                badges: firebase.firestore.FieldValue.arrayUnion(
+                  _this.badge_awarded
+                )
+              },
+              { merge: true }
+            )
+            .then(function() {
+              console.log("badge successfully written!");
+            })
+            .catch(function(error) {
+              console.error("Error writing document: ", error);
+            });
+        }
       } else {
         this.quiz_started = true;
         this.$refs["startquizbutton"].innerText = "SUBMIT ANSWERS";
