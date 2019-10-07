@@ -13,6 +13,7 @@ import DrinkingWater from '../static/safety/DrinkingWater';
 import Quiz from '../static/quiz/Quiz';
 import firebase from 'firebase';
 import Profile from '../pages/Profile';
+import Guide from '../pages/Guide';
 
 Vue.use(Router);
 
@@ -66,6 +67,11 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/guide',
+      name: 'Guide',
+      component: Guide
     },
     {
       path: '/safety/bushfire',

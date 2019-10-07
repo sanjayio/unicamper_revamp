@@ -112,8 +112,8 @@
               aria-expanded="false"
             >
               <img
-                :src="currentUser.photoURL"
-                alt="Jack London"
+                :src="currentUser.photoURL || '../assets/img/profile_pic.png'"
+                alt
                 class="avatar avatar-sm avatar-border-white mr-2"
               />
             </a>

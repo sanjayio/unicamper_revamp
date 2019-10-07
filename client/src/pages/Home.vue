@@ -132,14 +132,18 @@
         <div class="row">
           <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
             <div
-              style="background: center center url(img/photo/photo-1449034446853-66c86144b0ad.jpg) no-repeat; background-size: cover;"
+              style="background: center center url(https://www.travelvictoria.com.au/images/regions/greatoceanroad/coast/great-ocean-road-11.jpg) no-repeat; background-size: cover;"
               class="card shadow-lg border-0 w-100 border-0 hover-animate"
             >
               <a href="category.html" class="tile-link"></a>
+              <router-link
+                :to="{ path: 'guide', query: { id: 'zjxcNMs3VG1ppydJ1bYz' }}"
+                class="tile-link"
+              ></router-link>
               <div
                 class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
               >
-                <h3 class="text-shadow text-uppercase mb-0">San Francisco</h3>
+                <h3 class="text-shadow text-uppercase mb-0">Great Ocean road</h3>
               </div>
             </div>
           </div>
@@ -254,7 +258,7 @@
           <div class="swiper-pagination"></div>
         </div>
         <div class="text-center mt-5">
-          <a href="category-2.html" class="btn btn-outline-primary">See all places</a>
+          <router-link to="/search" tag="button" class="btn btn-outline-primary">See all places</router-link>
         </div>
       </div>
     </section>
@@ -343,7 +347,8 @@ export default {
       campsites: [],
       list_data: [],
       result_count: 0,
-      reviews: []
+      reviews: [],
+      guides: []
     };
   },
   methods: {
