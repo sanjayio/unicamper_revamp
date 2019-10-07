@@ -806,7 +806,8 @@ export default {
         name: 'Detail',
         params: {
           key: 'key',
-          detail: item
+          detail: item,
+          campsite: this.campsites
         }
       })
     },
