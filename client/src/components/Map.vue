@@ -45,13 +45,13 @@
 </template>
 
 <script>
-import { BImg } from "bootstrap-vue";
-import Vue from "vue";
-Vue.component("b-img", BImg);
+import { BImg } from 'bootstrap-vue'
+import Vue from 'vue'
+Vue.component('b-img', BImg)
 
 export default {
-  name: "GoogleMap",
-  data() {
+  name: 'GoogleMap',
+  data () {
     return {
       center: { lat: this.$props.lat, lng: this.$props.lon },
       markers: [],
@@ -65,205 +65,205 @@ export default {
       infoCurrentKey: null,
       detail: {},
       favourites: [],
-      imgURL: "",
+      imgURL: '',
       mapStyle: {
         disableDefaultUI: true,
         styles: [
           {
-            elementType: "geometry",
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#f5f5f5"
+                color: '#f5f5f5'
               }
             ]
           },
           {
-            elementType: "labels.icon",
+            elementType: 'labels.icon',
             stylers: [
               {
-                visibility: "off"
+                visibility: 'off'
               }
             ]
           },
           {
-            elementType: "labels.text.fill",
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#616161"
+                color: '#616161'
               }
             ]
           },
           {
-            elementType: "labels.text.stroke",
+            elementType: 'labels.text.stroke',
             stylers: [
               {
-                color: "#f5f5f5"
+                color: '#f5f5f5'
               }
             ]
           },
           {
-            featureType: "administrative.land_parcel",
+            featureType: 'administrative.land_parcel',
             stylers: [
               {
-                visibility: "off"
+                visibility: 'off'
               }
             ]
           },
           {
-            featureType: "administrative.land_parcel",
-            elementType: "labels.text.fill",
+            featureType: 'administrative.land_parcel',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#bdbdbd"
+                color: '#bdbdbd'
               }
             ]
           },
           {
-            featureType: "administrative.neighborhood",
+            featureType: 'administrative.neighborhood',
             stylers: [
               {
-                visibility: "off"
+                visibility: 'off'
               }
             ]
           },
           {
-            featureType: "poi",
-            elementType: "geometry",
+            featureType: 'poi',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#eeeeee"
+                color: '#eeeeee'
               }
             ]
           },
           {
-            featureType: "poi",
-            elementType: "labels.text.fill",
+            featureType: 'poi',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#757575"
+                color: '#757575'
               }
             ]
           },
           {
-            featureType: "poi.park",
-            elementType: "geometry",
+            featureType: 'poi.park',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#e5e5e5"
+                color: '#e5e5e5'
               }
             ]
           },
           {
-            featureType: "poi.park",
-            elementType: "labels.text.fill",
+            featureType: 'poi.park',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#9e9e9e"
+                color: '#9e9e9e'
               }
             ]
           },
           {
-            featureType: "road",
-            elementType: "geometry",
+            featureType: 'road',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#ffffff"
+                color: '#ffffff'
               }
             ]
           },
           {
-            featureType: "road",
-            elementType: "labels",
+            featureType: 'road',
+            elementType: 'labels',
             stylers: [
               {
-                visibility: "off"
+                visibility: 'off'
               }
             ]
           },
           {
-            featureType: "road.arterial",
-            elementType: "labels.text.fill",
+            featureType: 'road.arterial',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#757575"
+                color: '#757575'
               }
             ]
           },
           {
-            featureType: "road.highway",
-            elementType: "geometry",
+            featureType: 'road.highway',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#dadada"
+                color: '#dadada'
               }
             ]
           },
           {
-            featureType: "road.highway",
-            elementType: "labels.text.fill",
+            featureType: 'road.highway',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#616161"
+                color: '#616161'
               }
             ]
           },
           {
-            featureType: "road.local",
-            elementType: "labels.text.fill",
+            featureType: 'road.local',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#9e9e9e"
+                color: '#9e9e9e'
               }
             ]
           },
           {
-            featureType: "transit.line",
-            elementType: "geometry",
+            featureType: 'transit.line',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#e5e5e5"
+                color: '#e5e5e5'
               }
             ]
           },
           {
-            featureType: "transit.station",
-            elementType: "geometry",
+            featureType: 'transit.station',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#eeeeee"
+                color: '#eeeeee'
               }
             ]
           },
           {
-            featureType: "water",
-            elementType: "geometry",
+            featureType: 'water',
+            elementType: 'geometry',
             stylers: [
               {
-                color: "#c9c9c9"
+                color: '#c9c9c9'
               }
             ]
           },
           {
-            featureType: "water",
-            elementType: "labels.text",
+            featureType: 'water',
+            elementType: 'labels.text',
             stylers: [
               {
-                visibility: "off"
+                visibility: 'off'
               }
             ]
           },
           {
-            featureType: "water",
-            elementType: "labels.text.fill",
+            featureType: 'water',
+            elementType: 'labels.text.fill',
             stylers: [
               {
-                color: "#9e9e9e"
+                color: '#9e9e9e'
               }
             ]
           }
         ]
       }
-    };
+    }
   },
   props: {
     list: Array,
@@ -271,94 +271,94 @@ export default {
     lon: Number,
     zoom: Number
   },
-  mounted() {
+  mounted () {
     if (localStorage.favourites) {
-      this.favourites = JSON.parse(localStorage.getItem("favourites"));
-      console.log(this.favourites);
+      this.favourites = JSON.parse(localStorage.getItem('favourites'))
+      console.log(this.favourites)
     }
   },
 
   methods: {
     // receives a place object via the autocomplete component
-    setPlace(place) {
-      this.currentPlace = place;
+    setPlace (place) {
+      this.currentPlace = place
     },
-    getPosition: function(marker) {
+    getPosition: function (marker) {
       return {
-        lat: parseFloat(marker["lat"]),
-        lng: parseFloat(marker["lon"])
-      };
+        lat: parseFloat(marker['lat']),
+        lng: parseFloat(marker['lon'])
+      }
     },
-    addMarker() {
+    addMarker () {
       if (this.currentPlace) {
         const marker = {
           lat: this.currentPlace.geometry.location.lat(),
           lng: this.currentPlace.geometry.location.lng()
-        };
-        this.markers.push({ position: marker });
-        this.places.push(this.currentPlace);
-        this.center = marker;
-        this.currentPlace = null;
+        }
+        this.markers.push({ position: marker })
+        this.places.push(this.currentPlace)
+        this.center = marker
+        this.currentPlace = null
       }
     },
-    geolocate: function() {
+    geolocate: function () {
       navigator.geolocation.getCurrentPosition(position => {
         this.center = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
-        };
-      });
+        }
+      })
     },
-    toggleInfo: function(marker, key) {
-      this.detail = marker;
-      console.log("detail", this.detail);
-      this.infoPosition = this.getPosition(marker);
-      this.infoContentTitle = marker.name;
-      this.infoContentDescription = marker.description;
-      this.imgURL = marker.image_urls[0];
-      console.log(this.imgURL);
+    toggleInfo: function (marker, key) {
+      this.detail = marker
+      console.log('detail', this.detail)
+      this.infoPosition = this.getPosition(marker)
+      this.infoContentTitle = marker.name
+      this.infoContentDescription = marker.description
+      this.imgURL = marker.image_urls[0]
+      console.log(this.imgURL)
 
       if (this.infoCurrentKey == key) {
-        this.infoOpened = !this.infoOpened;
+        this.infoOpened = !this.infoOpened
       } else {
-        this.infoOpened = true;
-        this.infoCurrentKey = key;
+        this.infoOpened = true
+        this.infoCurrentKey = key
       }
     },
-    forwordDetail(item) {
+    forwordDetail (item) {
       this.$router.push({
-        path: "/detail",
-        name: "Detail",
+        path: '/detail',
+        name: 'Detail',
         params: {
-          key: "key",
+          key: 'key',
           detail: item
         }
-      });
-      console.log(item.name);
+      })
+      console.log(item.name)
     },
-    addFavourite(item) {
-      var refId = "fav_button_" + item._id;
-      var favButton = this.$refs[refId];
-      //console.log(this.$refs[refId]);
+    addFavourite (item) {
+      var refId = 'fav_button_' + item._id
+      var favButton = this.$refs[refId]
+      // console.log(this.$refs[refId]);
       if (localStorage.favourites) {
-        this.favourites = JSON.parse(localStorage.getItem("favourites"));
+        this.favourites = JSON.parse(localStorage.getItem('favourites'))
       } else {
-        this.favourites = [];
+        this.favourites = []
       }
       if (this.favourites.includes(item._id)) {
-        var index = this.favourites.indexOf(item._id);
-        this.favourites.splice(index, 1);
+        var index = this.favourites.indexOf(item._id)
+        this.favourites.splice(index, 1)
         favButton.innerHTML =
-          '<img src="https://img.icons8.com/ios/16/000000/like.png" />';
+          '<img src="https://img.icons8.com/ios/16/000000/like.png" />'
       } else {
-        this.favourites.push(item._id);
+        this.favourites.push(item._id)
         favButton.innerHTML =
-          '<img src="https://img.icons8.com/offices/16/000000/like.png" />';
+          '<img src="https://img.icons8.com/offices/16/000000/like.png" />'
       }
-      localStorage.setItem("favourites", JSON.stringify(this.favourites));
+      localStorage.setItem('favourites', JSON.stringify(this.favourites))
     }
   }
-};
+}
 </script>
 
 <style lang="css" scoped>

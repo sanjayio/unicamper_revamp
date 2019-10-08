@@ -138,54 +138,54 @@
 </template>
 
 <script>
-import CampsitesAPI from "../services/CampsitesAPI";
-import firebase from "firebase";
+import CampsitesAPI from '../services/CampsitesAPI'
+import firebase from 'firebase'
 export default {
-  name: "Navigation",
-  data() {
+  name: 'Navigation',
+  data () {
     return {
       server_status: 0,
       loggedIn: false,
       currentUser: null,
-      currentRoute: ""
-    };
+      currentRoute: ''
+    }
   },
-  mounted() {
-    this.checkStatus();
-    this.checkLogin();
-    this.currentRoute = this.$router.currentRoute.name;
+  mounted () {
+    this.checkStatus()
+    this.checkLogin()
+    this.currentRoute = this.$router.currentRoute.name
   },
   methods: {
-    async checkStatus() {
-      const response = await CampsitesAPI.getCampsites();
-      console.log(response.status);
+    async checkStatus () {
+      const response = await CampsitesAPI.getCampsites()
+      console.log(response.status)
       if (response.status == 200) {
-        this.server_status = 1;
+        this.server_status = 1
       }
     },
-    checkLogin() {
-      var currUser = firebase.auth().currentUser;
+    checkLogin () {
+      var currUser = firebase.auth().currentUser
       if (currUser) {
-        this.loggedIn = true;
-        this.currentUser = currUser;
-        console.log(this.currentUser);
+        this.loggedIn = true
+        this.currentUser = currUser
+        console.log(this.currentUser)
       }
     },
-    logout() {
-      var _this = this;
+    logout () {
+      var _this = this
       if (this.currentUser) {
         firebase
           .auth()
           .signOut()
           .then(() => {
             _this.$router.push({
-              name: "home"
-            });
-            this.loggedIn = false;
-            this.currentUser = null;
-          });
+              name: 'home'
+            })
+            this.loggedIn = false
+            this.currentUser = null
+          })
       }
     }
   }
-};
+}
 </script>
