@@ -57,8 +57,8 @@
                 <label class="form-label">Number of Sites</label>
                 <div class="d-flex align-items-center">
                   <div class="btn btn-items" @click="sitesDecrease">-</div>
-                  <input type="text" class="form-control input-items" v-model="numSites"/>
-                  <div class="btn btn-items " @click="sitesIncrease">+</div>
+                  <input type="text" class="form-control input-items" v-model="numSites" />
+                  <div class="btn btn-items" @click="sitesIncrease">+</div>
                 </div>
               </div>
 
@@ -89,45 +89,63 @@
                   <option value="paddling">Paddling</option>
                 </select>
               </div>
-<!--              <div class="col-xl-4 col-md-6 mb-4">-->
-<!--                <label class="form-label">Price range</label>-->
-<!--                <div id="slider-snap" class="text-primary"></div>-->
-<!--                <div class="nouislider-values">-->
-<!--                  <div class="min">-->
-<!--                    From $-->
-<!--                    <span id="slider-snap-value-from"></span>-->
-<!--                  </div>-->
-<!--                  <div class="max">-->
-<!--                    To $-->
-<!--                    <span id="slider-snap-value-to"></span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--                <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="0" />-->
-<!--                <input type="hidden" name="priceto" id="slider-snap-input-to" value="100" />-->
-<!--              </div>-->
-              <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex justify-content-center">
+              <!--              <div class="col-xl-4 col-md-6 mb-4">-->
+              <!--                <label class="form-label">Price range</label>-->
+              <!--                <div id="slider-snap" class="text-primary"></div>-->
+              <!--                <div class="nouislider-values">-->
+              <!--                  <div class="min">-->
+              <!--                    From $-->
+              <!--                    <span id="slider-snap-value-from"></span>-->
+              <!--                  </div>-->
+              <!--                  <div class="max">-->
+              <!--                    To $-->
+              <!--                    <span id="slider-snap-value-to"></span>-->
+              <!--                  </div>-->
+              <!--                </div>-->
+              <!--                <input type="hidden" name="pricefrom" id="slider-snap-input-from" value="0" />-->
+              <!--                <input type="hidden" name="priceto" id="slider-snap-input-to" value="100" />-->
+              <!--              </div>-->
+              <div class="col-md-6 col-lg-12 col-xl-8 mb-4 d-xl-flex">
                 <div>
                   <label class="form-label">Popular Filters</label>
                   <ul class="list-inline mb-0 mt-1">
                     <li class="list-inline-item">
-                      <div class="custom-control custom-switch ">
-                        <input id="petFriendly" type="checkbox" class="custom-control-input" value="pets_allowed" v-model="checkPopular"/>
+                      <div class="custom-control custom-switch">
+                        <input
+                          id="petFriendly"
+                          type="checkbox"
+                          class="custom-control-input"
+                          value="pets_allowed"
+                          v-model="checkPopular"
+                        />
                         <label for="petFriendly" class="custom-control-label">
                           <span class="text-sm">Pet Friendly</span>
                         </label>
                       </div>
                     </li>
                     <li class="list-inline-item">
-                      <div class="custom-control custom-switch ">
-                        <input id="freeSites" type="checkbox" class="custom-control-input" value="fees_and_booking" v-model="checkPopular"/>
+                      <div class="custom-control custom-switch">
+                        <input
+                          id="freeSites"
+                          type="checkbox"
+                          class="custom-control-input"
+                          value="fees_and_booking"
+                          v-model="checkPopular"
+                        />
                         <label for="freeSites" class="custom-control-label">
                           <span class="text-sm">Free Sites</span>
                         </label>
                       </div>
                     </li>
                     <li class="list-inline-item">
-                      <div class="custom-control custom-switch ">
-                        <input id="disabledAccess" type="checkbox" class="custom-control-input" value="disabled_access" v-model="checkPopular" />
+                      <div class="custom-control custom-switch">
+                        <input
+                          id="disabledAccess"
+                          type="checkbox"
+                          class="custom-control-input"
+                          value="disabled_access"
+                          v-model="checkPopular"
+                        />
                         <label for="disabledAccess" class="custom-control-label">
                           <span class="text-sm">Disabled Access</span>
                         </label>
@@ -141,19 +159,19 @@
                   <div class="filter-block">
                     <h6 class="mb-3">Facilities</h6>
                     <ul class="list-inline mb-0">
-<!--                      <li class="list-inline-item">-->
-<!--                        <div class="custom-control custom-checkbox">-->
-<!--                          <input-->
-<!--                            type="checkbox"-->
-<!--                            id="amenities_0"-->
-<!--                            name="amenities[]"-->
-<!--                            class="custom-control-input"-->
-<!--                            value="Public Kitchen"-->
-<!--                            v-model="checkFacilites"-->
-<!--                          />-->
-<!--                          <label for="amenities_0" class="custom-control-label">Public Kitchen</label>-->
-<!--                        </div>-->
-<!--                      </li>-->
+                      <!--                      <li class="list-inline-item">-->
+                      <!--                        <div class="custom-control custom-checkbox">-->
+                      <!--                          <input-->
+                      <!--                            type="checkbox"-->
+                      <!--                            id="amenities_0"-->
+                      <!--                            name="amenities[]"-->
+                      <!--                            class="custom-control-input"-->
+                      <!--                            value="Public Kitchen"-->
+                      <!--                            v-model="checkFacilites"-->
+                      <!--                          />-->
+                      <!--                          <label for="amenities_0" class="custom-control-label">Public Kitchen</label>-->
+                      <!--                        </div>-->
+                      <!--                      </li>-->
                       <li class="list-inline-item">
                         <div class="custom-control custom-checkbox">
                           <input
@@ -346,167 +364,170 @@
           </form>
           <hr class="my-4" />
           <div class="col-12 d-none d-lg-block">
-          <div
-            class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4"
-          >
-            <div class="mr-3">
-              <p class="mb-3 mb-md-0">
-                <strong>{{this.list_data.length}}</strong> results found
-              </p>
-            </div>
-            <div>
-              <input
-                type="text"
-                name="filtered_search"
-                id="filtered_search"
-                placeholder="Search..."
-                class="form-control"
-                v-model="result_query"
-              />
-            </div>
-            <div>
-              <select
-                name="sort"
-                id="form_sort"
-                data-style="btn-selectpicker"
-                title
-                class="selectpicker"
-                v-model="sort_by"
-                @change="getSort"
-              >
-                <option disabled value="0">Sort</option>
-                <option value="1">Sort By Distance</option>
-                <option value="2">Sort By Price</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <!-- place item-->
             <div
-              data-marker-id="59c0c8e33b1527bfe2abaf92"
-              class="col-sm-6 mb-5 hover-animate"
-              v-for="(item, key) in pageOfItems"
-              :key="key"
+              class="d-flex justify-content-between align-items-center flex-column flex-md-row mb-4"
             >
-              <div class="card h-100 border-0 shadow">
-                <div class="card-img-top overflow-hidden gradient-overlay">
-                  <img :src="item.image_urls[0]" alt="No Image Available" class="img-fluid" />
-                  <a class="tile-link" @click="detail(item)"></a>
-                  <div class="card-img-overlay-bottom text-right">
-                    <a
-                      v-if="!favourites.includes(item._id)"
-                      :ref="'fav_button_' + item._id"
-                      class="card-fav-icon position-relative z-index-40"
-                      @click="addFavourite(item)"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 172 172"
-                        style=" fill:#000000;"
+              <div class="mr-3">
+                <p class="mb-3 mb-md-0">
+                  <strong>{{this.list_data.length}}</strong> results found
+                </p>
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="filtered_search"
+                  id="filtered_search"
+                  placeholder="Search..."
+                  class="form-control"
+                  v-model="result_query"
+                />
+              </div>
+              <div>
+                <select
+                  name="sort"
+                  id="form_sort"
+                  data-style="btn-selectpicker"
+                  title
+                  class="selectpicker"
+                  v-model="sort_by"
+                  @change="getSort"
+                >
+                  <option disabled value="0">Sort</option>
+                  <option value="1">Sort By Distance</option>
+                  <option value="2">Sort By Price</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <!-- place item-->
+              <div
+                data-marker-id="59c0c8e33b1527bfe2abaf92"
+                class="col-sm-6 mb-5 hover-animate"
+                v-for="(item, key) in pageOfItems"
+                :key="key"
+              >
+                <div class="card h-100 border-0 shadow">
+                  <div class="card-img-top overflow-hidden gradient-overlay">
+                    <img :src="item.image_urls[0]" alt="No Image Available" class="img-fluid" />
+                    <a class="tile-link" @click="detail(item)"></a>
+                    <div class="card-img-overlay-bottom text-right">
+                      <a
+                        v-if="!favourites.includes(item._id)"
+                        :ref="'fav_button_' + item._id"
+                        class="card-fav-icon position-relative z-index-40"
+                        @click="addFavourite(item)"
                       >
-                        <g
-                          fill="none"
-                          fill-rule="nonzero"
-                          stroke="none"
-                          stroke-width="1"
-                          stroke-linecap="butt"
-                          stroke-linejoin="miter"
-                          stroke-miterlimit="10"
-                          stroke-dasharray
-                          stroke-dashoffset="0"
-                          font-family="none"
-                          font-weight="none"
-                          font-size="none"
-                          text-anchor="none"
-                          style="mix-blend-mode: normal"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 172 172"
+                          style=" fill:#000000;"
                         >
-                          <path d="M0,172v-172h172v172z" fill="none" />
-                          <g fill="#ffffff">
-                            <path
-                              d="M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z"
-                            />
+                          <g
+                            fill="none"
+                            fill-rule="nonzero"
+                            stroke="none"
+                            stroke-width="1"
+                            stroke-linecap="butt"
+                            stroke-linejoin="miter"
+                            stroke-miterlimit="10"
+                            stroke-dasharray
+                            stroke-dashoffset="0"
+                            font-family="none"
+                            font-weight="none"
+                            font-size="none"
+                            text-anchor="none"
+                            style="mix-blend-mode: normal"
+                          >
+                            <path d="M0,172v-172h172v172z" fill="none" />
+                            <g fill="#ffffff">
+                              <path
+                                d="M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z"
+                              />
+                            </g>
                           </g>
-                        </g>
-                      </svg>
-                    </a>
-                    <a
-                      v-else
-                      :ref="'fav_button_' + item._id"
-                      class="card-fav-icon position-relative z-index-40"
-                      @click="addFavourite(item)"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        x="0px"
-                        y="0px"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 172 172"
-                        style=" fill:#000000;"
+                        </svg>
+                      </a>
+                      <a
+                        v-else
+                        :ref="'fav_button_' + item._id"
+                        class="card-fav-icon position-relative z-index-40"
+                        @click="addFavourite(item)"
                       >
-                        <g
-                          fill="none"
-                          fill-rule="nonzero"
-                          stroke="none"
-                          stroke-width="1"
-                          stroke-linecap="butt"
-                          stroke-linejoin="miter"
-                          stroke-miterlimit="10"
-                          stroke-dasharray
-                          stroke-dashoffset="0"
-                          font-family="none"
-                          font-weight="none"
-                          font-size="none"
-                          text-anchor="none"
-                          style="mix-blend-mode: normal"
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 172 172"
+                          style=" fill:#000000;"
                         >
-                          <path d="M0,172v-172h172v172z" fill="none" />
-                          <g fill="#e74c3c">
-                            <path
-                              d="M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z"
-                            />
+                          <g
+                            fill="none"
+                            fill-rule="nonzero"
+                            stroke="none"
+                            stroke-width="1"
+                            stroke-linecap="butt"
+                            stroke-linejoin="miter"
+                            stroke-miterlimit="10"
+                            stroke-dasharray
+                            stroke-dashoffset="0"
+                            font-family="none"
+                            font-weight="none"
+                            font-size="none"
+                            text-anchor="none"
+                            style="mix-blend-mode: normal"
+                          >
+                            <path d="M0,172v-172h172v172z" fill="none" />
+                            <g fill="#e74c3c">
+                              <path
+                                d="M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z"
+                              />
+                            </g>
                           </g>
-                        </g>
-                      </svg>
-                    </a>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
-                </div>
-                <div class="card-body d-flex align-items-center">
-                  <div class="w-100">
-                    <h6 class="card-title">
-                      <a class="text-decoration-none text-dark" @click="detail(item)">{{item.name}}</a>
-                    </h6>
-                    <div class="d-flex card-subtitle mb-3">
-                      <p
-                        class="flex-grow-1 mb-0 text-muted text-sm"
-                      >Number of Sites: {{item.num_sites}}</p>
-                      <p v-if="item.fees_and_booking.toUpperCase().includes('$')">
-                        <img src="https://img.icons8.com/offices/30/000000/us-dollar.png" /> Paid Site
+                  <div class="card-body d-flex align-items-center">
+                    <div class="w-100">
+                      <h6 class="card-title">
+                        <a
+                          class="text-decoration-none text-dark"
+                          @click="detail(item)"
+                        >{{item.name}}</a>
+                      </h6>
+                      <div class="d-flex card-subtitle mb-3">
+                        <p
+                          class="flex-grow-1 mb-0 text-muted text-sm"
+                        >Number of Sites: {{item.num_sites}}</p>
+                        <p v-if="item.fees_and_booking.toUpperCase().includes('$')">
+                          <img src="https://img.icons8.com/offices/30/000000/us-dollar.png" /> Paid Site
+                        </p>
+                      </div>
+                      <p class="card-text text-muted">
+                        Distance to {{address}}:
+                        <span class="h4 text-primary">{{item.distance}}km</span>
                       </p>
                     </div>
-                    <p class="card-text text-muted">
-                      Distance to {{address}}:
-                      <span class="h4 text-primary">{{item.distance}}km</span>
-                    </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- Pagination -->
-          <jw-pagination
-            v-if="isRouterAlive"
-            :items="computedItems"
-            @changePage="onChangePage"
-            :labels="customLabels"
-            :pageSize="8"
-            :maxPages="5"
-            :key="paginationRenderKey"
-          ></jw-pagination>
+            <!-- Pagination -->
+            <jw-pagination
+              v-if="isRouterAlive"
+              :items="computedItems"
+              @changePage="onChangePage"
+              :labels="customLabels"
+              :pageSize="8"
+              :maxPages="5"
+              :key="paginationRenderKey"
+            ></jw-pagination>
           </div>
         </div>
         <div class="col-lg-6 map-side-lg pr-lg-0 pl-lg-0">
@@ -528,24 +549,24 @@
 </template>
 
 <script>
-import CampsitesAPI from '../services/CampsitesAPI'
-import Navigation from '../components/Navigation'
-import Footer from '../components/Footer'
-import GoogleMap from '../components/Map'
-import Loading from 'vue-loading-overlay'
-import VueGoogleAutocomplete from 'vue-google-autocomplete'
-import 'vue-loading-overlay/dist/vue-loading.css'
-import JwPagination from 'jw-vue-pagination'
+import CampsitesAPI from "../services/CampsitesAPI";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+import GoogleMap from "../components/Map";
+import Loading from "vue-loading-overlay";
+import VueGoogleAutocomplete from "vue-google-autocomplete";
+import "vue-loading-overlay/dist/vue-loading.css";
+import JwPagination from "jw-vue-pagination";
 
 const customLabels = {
-  first: '<<',
-  last: '>>',
-  previous: '<',
-  next: '>'
-}
+  first: "<<",
+  last: ">>",
+  previous: "<",
+  next: ">"
+};
 
 export default {
-  name: 'Search',
+  name: "Search",
   components: {
     Navigation,
     Footer,
@@ -554,12 +575,12 @@ export default {
     VueGoogleAutocomplete,
     JwPagination
   },
-  data () {
+  data() {
     return {
-      longitude: parseFloat(localStorage.getItem('lon')) || -37.814,
-      latitude: parseFloat(localStorage.getItem('lat')) || 144.96332,
-      address: localStorage.getItem('address') || 'Melbourne CBD',
-      fullAddress: localStorage.getItem('full_address') || 'Melbourne CBD',
+      longitude: parseFloat(localStorage.getItem("lon")) || -37.814,
+      latitude: parseFloat(localStorage.getItem("lat")) || 144.96332,
+      address: localStorage.getItem("address") || "Melbourne CBD",
+      fullAddress: localStorage.getItem("full_address") || "Melbourne CBD",
       numSites: 0,
       numPoweredSites: 0,
       activities: [],
@@ -571,12 +592,12 @@ export default {
       checkFacilites: [],
       checkAccomodation: [],
 
-      sort_by: '0',
-      search_radius: parseInt(localStorage.getItem('search_radius')) || 100,
+      sort_by: "0",
+      search_radius: parseInt(localStorage.getItem("search_radius")) || 100,
       campsites: [],
       list_data: [],
       result_count: 0,
-      result_query: '',
+      result_query: "",
       favourites: [],
       isLoading: false,
       fullPage: true,
@@ -585,34 +606,34 @@ export default {
       paginationRenderKey: 0,
       pageOfItems: [],
       customLabels
-    }
+    };
   },
   watch: {
-    result_query () {
-      var arrsearch = []
+    result_query() {
+      var arrsearch = [];
       for (var i = 0; i < this.campsites.length; i++) {
         if (
           this.campsites[i].name
             .toUpperCase()
             .search(this.result_query.toUpperCase()) !== -1
         ) {
-          arrsearch.push(this.campsites[i])
+          arrsearch.push(this.campsites[i]);
         }
       }
-      this.list_data = arrsearch
+      this.list_data = arrsearch;
     }
   },
-  mounted () {
-    this.$nextTick(function () {
-      $('.selectpicker').selectpicker()
-      var snapSlider = document.getElementById('slider-snap')
+  mounted() {
+    this.$nextTick(function() {
+      $(".selectpicker").selectpicker();
+      var snapSlider = document.getElementById("slider-snap");
       noUiSlider.create(snapSlider, {
         start: [
-          parseInt(localStorage.getItem('price_0'))
-            ? parseInt(localStorage.getItem('price_0'))
+          parseInt(localStorage.getItem("price_0"))
+            ? parseInt(localStorage.getItem("price_0"))
             : 0,
-          parseInt(localStorage.getItem('price_1'))
-            ? parseInt(localStorage.getItem('price_1'))
+          parseInt(localStorage.getItem("price_1"))
+            ? parseInt(localStorage.getItem("price_1"))
             : 100
         ],
         snap: false,
@@ -623,38 +644,38 @@ export default {
           min: -15,
           max: 100
         }
-      })
+      });
       var snapValues = [
-        document.getElementById('slider-snap-value-from'),
-        document.getElementById('slider-snap-value-to')
-      ]
+        document.getElementById("slider-snap-value-from"),
+        document.getElementById("slider-snap-value-to")
+      ];
       var inputValues = [
-        document.getElementById('slider-snap-input-from'),
-        document.getElementById('slider-snap-input-to')
-      ]
-      snapSlider.noUiSlider.on('update', function (values, handle) {
-        snapValues[handle].innerHTML = values[handle]
-        inputValues[handle].value = values[handle]
+        document.getElementById("slider-snap-input-from"),
+        document.getElementById("slider-snap-input-to")
+      ];
+      snapSlider.noUiSlider.on("update", function(values, handle) {
+        snapValues[handle].innerHTML = values[handle];
+        inputValues[handle].value = values[handle];
         // console.log(handle + ', ' + values[handle]);
-        localStorage.setItem('price_' + handle, values[handle])
-      })
-    })
-    this.loadCampsites()
+        localStorage.setItem("price_" + handle, values[handle]);
+      });
+    });
+    this.loadCampsites();
     if (localStorage.favourites) {
-      this.favourites = JSON.parse(localStorage.getItem('favourites'))
-      console.log(this.favourites)
+      this.favourites = JSON.parse(localStorage.getItem("favourites"));
+      console.log(this.favourites);
     }
   },
   methods: {
-    hello () {
-      console.log('hello')
+    hello() {
+      console.log("hello");
     },
-    GoogleMapRender () {
-      this.GoogleMapRenderKey += 1
-      this.paginationRenderKey += 1
+    GoogleMapRender() {
+      this.GoogleMapRenderKey += 1;
+      this.paginationRenderKey += 1;
     },
-    onActivitiesChange (event) {
-      console.log(this.activities)
+    onActivitiesChange(event) {
+      console.log(this.activities);
     },
     // onSortChange (event) {
     //   console.log(this.sort_by)
@@ -664,42 +685,42 @@ export default {
     //     this.allData()
     //   }
     // },
-    getSort () {
-      console.log(this.sort_by)
-      if (this.sort_by === '1') {
-        this.sortDistance()
-        this.sort_by = '0'
+    getSort() {
+      console.log(this.sort_by);
+      if (this.sort_by === "1") {
+        this.sortDistance();
+        this.sort_by = "0";
       }
     },
-    onCancel: function () {},
-    onSearchRadiusChange () {
-      this.getListInfosucc()
-      this.GoogleMapRender()
+    onCancel: function() {},
+    onSearchRadiusChange() {
+      this.getListInfosucc();
+      this.GoogleMapRender();
     },
-    getAddressData: function (addressData, placeResultData, id) {
-      this.address = placeResultData.formatted_address
-      this.latitude = addressData.latitude
-      this.longitude = addressData.longitude
-      localStorage.setItem('lat', this.latitude)
-      localStorage.setItem('lon', this.longitude)
-      localStorage.setItem('full_address', this.address)
+    getAddressData: function(addressData, placeResultData, id) {
+      this.address = placeResultData.formatted_address;
+      this.latitude = addressData.latitude;
+      this.longitude = addressData.longitude;
+      localStorage.setItem("lat", this.latitude);
+      localStorage.setItem("lon", this.longitude);
+      localStorage.setItem("full_address", this.address);
       localStorage.setItem(
-        'address',
+        "address",
         placeResultData.address_components[0].long_name
-      )
-      this.getListInfosucc()
-      this.GoogleMapRender()
+      );
+      this.getListInfosucc();
+      this.GoogleMapRender();
     },
-    async loadCampsites () {
-      this.isLoading = true
-      const response = await CampsitesAPI.getCampsites()
-      this.campsites = response.data
-      this.getListInfosucc()
-      this.isLoading = false
+    async loadCampsites() {
+      this.isLoading = true;
+      const response = await CampsitesAPI.getCampsites();
+      this.campsites = response.data;
+      this.getListInfosucc();
+      this.isLoading = false;
     },
-    getListInfosucc () {
-      this.list_data = []
-      console.log(this.search_radius)
+    getListInfosucc() {
+      this.list_data = [];
+      console.log(this.search_radius);
       if (this.campsites.length > 0) {
         for (let i in this.campsites) {
           var dis = this.$options.methods.distance(
@@ -707,120 +728,131 @@ export default {
             this.campsites[i].lon,
             this.latitude,
             this.longitude
-          )
-          dis = parseFloat(dis).toFixed(2)
-          this.$set(this.campsites[i], 'distance', dis)
+          );
+          dis = parseFloat(dis).toFixed(2);
+          this.$set(this.campsites[i], "distance", dis);
         }
         for (let j in this.campsites) {
           if (parseFloat(this.campsites[j].distance) <= this.search_radius) {
-            this.list_data.push(this.campsites[j])
+            this.list_data.push(this.campsites[j]);
           }
         }
-        console.log(this.list_data)
-        this.result_count = this.list_data.length
-        this.reloadPagination()
+        console.log(this.list_data);
+        this.result_count = this.list_data.length;
+        this.reloadPagination();
       }
     },
-    sitesIncrease () {
-      this.numSites++
+    sitesIncrease() {
+      this.numSites++;
     },
-    sitesDecrease () {
+    sitesDecrease() {
       if (this.numSites <= 0) {
-        this.numSites = 0
+        this.numSites = 0;
       } else {
-        this.numSites -= 1
+        this.numSites -= 1;
       }
     },
-    distance (lat1, lon1, lat2, lon2) {
-      var p = 0.017453292519943295 // Math.PI / 180
-      var c = Math.cos
+    distance(lat1, lon1, lat2, lon2) {
+      var p = 0.017453292519943295; // Math.PI / 180
+      var c = Math.cos;
       var a =
         0.5 -
         c((lat2 - lat1) * p) / 2 +
-        (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2
-      return 12742 * Math.asin(Math.sqrt(a)) // 2 * R; R = 6371 km
+        (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
+      return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
     },
-    addFavourite (item) {
-      var refId = 'fav_button_' + item._id
-      var favButton = this.$refs[refId][0]
+    addFavourite(item) {
+      var refId = "fav_button_" + item._id;
+      var favButton = this.$refs[refId][0];
       if (localStorage.favourites) {
-        this.favourites = JSON.parse(localStorage.getItem('favourites'))
+        this.favourites = JSON.parse(localStorage.getItem("favourites"));
       } else {
-        this.favourites = []
+        this.favourites = [];
       }
       if (this.favourites.includes(item._id)) {
-        var index = this.favourites.indexOf(item._id)
-        this.favourites.splice(index, 1)
+        var index = this.favourites.indexOf(item._id);
+        this.favourites.splice(index, 1);
         favButton.innerHTML =
-          "<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='24' height='24' viewBox='0 0 172 172' style=' fill:#000000;'><g fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'><path d='M0,172v-172h172v172z' fill='none'></path><g fill='#ffffff'><path d='M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z'></path></g></g></svg>"
+          "<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='24' height='24' viewBox='0 0 172 172' style=' fill:#000000;'><g fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'><path d='M0,172v-172h172v172z' fill='none'></path><g fill='#ffffff'><path d='M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z'></path></g></g></svg>";
       } else {
-        this.favourites.push(item._id)
+        this.favourites.push(item._id);
         favButton.innerHTML =
-          "<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='24' height='24' viewBox='0 0 172 172' style=' fill:#000000;'><g fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'><path d='M0,172v-172h172v172z' fill='none'></path><g fill='#e74c3c'><path d='M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z'></path></g></g></svg>"
+          "<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='24' height='24' viewBox='0 0 172 172' style=' fill:#000000;'><g fill='none' fill-rule='nonzero' stroke='none' stroke-width='1' stroke-linecap='butt' stroke-linejoin='miter' stroke-miterlimit='10' stroke-dasharray='' stroke-dashoffset='0' font-family='none' font-weight='none' font-size='none' text-anchor='none' style='mix-blend-mode: normal'><path d='M0,172v-172h172v172z' fill='none'></path><g fill='#e74c3c'><path d='M86,162.71469l-2.20375,-1.8275c-4.17906,-3.49375 -9.83625,-7.28312 -16.39375,-11.66375c-25.54469,-17.10594 -60.5225,-40.51406 -60.5225,-80.42344c0,-24.65781 20.06219,-44.72 44.72,-44.72c13.39719,0 25.94781,5.96625 34.4,16.16531c8.45219,-10.19906 21.00281,-16.16531 34.4,-16.16531c24.65781,0 44.72,20.06219 44.72,44.72c0,39.90938 -34.97781,63.3175 -60.5225,80.42344c-6.5575,4.38063 -12.21469,8.17 -16.39375,11.66375z'></path></g></g></svg>";
       }
-      localStorage.setItem('favourites', JSON.stringify(this.favourites))
+      localStorage.setItem("favourites", JSON.stringify(this.favourites));
     },
-    reloadPagination () {
-      this.isRouterAlive = false
-      this.$nextTick(() => (this.isRouterAlive = true))
+    reloadPagination() {
+      this.isRouterAlive = false;
+      this.$nextTick(() => (this.isRouterAlive = true));
     },
-    refineSearch () {
-      this.list_data = []
+    refineSearch() {
+      this.list_data = [];
       for (let j in this.campsites) {
         if (parseFloat(this.campsites[j].distance) <= this.search_radius) {
-          this.list_data.push(this.campsites[j])
+          this.list_data.push(this.campsites[j]);
         }
       }
-      var campsites = this.list_data
-      var multifilte = this.activities.concat(this.checkPopular).concat(this.checkFacilites).concat(this.checkAccomodation)
+      var campsites = this.list_data;
+      var multifilte = this.activities
+        .concat(this.checkPopular)
+        .concat(this.checkFacilites)
+        .concat(this.checkAccomodation);
       for (var i in multifilte) {
-        var campList = campsites.filter(item => item[multifilte[i]] === 'Y' || item[multifilte[i]] === 'Free' || item[multifilte[i]] === 'All rubbish must be wrapped in bags and placed in the receptacles provided.')
-        campsites = campList
+        var campList = campsites.filter(
+          item =>
+            item[multifilte[i]] === "Y" ||
+            item[multifilte[i]] === "Free" ||
+            item[multifilte[i]] ===
+              "All rubbish must be wrapped in bags and placed in the receptacles provided."
+        );
+        campsites = campList;
       }
-      console.log(campsites)
+      console.log(campsites);
       if (this.numSites !== 0) {
-        campsites = campsites.filter(item => item['num_sites'] === this.numSites.toString())
+        campsites = campsites.filter(
+          item => item["num_sites"] === this.numSites.toString()
+        );
       }
-      console.log(campsites)
-      this.list_data = campsites
-      this.reloadPagination()
-      console.log('list_data:', this.list_data)
+      console.log(campsites);
+      this.list_data = campsites;
+      this.reloadPagination();
+      console.log("list_data:", this.list_data);
     },
-    sortDistance () {
+    sortDistance() {
       // this.reloadPagination()
-      function compare (a, b) {
-        return a.distance - b.distance
+      function compare(a, b) {
+        return a.distance - b.distance;
       }
 
-      this.list_data = this.list_data.sort(compare)
-      console.log('sort', this.list_data)
-      this.reloadPagination()
+      this.list_data = this.list_data.sort(compare);
+      console.log("sort", this.list_data);
+      this.reloadPagination();
     },
-    allData () {
-      this.list_data = this.campsites.concat()
+    allData() {
+      this.list_data = this.campsites.concat();
     },
-    detail (item) {
-      console.log(item)
+    detail(item) {
+      console.log(item);
       this.$router.push({
-        path: '/detail',
-        name: 'Detail',
+        path: "/detail",
+        name: "Detail",
         params: {
-          key: 'key',
+          key: "key",
           detail: item,
           campsite: this.campsites
         }
-      })
+      });
     },
-    onChangePage (pageOfItems) {
-      this.pageOfItems = pageOfItems
+    onChangePage(pageOfItems) {
+      this.pageOfItems = pageOfItems;
     }
   },
   computed: {
-    computedItems () {
-      return this.list_data
+    computedItems() {
+      return this.list_data;
     }
   }
-}
+};
 </script>
 <style lang="css">
 header {

@@ -66,7 +66,139 @@
       </div>
     </div>
     <br />
+    <br />
+    <br />
     <section class="pt-4 pb-6">
+      <div class="container">
+        <div class="row mb-6">
+          <div class="col-lg-8">
+            <p class="subtitle text-secondary">If you are a student</p>
+            <h2>Explore Victoria like a millennial</h2>
+            <p
+              class="text-muted mb-0"
+            >Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 px-5">
+            <p class="advantage-number">1</p>
+            <div class="pl-lg-5">
+              <h6 class="text-uppercase">Travel</h6>
+              <p
+                class="text-muted text-sm mb-5 mb-lg-0"
+              >One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his.</p>
+            </div>
+          </div>
+          <div class="col-lg-4 px-5">
+            <p class="advantage-number">2</p>
+            <div class="pl-lg-5">
+              <h6 class="text-uppercase">Relax</h6>
+              <p
+                class="text-muted text-sm mb-5 mb-lg-0"
+              >The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size .</p>
+            </div>
+          </div>
+          <div class="col-lg-4 px-5">
+            <p class="advantage-number">3</p>
+            <div class="pl-lg-5">
+              <h6 class="text-uppercase">Explore</h6>
+              <p
+                class="text-muted text-sm mb-5 mb-lg-0"
+              >His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samp.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Our picks section-->
+    <section class="py-6 bg-gray-100">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8">
+            <p class="subtitle text-primary">Editor's picks</p>
+            <h2>Best Camping Guides</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
+            <div
+              style="background: center center url(https://www.travelvictoria.com.au/images/regions/greatoceanroad/coast/great-ocean-road-11.jpg) no-repeat; background-size: cover;"
+              class="card shadow-lg border-0 w-100 border-0 hover-animate"
+            >
+              <router-link
+                :to="{ path: 'guide', query: { id: 'zjxcNMs3VG1ppydJ1bYz' }}"
+                class="tile-link"
+              ></router-link>
+              <div
+                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
+              >
+                <h3 class="text-shadow text-uppercase mb-0">Great Ocean road</h3>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
+            <div
+              style="background: center center url(https://images.unsplash.com/photo-1547222794-8c230aebf7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1451&q=80) no-repeat; background-size: cover;"
+              class="card shadow-lg border-0 w-100 border-0 hover-animate"
+            >
+              <router-link
+                :to="{ path: 'guide', query: { id: 'O0hpeK3bbluU56c90E4N' }}"
+                class="tile-link"
+              ></router-link>
+              <div
+                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
+              >
+                <h3 class="text-shadow text-uppercase mb-0">Weekend Escapes</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
+            <div
+              style="background: center center url(img/photo/photo-1523430410476-0185cb1f6ff9.jpg) no-repeat; background-size: cover;"
+              class="card shadow-lg border-0 w-100 border-0 hover-animate"
+            >
+              <a href="category.html" class="tile-link"></a>
+              <div
+                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
+              >
+                <h3 class="text-shadow text-uppercase mb-0">Santa Monica</h3>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
+            <div
+              style="background: center center url(img/photo/photo-1505245208761-ba872912fac0.jpg) no-repeat; background-size: cover;"
+              class="card shadow-lg border-0 w-100 border-0 hover-animate"
+            >
+              <a href="category.html" class="tile-link"></a>
+              <div
+                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
+              >
+                <h3 class="text-shadow text-uppercase mb-0">San Diego</h3>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
+            <div
+              style="background: center center url(img/photo/photo-1519867850-74775a87e783.jpg) no-repeat; background-size: cover;"
+              class="card shadow-lg border-0 w-100 border-0 hover-animate"
+            >
+              <a href="category.html" class="tile-link"></a>
+              <div
+                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
+              >
+                <h3 class="text-shadow text-uppercase mb-0">Fresno</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-6">
       <div class="container">
         <div class="pb-lg-4">
           <p class="subtitle text-secondary">The best camping guide for students</p>
@@ -120,91 +252,7 @@
         </div>
       </div>
     </section>
-    <!-- Our picks section-->
     <section class="py-6 bg-gray-100">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-8">
-            <p class="subtitle text-primary">Editor's picks</p>
-            <h2>Best Camping Guides</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="d-flex align-items-lg-stretch mb-4 col-lg-8">
-            <div
-              style="background: center center url(https://www.travelvictoria.com.au/images/regions/greatoceanroad/coast/great-ocean-road-11.jpg) no-repeat; background-size: cover;"
-              class="card shadow-lg border-0 w-100 border-0 hover-animate"
-            >
-              <a href="category.html" class="tile-link"></a>
-              <router-link
-                :to="{ path: 'guide', query: { id: 'zjxcNMs3VG1ppydJ1bYz' }}"
-                class="tile-link"
-              ></router-link>
-              <div
-                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
-              >
-                <h3 class="text-shadow text-uppercase mb-0">Great Ocean road</h3>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
-            <div
-              style="background: center center url(img/photo/photo-1429554429301-1c7d5ae2d42e.jpg) no-repeat; background-size: cover;"
-              class="card shadow-lg border-0 w-100 border-0 hover-animate"
-            >
-              <a href="category.html" class="tile-link"></a>
-              <div
-                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
-              >
-                <h3 class="text-shadow text-uppercase mb-0">Los Angeles</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
-            <div
-              style="background: center center url(img/photo/photo-1523430410476-0185cb1f6ff9.jpg) no-repeat; background-size: cover;"
-              class="card shadow-lg border-0 w-100 border-0 hover-animate"
-            >
-              <a href="category.html" class="tile-link"></a>
-              <div
-                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
-              >
-                <h3 class="text-shadow text-uppercase mb-0">Santa Monica</h3>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
-            <div
-              style="background: center center url(img/photo/photo-1505245208761-ba872912fac0.jpg) no-repeat; background-size: cover;"
-              class="card shadow-lg border-0 w-100 border-0 hover-animate"
-            >
-              <a href="category.html" class="tile-link"></a>
-              <div
-                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
-              >
-                <h3 class="text-shadow text-uppercase mb-0">San Diego</h3>
-              </div>
-            </div>
-          </div>
-          <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
-            <div
-              style="background: center center url(img/photo/photo-1519867850-74775a87e783.jpg) no-repeat; background-size: cover;"
-              class="card shadow-lg border-0 w-100 border-0 hover-animate"
-            >
-              <a href="category.html" class="tile-link"></a>
-              <div
-                class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
-              >
-                <h3 class="text-shadow text-uppercase mb-0">Fresno</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="py-6">
       <div class="container">
         <div class="text-center pb-lg-4">
           <p class="subtitle text-secondary">Trending on Unicamper</p>

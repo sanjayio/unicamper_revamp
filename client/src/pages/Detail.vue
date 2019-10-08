@@ -57,7 +57,11 @@
               <!-- Gallery-->
               <h3 class="mb-4">Gallery</h3>
               <div class="row gallery ml-n1 mr-n1">
-                <div class="col-lg-4 col-6 px-1 mb-2" v-for="(item, key) in image_urls" :key="key">
+                <div
+                  class="col-lg-4 col-6 px-1 mb-2"
+                  v-for="(item, key) in image_urls"
+                  :key="key+99"
+                >
                   <a :href="item">
                     <img :src="item" alt="..." class="img-fluid" />
                   </a>
@@ -71,7 +75,7 @@
                 <li
                   class="list-inline-item mb-3"
                   v-for="(item, key) in routerParams"
-                  :key="key"
+                  :key="key+199"
                   v-if="routerParams[key] == 'Y'"
                 >
                   <div class="d-flex align-items-center">
@@ -109,7 +113,7 @@
                   </div>
                   <div v-else>
                     <table class="table text-sm mb-0">
-                      <tr v-for="(item, key) in nearby_ff" :key="key">
+                      <tr v-for="(item, key) in nearby_ff" :key="key+299">
                         <th class="pl-0" v-if="key!=0">{{item.title}}</th>
                         <th class="pl-0 border-0" v-else>{{item.title}}</th>
                         <td class="pr-0 text-center" v-if="key!=0">{{item.category}}</td>
@@ -157,7 +161,7 @@
                   </div>
                   <div v-else>
                     <table class="table text-sm mb-0">
-                      <tr v-for="(item, key) in nearby_pv" :key="key">
+                      <tr v-for="(item, key) in nearby_pv" :key="key+399">
                         <th class="pl-0" v-if="key!=0">{{item.title}}</th>
                         <th class="pl-0 border-0" v-else>{{item.title}}</th>
                         <td class="pr-0 text-center" v-if="key!=0">{{item.category}}</td>
@@ -239,7 +243,7 @@
                       data-marker-id="59c0c8e33b1527bfe2abaf92"
                       class="col-sm-6 mb-5 hover-animate"
                       v-for="(item,key) in animals_nearby"
-                      :key="key"
+                      :key="key+499"
                     >
                       <div class="card border-0 shadow">
                         <div class="card-body d-flex align-items-center">
@@ -283,7 +287,7 @@
                         <i
                           class="fa fa-xl fa-star text-warning"
                           v-for="n in overall_rating"
-                          :key="n"
+                          :key="n+599"
                         ></i>
                         <small>({{this.overall_rating}}/5)</small>
                       </div>
@@ -295,7 +299,7 @@
               <div
                 class="media d-block d-sm-flex review"
                 v-for="(item, key) in reviews"
-                :key="key"
+                :key="key+699"
                 v-if="reviews.length > 0"
               >
                 <div class="text-md-center mr-4 mr-xl-5">
@@ -312,14 +316,14 @@
                     <i
                       class="fa fa-xs fa-star text-warning"
                       v-for="n in parseInt(item.data.review_rating)"
-                      :key="n"
+                      :key="n+799"
                     ></i>
                   </div>
                   <ul class="list-inline">
                     <li
                       class="list-inline-item mb-2"
                       v-for="(like_item, like_key) in item.data.review_likes"
-                      :key="like_key"
+                      :key="like_key+899"
                     >
                       <span
                         class="badge badge-pill badge-primary p-3 font-weight-normal"
@@ -329,7 +333,7 @@
                     <li
                       class="list-inline-item mb-2"
                       v-for="(dislike_item, dislike_key) in item.data.review_dislikes"
-                      :key="dislike_key"
+                      :key="dislike_key+999"
                     >
                       <span
                         class="badge badge-pill badge-light p-3 text-muted font-weight-normal"
@@ -479,7 +483,7 @@
                 </div>
                 <div class="card-body">
                   <table class="table text-sm mb-0">
-                    <tr v-for="(item, key) in weather_forecast" :key="key">
+                    <tr v-for="(item, key) in weather_forecast" :key="key+1099">
                       <th class="pl-0" v-if="key!=0">
                         {{item.dayOfWeek}}
                         <p class="text-muted" style="text-transform:capitalize;">{{item.weather}}</p>
@@ -551,43 +555,50 @@
     </section>
     <div class="py-6 bg-gray-100">
       <div class="container">
-        <h5 class="mb-0">Similar places</h5>
-        <p class="subtitle text-sm text-primary mb-4">You may also like</p>
-        <!-- Slider main container-->
-        <div class="swiper-container swiper-container-mx-negative items-slider-full px-lg-5 pt-3">
-          <!-- Additional required wrapper-->
-          <div class="swiper-wrapper pb-5">
-            <!-- Slides-->
-            <div
-              class="swiper-slide h-auto px-2 col-lg-4 col-sm-12"
-              style="max-height: 500px;"
-              v-for="(item, key) in nearbyCampsite.slice(0,3)"
-              :key="key"
-            >
-              <!-- venue item-->
-              <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
-                <div class="card h-100 border-0 shadow">
-                  <div
-                    class="card-img-top overflow-hidden dark-overlay bg-cover"
-                    style="max-height: 300px;"
-                  >
-                    <img :src="item.image_urls ? item.image_urls[0] : ''" alt />
-                    <a href class="tile-link" @click.prevent="detail(item)"></a>
-                    <div class="card-img-overlay-bottom z-index-20">
-                      <h4 class="text-white text-shadow">{{item.name ? item.name : ''}}</h4>
-                    </div>
+        <h5 class="mb-0">Nearby Campsites</h5>
+        <p class="subtitle text-sm text-primary mb-4">You may like</p>
+        <div class="container-fluid">
+          <!-- Slider main container-->
+          <div class="swiper-container swiper-container-mx-negative items-slider-full px-lg-5 pt-3">
+            <!-- Additional required wrapper-->
+            <div class="swiper-wrapper pb-5">
+              <!-- Slides-->
+              <div
+                class="swiper-slide h-auto px-2"
+                style="max-height: 500px;"
+                v-for="(item, key) in nearbyCampsite"
+                :key="key+1199"
+              >
+                <!-- venue item-->
+                <div data-marker-id="59c0c8e33b1527bfe2abaf92" class="w-100 h-100 hover-animate">
+                  <div class="card h-100 border-0 shadow">
                     <div
-                      class="card-img-overlay-top d-flex justify-content-between align-items-center"
+                      class="card-img-top overflow-hidden dark-overlay bg-cover"
+                      style="max-height: 300px;"
                     >
-                      <div class="badge badge-transparent badge-pill px-3 py-2">Campsite</div>
+                      <img :src="item.image_urls ? item.image_urls[0] : ''" alt />
+                      <a href class="tile-link" @click.prevent="detail(item)"></a>
+                      <div class="card-img-overlay-bottom z-index-20">
+                        <h4 class="text-white text-shadow">{{item.name ? item.name : ''}}</h4>
+                      </div>
+                      <div
+                        class="card-img-overlay-top d-flex justify-content-between align-items-center"
+                      >
+                        <div class="badge badge-transparent badge-pill px-3 py-2">Campsite</div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <p
+                        class="text-sm text-muted mb-3"
+                      >{{item.description? item.description.substring(0, 100) : ''}}...</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <!-- If we need pagination-->
+            <div class="swiper-pagination"></div>
           </div>
-          <!-- If we need pagination-->
-          <div class="swiper-pagination"></div>
         </div>
       </div>
     </div>
@@ -596,16 +607,16 @@
 </template>
 
 <script>
-import Navigation from '../components/Navigation'
-import Footer from '../components/Footer'
-import Loading from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/vue-loading.css'
-import axios from 'axios'
-import firebase from 'firebase'
-import DetailMap from '../components/DetailMap'
-import CampsitesAPI from '../services/CampsitesAPI'
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+import axios from "axios";
+import firebase from "firebase";
+import DetailMap from "../components/DetailMap";
+import CampsitesAPI from "../services/CampsitesAPI";
 export default {
-  name: 'Detail',
+  name: "Detail",
   components: {
     Navigation,
     Footer,
@@ -613,260 +624,260 @@ export default {
     DetailMap
   },
   computed: {
-    header_image () {
+    header_image() {
       if (this.routerParams) {
-        return 'background-image: url(' + this.routerParams.image_urls[0] + ')'
+        return "background-image: url(" + this.routerParams.image_urls[0] + ")";
       }
     },
-    static_map () {
+    static_map() {
       var url =
-        'https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A'
+        "https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A";
       if (this.routerParams) {
-        var center = this.routerParams.lat + ',' + this.routerParams.lon
+        var center = this.routerParams.lat + "," + this.routerParams.lon;
         url =
-          'https://maps.googleapis.com/maps/api/staticmap?center=' +
+          "https://maps.googleapis.com/maps/api/staticmap?center=" +
           center +
-          '&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:sds%7C' +
+          "&zoom=10&size=600x300&maptype=roadmap&markers=color:blue%7Clabel:sds%7C" +
           center +
-          '&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A'
+          "&key=AIzaSyAkshHi3pZZ6oWR5FnDzXvJvdiqSyNBf9A";
       }
-      return url
+      return url;
     }
   },
-  data () {
+  data() {
     return {
       routerParams: null,
       campsites: [],
-      campsite_name: '',
-      campsite_id: '',
-      description: '',
-      access_description: '',
+      campsite_name: "",
+      campsite_id: "",
+      description: "",
+      access_description: "",
       image_urls: [],
-      phone: '',
-      website: '',
+      phone: "",
+      website: "",
       lat: 0,
       lon: 0,
       isLoading: false,
       fullPage: true,
       favourites: [],
-      campsite_address: '',
+      campsite_address: "",
       nearby_ff: [],
       nearby_pv: [],
       nearbyCampsite: [],
       weather_forecast: [],
-      weather_recommendation: 'The weather looks perfect! Happy Camping!',
+      weather_recommendation: "The weather looks perfect! Happy Camping!",
       animals_nearby: [],
       animalSearchRadius: 10,
-      animalSearchName: '',
+      animalSearchName: "",
       youliked: [],
       youdliked: [],
-      rating: '',
+      rating: "",
       reviews: [],
       overall_rating: 0,
       currentUser: null,
       GoogleMapRenderKey: 0,
       list_data: []
-    }
+    };
   },
   methods: {
-    getParams () {
-      this.routerParams = JSON.parse(localStorage.getItem('routerParams'))
-      console.log(this.routerParams)
-      this.campsite_id = this.routerParams._id
-      this.campsite_name = this.routerParams.name
-      this.description = this.routerParams.description
-      this.access_description = this.routerParams.access_desc
-      this.image_urls = this.routerParams.image_urls
-      this.phone = this.routerParams.phone
-      this.website = this.routerParams.website
-      this.lat = this.routerParams.lat
-      this.lon = this.routerParams.lon
+    getParams() {
+      this.routerParams = JSON.parse(localStorage.getItem("routerParams"));
+      console.log(this.routerParams);
+      this.campsite_id = this.routerParams._id;
+      this.campsite_name = this.routerParams.name;
+      this.description = this.routerParams.description;
+      this.access_description = this.routerParams.access_desc;
+      this.image_urls = this.routerParams.image_urls;
+      this.phone = this.routerParams.phone;
+      this.website = this.routerParams.website;
+      this.lat = this.routerParams.lat;
+      this.lon = this.routerParams.lon;
     },
-    async loadCampsites () {
-      const response = await CampsitesAPI.getCampsites()
-      this.campsites = response.data
-      this.getcampsite(this.lon, this.lat, 50)
+    async loadCampsites() {
+      const response = await CampsitesAPI.getCampsites();
+      this.campsites = response.data;
+      this.getcampsite(this.lon, this.lat, 100);
     },
-    googleDirections (lat, lon) {
+    googleDirections(lat, lon) {
       var url =
-        'https://www.google.com/maps?saddr=My+Location&daddr=' +
+        "https://www.google.com/maps?saddr=My+Location&daddr=" +
         lat +
-        ',' +
-        lon
-      return url
+        "," +
+        lon;
+      return url;
     },
-    addFavourite (item) {
-      var refId = 'favourites_btn'
-      var favButton = this.$refs[refId]
-      console.log(favButton)
+    addFavourite(item) {
+      var refId = "favourites_btn";
+      var favButton = this.$refs[refId];
+      console.log(favButton);
       if (this.favourites.includes(this.campsite_id)) {
-        var index = this.favourites.indexOf(this.campsite_id)
-        this.favourites.splice(index, 1)
+        var index = this.favourites.indexOf(this.campsite_id);
+        this.favourites.splice(index, 1);
         favButton.innerHTML =
-          "<i class='fa fa-heart mr-3'></i> ADD TO FAVOURITES"
+          "<i class='fa fa-heart mr-3'></i> ADD TO FAVOURITES";
       } else {
-        this.favourites.push(this.campsite_id)
+        this.favourites.push(this.campsite_id);
         favButton.innerHTML =
-          "<i class='fa fa-heart mr-3'></i>REMOVE FROM FAVOURITES"
+          "<i class='fa fa-heart mr-3'></i>REMOVE FROM FAVOURITES";
       }
-      localStorage.setItem('favourites', JSON.stringify(this.favourites))
+      localStorage.setItem("favourites", JSON.stringify(this.favourites));
     },
-    getFoodAndFuel () {
+    getFoodAndFuel() {
       var url =
-        'https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=' +
+        "https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=" +
         this.lat +
-        ',' +
+        "," +
         this.lon +
-        ';r=10000&cat=petrol-station,eat-drink&pretty='
+        ";r=10000&cat=petrol-station,eat-drink&pretty=";
       axios.get(url).then(res => {
         this.campsite_address = res.data.search.context.location.address.text.replace(
           /<\/?[^>]+(>|$)/g,
-          ', '
-        )
+          ", "
+        );
         for (var i = 0; i < res.data.results.items.length; i++) {
-          var item = res.data.results.items[i]
-          var ff_item = {}
-          ff_item['title'] = item.title
-          ff_item['category'] = item.category.title
-          ff_item['distance'] = item.distance
-          ff_item['lat'] = item.position[0]
-          ff_item['lon'] = item.position[1]
-          ff_item['icon'] = item.icon
-          ff_item['address'] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ', ')
-          this.nearby_ff.push(ff_item)
+          var item = res.data.results.items[i];
+          var ff_item = {};
+          ff_item["title"] = item.title;
+          ff_item["category"] = item.category.title;
+          ff_item["distance"] = item.distance;
+          ff_item["lat"] = item.position[0];
+          ff_item["lon"] = item.position[1];
+          ff_item["icon"] = item.icon;
+          ff_item["address"] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ", ");
+          this.nearby_ff.push(ff_item);
         }
-        this.GoogleMapRender()
-      })
+        this.GoogleMapRender();
+      });
     },
-    getPlacesToVisit () {
+    getPlacesToVisit() {
       var url =
-        'https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=' +
+        "https://places.cit.api.here.com/places/v1/discover/explore?app_id=DUtRqTBXC40eCfJUyoD3&app_code=ZCowqrUcpTeM1x8gXpKeOg&in=" +
         this.lat +
-        ',' +
+        "," +
         this.lon +
-        ';r=10000&cat=sights-museums,natural-geographical&pretty='
+        ";r=10000&cat=sights-museums,natural-geographical&pretty=";
       axios.get(url).then(res => {
         for (var i = 0; i < res.data.results.items.length; i++) {
-          var item = res.data.results.items[i]
-          var pv_item = {}
-          pv_item['title'] = item.title
-          pv_item['category'] = item.category.title
-          pv_item['distance'] = item.distance
-          pv_item['lat'] = item.position[0]
-          pv_item['lon'] = item.position[1]
-          pv_item['icon'] = item.icon
-          pv_item['address'] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ', ')
-          pv_item['average_rating'] = item.averageRating
-          this.nearby_pv.push(pv_item)
+          var item = res.data.results.items[i];
+          var pv_item = {};
+          pv_item["title"] = item.title;
+          pv_item["category"] = item.category.title;
+          pv_item["distance"] = item.distance;
+          pv_item["lat"] = item.position[0];
+          pv_item["lon"] = item.position[1];
+          pv_item["icon"] = item.icon;
+          pv_item["address"] = item.vicinity.replace(/<\/?[^>]+(>|$)/g, ", ");
+          pv_item["average_rating"] = item.averageRating;
+          this.nearby_pv.push(pv_item);
         }
-        this.GoogleMapRender()
-      })
+        this.GoogleMapRender();
+      });
     },
-    async get_weather_forecast () {
+    async get_weather_forecast() {
       var open_api_call =
-        'https://api.openweathermap.org/data/2.5/forecast?lat=' +
+        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
         this.lat +
-        '&lon=' +
+        "&lon=" +
         this.lon +
-        '&appid=fa250324b761890e884085debec36f35'
-      var weekday = new Array(7)
-      weekday[0] = 'Sunday'
-      weekday[1] = 'Monday'
-      weekday[2] = 'Tuesday'
-      weekday[3] = 'Wednesday'
-      weekday[4] = 'Thursday'
-      weekday[5] = 'Friday'
-      weekday[6] = 'Saturday'
+        "&appid=fa250324b761890e884085debec36f35";
+      var weekday = new Array(7);
+      weekday[0] = "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
       axios.get(open_api_call).then(res => {
         for (var i = 0; i < res.data.list.length; i += 8) {
-          var weather = {}
-          var day = new Date(res.data.list[i]['dt_txt'].substring(0, 10))
-          var dayOfWeek = weekday[day.getDay()]
-          weather['dayOfWeek'] = dayOfWeek
-          weather['weather'] = res.data.list[i]['weather'][0]['description']
-          weather['temperature'] = parseFloat(
-            parseFloat(res.data.list[i]['main']['temp']) - 273.15
-          ).toFixed(2)
-          weather['humidity'] = res.data.list[i]['main']['humidity']
-          weather['windspeed'] = res.data.list[i]['wind']['speed']
-          weather['icon'] =
-            'https://openweathermap.org/img/wn/' +
-            res.data.list[i]['weather'][0]['icon'] +
-            '@2x.png'
-          this.weather_forecast.push(weather)
+          var weather = {};
+          var day = new Date(res.data.list[i]["dt_txt"].substring(0, 10));
+          var dayOfWeek = weekday[day.getDay()];
+          weather["dayOfWeek"] = dayOfWeek;
+          weather["weather"] = res.data.list[i]["weather"][0]["description"];
+          weather["temperature"] = parseFloat(
+            parseFloat(res.data.list[i]["main"]["temp"]) - 273.15
+          ).toFixed(2);
+          weather["humidity"] = res.data.list[i]["main"]["humidity"];
+          weather["windspeed"] = res.data.list[i]["wind"]["speed"];
+          weather["icon"] =
+            "https://openweathermap.org/img/wn/" +
+            res.data.list[i]["weather"][0]["icon"] +
+            "@2x.png";
+          this.weather_forecast.push(weather);
         }
-        this.makeWeatherRecommendation()
-      })
+        this.makeWeatherRecommendation();
+      });
     },
-    makeWeatherRecommendation () {
-      var recomm = 'The weather looks perfect! '
-      var rain = 0
-      var wind = 0
-      var heat = 0
+    makeWeatherRecommendation() {
+      var recomm = "The weather looks perfect! ";
+      var rain = 0;
+      var wind = 0;
+      var heat = 0;
       for (var i = 0; i < this.weather_forecast.length; i++) {
-        if (this.weather_forecast[i].weather == 'light rain') {
-          rain = 1
+        if (this.weather_forecast[i].weather == "light rain") {
+          rain = 1;
         }
         if (this.weather_forecast[i].windspeed > 25) {
-          wind = 1
+          wind = 1;
         }
         if (parseFloat(this.weather_forecast[i].temperature) > 30) {
-          heat = 1
+          heat = 1;
         }
       }
       if (rain == 1) {
-        recomm = 'We suggest you carry rain jackets. '
+        recomm = "We suggest you carry rain jackets. ";
       }
       if (wind == 1) {
         recomm =
           recomm +
-          'Use extra guy ropes and pegs to secure the tent during wind. '
+          "Use extra guy ropes and pegs to secure the tent during wind. ";
       }
       if (heat == 1) {
-        recomm = recomm + 'Carry extra water with you to bear the heat. '
+        recomm = recomm + "Carry extra water with you to bear the heat. ";
       }
-      recomm = recomm + 'Happy Camping!'
-      this.weather_recommendation = recomm
+      recomm = recomm + "Happy Camping!";
+      this.weather_recommendation = recomm;
     },
-    getAnimalsNearby () {
+    getAnimalsNearby() {
       var open_api_call =
-        'https://biocache-ws.ala.org.au/ws/occurrences/search?q=' +
+        "https://biocache-ws.ala.org.au/ws/occurrences/search?q=" +
         this.animalSearchName +
-        '&lat=' +
+        "&lat=" +
         this.lat +
-        '&lon=' +
+        "&lon=" +
         this.lon +
-        '&radius=' +
+        "&radius=" +
         this.animalSearchRadius +
-        '&sort=year&dir=desc'
+        "&sort=year&dir=desc";
       axios.get(open_api_call).then(res => {
-        this.animals_nearby = res.data.occurrences
-      })
+        this.animals_nearby = res.data.occurrences;
+      });
     },
-    GoogleMapRender () {
-      this.GoogleMapRenderKey += 1
+    GoogleMapRender() {
+      this.GoogleMapRenderKey += 1;
     },
-    onCancel () {},
-    onYouLikedChange () {
+    onCancel() {},
+    onYouLikedChange() {
       // console.log(this.youliked);
     },
-    onYouDLikedChange () {
+    onYouDLikedChange() {
       // console.log(this.youdliked);
     },
-    onRatingChange () {
+    onRatingChange() {
       // console.log(this.rating);
     },
-    onReviewClick () {
-      var db = firebase.firestore()
-      var _this = this
-      var today = new Date()
+    onReviewClick() {
+      var db = firebase.firestore();
+      var _this = this;
+      var today = new Date();
       var date =
         today.getDate() +
-        '-' +
+        "-" +
         (today.getMonth() + 1) +
-        '-' +
-        today.getFullYear()
-      db.collection('review')
+        "-" +
+        today.getFullYear();
+      db.collection("review")
         .add({
           site_id: _this.campsite_id,
           site_name: _this.campsite_name,
@@ -878,100 +889,144 @@ export default {
           review_rating: _this.rating,
           review_dt: date
         })
-        .then(function (docRef) {
-          console.log('Document written with ID: ', docRef.id)
-          _this.getReviews()
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+          _this.getReviews();
         })
-        .catch(function (error) {
-          console.error('Error adding document: ', error)
-        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
     },
-    getReviews: function () {
-      this.reviews = []
-      var db = firebase.firestore()
-      var _this = this
-      db.collection('review')
+    getReviews: function() {
+      this.reviews = [];
+      var db = firebase.firestore();
+      var _this = this;
+      db.collection("review")
         .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
-            var document = {}
-            document['id'] = doc.id
-            document['data'] = doc.data()
-            if (document['data']['site_id'] == _this.campsite_id) {
+            var document = {};
+            document["id"] = doc.id;
+            document["data"] = doc.data();
+            if (document["data"]["site_id"] == _this.campsite_id) {
               _this.overall_rating =
                 _this.overall_rating +
-                parseInt(document['data']['review_rating'])
-              _this.reviews.push(document)
+                parseInt(document["data"]["review_rating"]);
+              _this.reviews.push(document);
             }
-          })
+          });
           if (this.reviews.length > 0) {
             this.overall_rating = parseInt(
               this.overall_rating / this.reviews.length
-            )
+            );
           }
-        })
-      console.log(this.reviews)
+        });
+      console.log(this.reviews);
     },
-    checkLogin () {
-      var currUser = firebase.auth().currentUser
+    checkLogin() {
+      var currUser = firebase.auth().currentUser;
       if (currUser) {
-        this.currentUser = currUser
+        this.currentUser = currUser;
       }
     },
-    getcampsite (longitude, latitude, distince) {
-      console.log('MaxMinLongitudeLatitude', longitude, latitude)
-      let r = 6371.393
-      let lng = longitude
-      let lat = latitude
-      let dlng = 2 * Math.asin(Math.sin(distince / (2 * r)) / Math.cos(lat * Math.PI / 180))
-      dlng = dlng * 180 / Math.PI
-      let dlat = distince / r
-      dlat = dlat * 180 / Math.PI
-      let minlat = lat - dlat
-      let maxlat = lat + dlat
-      let minlng = lng - dlng
-      let maxlng = lng + dlng
-      console.log(minlat)
-      console.log(maxlat)
-      console.log(this.lat)
-      console.log('campsite', this.campsites)
-      this.nearbyCampsite = this.campsites.filter(item => minlng < item['lon'] && item['lon'] < maxlng && minlat < item['lat'] && item['lat'] < maxlat && item['lat'] !== this.lat && item['lon'] !== this.lon)
-      console.log(this.nearbyCampsite)
+    getcampsite(longitude, latitude, distince) {
+      console.log("MaxMinLongitudeLatitude", longitude, latitude);
+      let r = 6371.393;
+      let lng = longitude;
+      let lat = latitude;
+      let dlng =
+        2 *
+        Math.asin(
+          Math.sin(distince / (2 * r)) / Math.cos((lat * Math.PI) / 180)
+        );
+      dlng = (dlng * 180) / Math.PI;
+      let dlat = distince / r;
+      dlat = (dlat * 180) / Math.PI;
+      let minlat = lat - dlat;
+      let maxlat = lat + dlat;
+      let minlng = lng - dlng;
+      let maxlng = lng + dlng;
+      console.log(minlat);
+      console.log(maxlat);
+      console.log(this.lat);
+      console.log("campsite", this.campsites);
+      this.nearbyCampsite = this.campsites.filter(
+        item =>
+          minlng < item["lon"] &&
+          item["lon"] < maxlng &&
+          minlat < item["lat"] &&
+          item["lat"] < maxlat &&
+          item["lat"] !== this.lat &&
+          item["lon"] !== this.lon
+      );
+      console.log(this.nearbyCampsite);
+      this.$nextTick(function() {
+        var itemsSliderFull = new Swiper(".items-slider-full", {
+          slidesPerView: 3,
+          spaceBetween: 20,
+          loop: false,
+          roundLengths: true,
+          breakpoints: {
+            1600: {
+              slidesPerView: 3
+            },
+            1400: {
+              slidesPerView: 3
+            },
+            1200: {
+              slidesPerView: 3
+            },
+            991: {
+              slidesPerView: 2
+            },
+            565: {
+              slidesPerView: 1
+            }
+          },
+
+          // If we need pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true
+          }
+        });
+      });
     },
-    detail (item) {
-      location.reload()
-      localStorage.setItem('routerParams', JSON.stringify(item))
+    detail(item) {
+      location.reload();
+      localStorage.setItem("routerParams", JSON.stringify(item));
     }
   },
-  created () {
-    this.loadCampsites()
+  created() {
+    this.loadCampsites();
   },
-  mounted () {
-    this.isLoading = true
-    this.checkLogin()
+  mounted() {
+    this.isLoading = true;
+    this.checkLogin();
     if (this.$route.params.detail) {
       localStorage.setItem(
-        'routerParams',
+        "routerParams",
         JSON.stringify(this.$route.params.detail)
-      )
+      );
     }
-    this.$nextTick(function () {
-      $('.selectpicker').selectpicker()
-    })
+    this.$nextTick(function() {
+      $(".selectpicker").selectpicker();
+    });
     if (localStorage.favourites) {
-      this.favourites = JSON.parse(localStorage.getItem('favourites'))
+      this.favourites = JSON.parse(localStorage.getItem("favourites"));
     } else {
-      this.favourites = []
+      this.favourites = [];
     }
-    this.getParams()
-    this.getFoodAndFuel()
-    this.getPlacesToVisit()
-    this.get_weather_forecast()
-    this.getAnimalsNearby()
-    this.getReviews()
-    this.isLoading = false
+    this.getParams();
+    this.getFoodAndFuel();
+    this.getPlacesToVisit();
+    this.get_weather_forecast();
+    this.getAnimalsNearby();
+    this.getReviews();
+    this.isLoading = false;
   }
-}
+};
 </script>
 
 <style>
