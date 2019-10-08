@@ -72,11 +72,11 @@
       <div class="container">
         <div class="row mb-6">
           <div class="col-lg-8">
-            <p class="subtitle text-secondary">If you are a student</p>
-            <h2>Explore Victoria like a millennial</h2>
+            <p class="subtitle text-secondary">New Student in Victoria?</p>
+            <h2>Discover Victoria with Unicamper</h2>
             <p
               class="text-muted mb-0"
-            >Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame.</p>
+            >If you are a new university student in Victoria, we help you discover Victoria and make the most out of your time here. Explore Victoria like a local; whether you are an expert camper or a beginner, we are your best camping companion. Here are three reasons why we stand out from the rest</p>
           </div>
         </div>
       </div>
@@ -85,28 +85,28 @@
           <div class="col-lg-4 px-5">
             <p class="advantage-number">1</p>
             <div class="pl-lg-5">
-              <h6 class="text-uppercase">Travel</h6>
+              <h6 class="text-uppercase">Built For Students</h6>
               <p
                 class="text-muted text-sm mb-5 mb-lg-0"
-              >One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his.</p>
+              >We know how valuable your time is, and we value your needs, hence we help you pick the best camping sites using our expert filters, reviews and camping guides.</p>
             </div>
           </div>
           <div class="col-lg-4 px-5">
             <p class="advantage-number">2</p>
             <div class="pl-lg-5">
-              <h6 class="text-uppercase">Relax</h6>
+              <h6 class="text-uppercase">Newbie Friendly</h6>
               <p
                 class="text-muted text-sm mb-5 mb-lg-0"
-              >The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size .</p>
+              >Whether you are a newbie or an expert camper, we are here to help you. We have everything you need to get started with camping in Victoria from camping guides to trip planners.</p>
             </div>
           </div>
           <div class="col-lg-4 px-5">
             <p class="advantage-number">3</p>
             <div class="pl-lg-5">
-              <h6 class="text-uppercase">Explore</h6>
+              <h6 class="text-uppercase">Your safety first</h6>
               <p
                 class="text-muted text-sm mb-5 mb-lg-0"
-              >His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samp.</p>
+              >Camping in your country can be very different to camping in Victoria. We help you get familiar with the camping rules and ethics in Victoria, so that you can be safe while having fun.</p>
             </div>
           </div>
         </div>
