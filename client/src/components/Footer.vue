@@ -5,26 +5,29 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="font-weight-bold text-uppercase text-dark mb-3">Unicamper</div>
-            <p>Your local camping guide.</p>
+            <img src="../assets/img/unicamper_logo.svg" style="height: 100px;" alt="Directory logo" />
+            <div class="font-weight-bold text-uppercase text-dark mb-3">
+              <h4>Unicamper</h4>
+            </div>
+            <p>Keep Calm and Camp on.</p>
           </div>
           <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-            <h6 class="text-uppercase text-dark mb-3">Rentals</h6>
+            <h6 class="text-uppercase text-dark mb-3">Blog</h6>
             <ul class="list-unstyled">
               <li>
-                <a href="index.html" class="text-muted">Rooms</a>
+                <router-link class="text-muted" to="/blog/essentialtips">Essential Tips</router-link>
               </li>
               <li>
-                <a href="category-rooms.html" class="text-muted">Map on top</a>
+                <router-link class="text-muted" to="/blog/beforeyouleave">Before You Leave</router-link>
+              </li>
+            </ul>
+            <h6 class="text-uppercase text-dark mb-3">Safety</h6>
+            <ul class="list-unstyled">
+              <li>
+                <router-link class="text-muted" to="/safety/bushfire">Bushfire Safety</router-link>
               </li>
               <li>
-                <a href="category-2-rooms.html" class="text-muted">Side map</a>
-              </li>
-              <li>
-                <a href="category-3-rooms.html" class="text-muted">No map</a>
-              </li>
-              <li>
-                <a href="detail-rooms.html" class="text-muted">Room detail</a>
+                <router-link class="text-muted" to="/safety/drinkingwater">Drinking Water Safety</router-link>
               </li>
             </ul>
           </div>
@@ -32,45 +35,25 @@
             <h6 class="text-uppercase text-dark mb-3">Pages</h6>
             <ul class="list-unstyled">
               <li>
-                <a href="contact.html" class="text-muted">Contact</a>
+                <router-link class="text-muted" to="/">Home</router-link>
               </li>
               <li>
-                <a href="pricing.html" class="text-muted">Pricing</a>
+                <router-link class="text-muted" to="/search">Search</router-link>
               </li>
               <li>
-                <a href="text.html" class="text-muted">Text page</a>
+                <router-link class="text-muted" to="/planner">Existing Plans</router-link>
               </li>
               <li>
-                <a href="faq.html" class="text-muted">
-                  F.A.Q.s
-                  <span class="badge badge-info ml-1">New</span>
-                </a>
+                <router-link class="text-muted" to="/createPlan">Create A Plan</router-link>
               </li>
               <li>
-                <a href="coming-soon.html" class="text-muted">Coming soon</a>
+                <router-link class="text-muted" to="/profile">Profile</router-link>
               </li>
             </ul>
           </div>
           <div class="col-lg-4">
-            <h6 class="text-uppercase text-dark mb-3">Daily Offers & Discounts</h6>
-            <p
-              class="mb-3"
-            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
-            <form action="#" id="newsletter-form">
-              <div class="input-group mb-3">
-                <input
-                  type="email"
-                  placeholder="Your Email Address"
-                  aria-label="Your Email Address"
-                  class="form-control bg-transparent border-dark border-right-0"
-                />
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-outline-dark border-left-0">
-                    <i class="fa fa-paper-plane text-lg"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+            <h6 class="text-uppercase text-dark mb-3">About Us</h6>
+            <p class="mb-3">Unicamper was born at Monash University in August 2019</p>
           </div>
         </div>
       </div>

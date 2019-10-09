@@ -254,19 +254,6 @@
                         <div class="custom-control custom-checkbox">
                           <input
                             type="checkbox"
-                            id="amenities_7"
-                            name="amenities[]"
-                            class="custom-control-input"
-                            value="garbage"
-                            v-model="checkFacilites"
-                          />
-                          <label for="amenities_7" class="custom-control-label">Garbage pit</label>
-                        </div>
-                      </li>
-                      <li class="list-inline-item">
-                        <div class="custom-control custom-checkbox">
-                          <input
-                            type="checkbox"
                             id="amenities_8"
                             name="amenities[]"
                             class="custom-control-input"
@@ -373,16 +360,6 @@
                 </p>
               </div>
               <div>
-                <input
-                  type="text"
-                  name="filtered_search"
-                  id="filtered_search"
-                  placeholder="Search..."
-                  class="form-control"
-                  v-model="result_query"
-                />
-              </div>
-              <div>
                 <select
                   name="sort"
                   id="form_sort"
@@ -393,8 +370,8 @@
                   @change="getSort"
                 >
                   <option disabled value="0">Sort</option>
-                  <option value="1">Sort By Distance</option>
-                  <option value="2">Sort By Price</option>
+                  <option value="1">Distance (Low to High)</option>
+                  <option value="2">Distance (High to Low)</option>
                 </select>
               </div>
             </div>
@@ -403,8 +380,8 @@
               <div
                 data-marker-id="59c0c8e33b1527bfe2abaf92"
                 class="col-sm-6 mb-5 hover-animate"
-                v-for="(item, key) in pageOfItems"
-                :key="key"
+                v-for="item in pageOfItems"
+                :key="item._id"
               >
                 <div class="card h-100 border-0 shadow">
                   <div class="card-img-top overflow-hidden gradient-overlay">
@@ -537,7 +514,7 @@
               :list="list_data"
               :lat="latitude"
               :lon="longitude"
-              :zoom="12"
+              :zoom="9"
             ></GoogleMap>
           </div>
         </div>
@@ -597,7 +574,6 @@ export default {
       campsites: [],
       list_data: [],
       result_count: 0,
-      result_query: "",
       favourites: [],
       isLoading: false,
       fullPage: true,
@@ -607,21 +583,6 @@ export default {
       pageOfItems: [],
       customLabels
     };
-  },
-  watch: {
-    result_query() {
-      var arrsearch = [];
-      for (var i = 0; i < this.campsites.length; i++) {
-        if (
-          this.campsites[i].name
-            .toUpperCase()
-            .search(this.result_query.toUpperCase()) !== -1
-        ) {
-          arrsearch.push(this.campsites[i]);
-        }
-      }
-      this.list_data = arrsearch;
-    }
   },
   mounted() {
     this.$nextTick(function() {
@@ -656,40 +617,26 @@ export default {
       snapSlider.noUiSlider.on("update", function(values, handle) {
         snapValues[handle].innerHTML = values[handle];
         inputValues[handle].value = values[handle];
-        // console.log(handle + ', ' + values[handle]);
         localStorage.setItem("price_" + handle, values[handle]);
       });
     });
     this.loadCampsites();
     if (localStorage.favourites) {
       this.favourites = JSON.parse(localStorage.getItem("favourites"));
-      console.log(this.favourites);
     }
   },
   methods: {
-    hello() {
-      console.log("hello");
-    },
     GoogleMapRender() {
       this.GoogleMapRenderKey += 1;
       this.paginationRenderKey += 1;
     },
-    onActivitiesChange(event) {
-      console.log(this.activities);
-    },
-    // onSortChange (event) {
-    //   console.log(this.sort_by)
-    //   if (event.target.value === 0) {
-    //     this.sortDistance()
-    //   } else {
-    //     this.allData()
-    //   }
-    // },
+    onActivitiesChange(event) {},
     getSort() {
-      console.log(this.sort_by);
       if (this.sort_by === "1") {
-        this.sortDistance();
-        this.sort_by = "0";
+        this.sortDistanceLowToHigh();
+      }
+      if (this.sort_by === "2") {
+        this.sortDistanceHighToLow();
       }
     },
     onCancel: function() {},
@@ -720,7 +667,6 @@ export default {
     },
     getListInfosucc() {
       this.list_data = [];
-      console.log(this.search_radius);
       if (this.campsites.length > 0) {
         for (let i in this.campsites) {
           var dis = this.$options.methods.distance(
@@ -737,7 +683,6 @@ export default {
             this.list_data.push(this.campsites[j]);
           }
         }
-        console.log(this.list_data);
         this.result_count = this.list_data.length;
         this.reloadPagination();
       }
@@ -786,53 +731,57 @@ export default {
       this.$nextTick(() => (this.isRouterAlive = true));
     },
     refineSearch() {
-      this.list_data = [];
-      for (let j in this.campsites) {
-        if (parseFloat(this.campsites[j].distance) <= this.search_radius) {
-          this.list_data.push(this.campsites[j]);
-        }
-      }
-      var campsites = this.list_data;
-      var multifilte = this.activities
+      this.getListInfosucc();
+      var multifilters = this.activities
         .concat(this.checkPopular)
         .concat(this.checkFacilites)
         .concat(this.checkAccomodation);
-      for (var i in multifilte) {
-        var campList = campsites.filter(
-          item =>
-            item[multifilte[i]] === "Y" ||
-            item[multifilte[i]] === "Free" ||
-            item[multifilte[i]] ===
-              "All rubbish must be wrapped in bags and placed in the receptacles provided."
-        );
-        campsites = campList;
+
+      if (multifilters.length > 0 || this.numSites > 0) {
+        var temp_list = this.list_data.concat();
+
+        if (multifilters.includes("fees_and_booking")) {
+          temp_list = temp_list.filter(
+            item => !item["fees_and_booking"].includes("$")
+          );
+          var index = multifilters.indexOf("fees_and_booking");
+          multifilters.splice(index, 1);
+        }
+
+        for (var i in multifilters) {
+          temp_list = temp_list.filter(item => item[multifilters[i]] === "Y");
+        }
+
+        if (this.numSites !== 0) {
+          temp_list = temp_list.filter(
+            item => this.numSites <= parseInt(item["num_sites"])
+          );
+        }
+
+        this.list_data = temp_list;
       }
-      console.log(campsites);
-      if (this.numSites !== 0) {
-        campsites = campsites.filter(
-          item => item["num_sites"] === this.numSites.toString()
-        );
-      }
-      console.log(campsites);
-      this.list_data = campsites;
       this.reloadPagination();
-      console.log("list_data:", this.list_data);
     },
-    sortDistance() {
-      // this.reloadPagination()
+    sortDistanceLowToHigh() {
       function compare(a, b) {
         return a.distance - b.distance;
       }
 
       this.list_data = this.list_data.sort(compare);
-      console.log("sort", this.list_data);
+      this.reloadPagination();
+    },
+    sortDistanceHighToLow() {
+      function compare(a, b) {
+        return b.distance - a.distance;
+      }
+
+      this.list_data = this.list_data.sort(compare);
       this.reloadPagination();
     },
     allData() {
       this.list_data = this.campsites.concat();
     },
     detail(item) {
-      console.log(item);
       this.$router.push({
         path: "/detail",
         name: "Detail",

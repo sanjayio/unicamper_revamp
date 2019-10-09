@@ -152,25 +152,17 @@
                             alt="Modern, Well-Appointed Room"
                             class="img-fluid"
                           />
-                          <a href="detail-rooms.html" class="tile-link"></a>
+                          <a href class="tile-link" @click.prevent="detail(item)"></a>
                         </div>
                         <div class="card-body d-flex align-items-center">
                           <div class="w-100">
                             <h6 class="card-title">
                               <a
-                                href="detail-rooms.html"
+                                href
                                 class="text-decoration-none text-dark"
+                                @click.prevent="detail(item)"
                               >{{item.name}}</a>
                             </h6>
-                            <div class="d-flex card-subtitle mb-3">
-                              <p class="flex-shrink-1 mb-0 card-stars text-xs">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                              </p>
-                            </div>
                             <a
                               href
                               :ref="'addToPlan_' + item._id"
@@ -295,7 +287,6 @@ export default {
   mounted() {
     if (localStorage.favourites) {
       this.favourites = JSON.parse(localStorage.getItem("favourites"));
-      //console.log(this.favourites);
     }
     this.loadCampsites();
     this.$nextTick(function() {
@@ -326,7 +317,6 @@ export default {
       $("#form_dates").dateRangePicker(dateRangeConfig);
       $("#form_dates").on("apply.daterangepicker", function(ev, picker) {
         this.bookingDate = $("#daterange").val();
-        console.log("inside event");
       });
       var snapSlider = document.getElementById("slider-snap");
 
@@ -353,19 +343,12 @@ export default {
   },
   methods: {
     onCancel: function() {},
-    printdates: function() {
-      console.log(this.$refs);
-    },
-    onActivitiesChange(event) {
-      console.log(this.activities);
-    },
-    onRallyTimeChange(event) {
-      console.log(this.rally_time);
-    },
+    printdates: function() {},
+    onActivitiesChange(event) {},
+    onRallyTimeChange(event) {},
     async loadCampsites() {
       const response = await CampsitesAPI.getCampsites();
       this.campsites = response.data;
-      console.log(this.campsites);
       this.getListInfosucc();
       this.isLoading = false;
     },
@@ -382,11 +365,9 @@ export default {
           }
         }
       }
-      console.log(lat, lon);
       this.list_data = selected;
       this.latitude = lat / this.favourites.length;
       this.longitude = lon / this.favourites.length;
-      console.log(this.latitude, this.longitude);
       this.$nextTick(function() {
         var mySwiper = new Swiper(".swiper-container", {
           // Optional parameters
@@ -399,13 +380,13 @@ export default {
           }
         });
         var itemsSlider = new Swiper(".items-slider", {
-          slidesPerView: 4,
+          slidesPerView: 2,
           spaceBetween: 20,
           loop: false,
           roundLengths: true,
           breakpoints: {
             1200: {
-              slidesPerView: 3
+              slidesPerView: 2
             },
             991: {
               slidesPerView: 2
@@ -433,7 +414,6 @@ export default {
         this.plannedSites.push(item._id);
         this.$refs["addToPlan_" + item._id][0].innerText = "Added";
       }
-      //console.log(this.$refs["bookingDate"].value);
     },
     getAddressData: function(addressData, placeResultData, id) {
       this.rally_address = placeResultData.formatted_address;
@@ -461,12 +441,21 @@ export default {
           bookingDate: _this.bookingDate
         })
         .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
           _this.$router.push("/planner");
         })
         .catch(function(error) {
           console.error("Error adding document: ", error);
         });
+    },
+    detail(item) {
+      this.$router.push({
+        path: "/detail",
+        name: "Detail",
+        params: {
+          key: "key",
+          detail: item
+        }
+      });
     }
   }
 };

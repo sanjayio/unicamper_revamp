@@ -10,6 +10,8 @@ import CreatePlan from '../pages/CreatePlan';
 import Plan from '../pages/Plan';
 import Bushfire from '../static/safety/Bushfire';
 import DrinkingWater from '../static/safety/DrinkingWater';
+import EssentialTips from '../static/blog/EssentialTips';
+import BeforeYouLeave from '../static/blog/BeforeYouLeave';
 import Quiz from '../static/quiz/Quiz';
 import firebase from 'firebase';
 import Profile from '../pages/Profile';
@@ -84,6 +86,16 @@ const router = new Router({
       component: DrinkingWater
     },
     {
+      path: '/blog/essentialtips',
+      name: 'EssentialTips',
+      component: EssentialTips
+    },
+    {
+      path: '/blog/beforeyouleave',
+      name: 'BeforeYouLeave',
+      component: BeforeYouLeave
+    },
+    {
       path: '/quiz',
       name: 'Quiz',
       component: Quiz,
@@ -107,7 +119,7 @@ router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
   if (requiresAuth && !currentUser) {
-    next('login');
+    next('/login');
   } else {
     next();
   }

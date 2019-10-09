@@ -14,7 +14,7 @@
               <h2>Login</h2>
               <p
                 class="text-muted"
-              >His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table.</p>
+              >Login to your Unicamper account to access Planner and other features.</p>
             </div>
             <form class="form-validate">
               <div class="form-group">
@@ -49,6 +49,7 @@
                 to="/signup"
                 class="btn btn-lg btn-block btn-secondary"
               >Create a new account</router-link>
+              <small class="text-danger">{{this.errorText}}</small>
               <hr data-content="OR" class="my-3 hr-text letter-spacing-2" />
               <button class="btn btn-lg btn-block btn-outline-muted" @click.prevent="googleSignIn">
                 <img
@@ -100,50 +101,50 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 
 export default {
-  name: 'Login',
+  name: "Login",
   components: {},
-  data () {
+  data() {
     return {
-      loginUsername: '',
-      loginPassword: '',
-      redirect_url: this.$route.query.redirect
-    }
+      loginUsername: "",
+      loginPassword: "",
+      redirect_url: this.$route.query.redirect,
+      errorText: ""
+    };
   },
-  mounted () {},
+  mounted() {},
   methods: {
-    login: function () {
-      var _this = this
+    login: function() {
+      var _this = this;
       firebase
         .auth()
         .signInWithEmailAndPassword(this.loginUsername, this.loginPassword)
         .then(
-          function (user) {
-            _this.$router.push(_this.redirect_url || '/')
+          function(user) {
+            _this.$router.push(_this.redirect_url || "/");
           },
-          function (err) {
-            console.log('error: ' + err.message)
+          function(err) {
+            _this.errorText = "Error: " + err.message;
           }
-        )
+        );
     },
-    googleSignIn: function () {
-      const provider = new firebase.auth.GoogleAuthProvider()
-      var _this = this
+    googleSignIn: function() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      var _this = this;
       firebase
         .auth()
         .signInWithPopup(provider)
         .then(result => {
-          console.log(result)
-          _this.$router.push(_this.redirect_url || '/')
+          _this.$router.push(_this.redirect_url || "/");
         })
         .catch(err => {
-          console.log('error: ' + err.message)
-        })
+          _this.errorText = "Error: " + err.message;
+        });
     }
   }
-}
+};
 </script>
 <style lang="css">
 </style>

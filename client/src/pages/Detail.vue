@@ -682,7 +682,6 @@ export default {
   methods: {
     getParams() {
       this.routerParams = JSON.parse(localStorage.getItem("routerParams"));
-      console.log(this.routerParams);
       this.campsite_id = this.routerParams._id;
       this.campsite_name = this.routerParams.name;
       this.description = this.routerParams.description;
@@ -709,7 +708,6 @@ export default {
     addFavourite(item) {
       var refId = "favourites_btn";
       var favButton = this.$refs[refId];
-      console.log(favButton);
       if (this.favourites.includes(this.campsite_id)) {
         var index = this.favourites.indexOf(this.campsite_id);
         this.favourites.splice(index, 1);
@@ -858,15 +856,9 @@ export default {
       this.GoogleMapRenderKey += 1;
     },
     onCancel() {},
-    onYouLikedChange() {
-      // console.log(this.youliked);
-    },
-    onYouDLikedChange() {
-      // console.log(this.youdliked);
-    },
-    onRatingChange() {
-      // console.log(this.rating);
-    },
+    onYouLikedChange() {},
+    onYouDLikedChange() {},
+    onRatingChange() {},
     onReviewClick() {
       var db = firebase.firestore();
       var _this = this;
@@ -890,7 +882,6 @@ export default {
           review_dt: date
         })
         .then(function(docRef) {
-          console.log("Document written with ID: ", docRef.id);
           _this.getReviews();
         })
         .catch(function(error) {
@@ -921,7 +912,6 @@ export default {
             );
           }
         });
-      console.log(this.reviews);
     },
     checkLogin() {
       var currUser = firebase.auth().currentUser;
@@ -930,7 +920,6 @@ export default {
       }
     },
     getcampsite(longitude, latitude, distince) {
-      console.log("MaxMinLongitudeLatitude", longitude, latitude);
       let r = 6371.393;
       let lng = longitude;
       let lat = latitude;
@@ -946,10 +935,6 @@ export default {
       let maxlat = lat + dlat;
       let minlng = lng - dlng;
       let maxlng = lng + dlng;
-      console.log(minlat);
-      console.log(maxlat);
-      console.log(this.lat);
-      console.log("campsite", this.campsites);
       this.nearbyCampsite = this.campsites.filter(
         item =>
           minlng < item["lon"] &&
@@ -959,7 +944,6 @@ export default {
           item["lat"] !== this.lat &&
           item["lon"] !== this.lon
       );
-      console.log(this.nearbyCampsite);
       this.$nextTick(function() {
         var itemsSliderFull = new Swiper(".items-slider-full", {
           slidesPerView: 3,

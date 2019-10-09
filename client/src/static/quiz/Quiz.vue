@@ -144,7 +144,7 @@ export default {
   data() {
     return {
       isLoading: true,
-      quiz_id: "",
+      quiz_id: "37bZHsBpelOVWsP8p5Gf",
       plan_details: null,
       quiz_title: "Quiz",
       quiz_description: "Quiz Description",
@@ -193,7 +193,7 @@ export default {
           ).length;
           _this.questions = _this.plan_details.questions;
         } else {
-          console.log("doc doesnt exist");
+          //console.log("doc doesnt exist");
         }
       });
     },
@@ -225,10 +225,10 @@ export default {
             { merge: true }
           )
           .then(function() {
-            console.log("xp successfully written!");
+            //console.log("xp successfully written!");
           })
           .catch(function(error) {
-            console.error("Error writing document: ", error);
+            //console.error("Error writing document: ", error);
           });
         if (_this.badge_awarded != "") {
           db.collection("user")
@@ -242,17 +242,16 @@ export default {
               { merge: true }
             )
             .then(function() {
-              console.log("badge successfully written!");
+              //console.log("badge successfully written!");
             })
             .catch(function(error) {
-              console.error("Error writing document: ", error);
+              //console.error("Error writing document: ", error);
             });
         }
       } else {
         this.quiz_started = true;
         this.$refs["startquizbutton"].innerText = "SUBMIT ANSWERS";
       }
-      console.log(this.questions);
     },
     saveAnswer(key) {
       var option = this.$refs["option_" + key];
@@ -270,7 +269,6 @@ export default {
       }
       this.$refs["question_card_" + key][0].nextElementSibling.hidden = true;
       this.$refs["button_" + key][0]["className"] = "btn btn-primary disabled";
-      console.log(this.answers);
     }
   }
 };
