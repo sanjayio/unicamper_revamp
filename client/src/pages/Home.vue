@@ -158,40 +158,49 @@
         <div class="row">
           <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
             <div
-              style="background: center center url(img/photo/photo-1523430410476-0185cb1f6ff9.jpg) no-repeat; background-size: cover;"
+              style="background: center center url(https://gumnutsabroad.com/wp-content/uploads/Surfers-at-Squeaky-Beach.jpg) no-repeat; background-size: cover;"
               class="card shadow-lg border-0 w-100 border-0 hover-animate"
             >
-              <a href="category.html" class="tile-link"></a>
+              <router-link
+                :to="{ path: 'guide', query: { id: 'gD9i6Qyu7AqurRFN5SLO' }}"
+                class="tile-link"
+              ></router-link>
               <div
                 class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
               >
-                <h3 class="text-shadow text-uppercase mb-0">Santa Monica</h3>
+                <h3 class="text-shadow text-uppercase mb-0">South East</h3>
               </div>
             </div>
           </div>
           <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
             <div
-              style="background: center center url(img/photo/photo-1505245208761-ba872912fac0.jpg) no-repeat; background-size: cover;"
+              style="background: center center url(https://d1z63sdk26aghx.cloudfront.net/www.atas.com.au/e814329729f68f49cdc9a557ed975241-uploads-118-ninety-mile-beach.jpg) no-repeat; background-size: cover;"
               class="card shadow-lg border-0 w-100 border-0 hover-animate"
             >
-              <a href="category.html" class="tile-link"></a>
+              <router-link
+                :to="{ path: 'guide', query: { id: 'KLv66dDKTKIlkBV6GPYq' }}"
+                class="tile-link"
+              ></router-link>
               <div
                 class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
               >
-                <h3 class="text-shadow text-uppercase mb-0">San Diego</h3>
+                <h3 class="text-shadow text-uppercase mb-0">Gippsland Lakes</h3>
               </div>
             </div>
           </div>
           <div class="d-flex align-items-lg-stretch mb-4 col-lg-4">
             <div
-              style="background: center center url(img/photo/photo-1519867850-74775a87e783.jpg) no-repeat; background-size: cover;"
+              style="background: center center url(https://images.squarespace-cdn.com/content/v1/582ab96f9de4bb86345da640/1502859185266-QS2OEJHFWUB5CVMOLLJL/ke17ZwdGBToddI8pDm48kLkXF2pIyv_F2eUT9F60jBl7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0iyqMbMesKd95J-X4EagrgU9L3Sa3U8cogeb0tjXbfawd0urKshkc5MgdBeJmALQKw/170814-2500.jpg?format=2500w) no-repeat; background-size: cover;"
               class="card shadow-lg border-0 w-100 border-0 hover-animate"
             >
-              <a href="category.html" class="tile-link"></a>
+              <router-link
+                :to="{ path: 'guide', query: { id: 'd7QoYt2WAgjAlN3u3c6M' }}"
+                class="tile-link"
+              ></router-link>
               <div
                 class="d-flex align-items-center h-100 text-white justify-content-center py-6 py-lg-7"
               >
-                <h3 class="text-shadow text-uppercase mb-0">Fresno</h3>
+                <h3 class="text-shadow text-uppercase mb-0">Mt Buller</h3>
               </div>
             </div>
           </div>
