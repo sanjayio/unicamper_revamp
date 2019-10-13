@@ -63,7 +63,7 @@
                 />
               </div>
             </div>
-            <router-link href class="close-absolute mr-md-5 mr-xl-6 pt-5" to="/">
+            <router-link href class="close-absolute mr-md-5 mr-xl-6 pt-5" :to="redirect_url || '/'">
               <svg
                 class="svg-icon w-3rem h-3rem"
                 xmlns="http://www.w3.org/2000/svg"

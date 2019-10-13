@@ -144,7 +144,7 @@ export default {
   data() {
     return {
       isLoading: true,
-      quiz_id: "37bZHsBpelOVWsP8p5Gf",
+      quiz_id: localStorage.getItem("recent_quiz") || "37bZHsBpelOVWsP8p5Gf",
       plan_details: null,
       quiz_title: "Quiz",
       quiz_description: "Quiz Description",
@@ -172,6 +172,7 @@ export default {
       });
       //console.log(getVars);
       this.quiz_id = getVars["quiz_id"];
+      localStorage.setItem("recent_quiz", this.quiz_id);
     }
     this.isLoading = false;
     this.getQuiz();

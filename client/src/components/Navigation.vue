@@ -140,7 +140,11 @@
               </a>
             </div>
           </li>
-          <router-link class="nav-link" to="/login" v-if="!this.loggedIn">Login</router-link>
+          <router-link
+            class="nav-link"
+            :to="{ path: '/login', query: { redirect: this.$router.currentRoute.path }}"
+            v-if="!this.loggedIn"
+          >Login</router-link>
           <li class="nav-item dropdown ml-lg-3" v-else>
             <a
               id="userDropdownMenuLink"
@@ -158,7 +162,7 @@
             <div aria-labelledby="userDropdownMenuLink" class="dropdown-menu dropdown-menu-right">
               <router-link
                 class="dropdown-item"
-                :to="{ path: 'profile', query: { redirect: currentRoute }}"
+                :to="{ path: '/profile', query: { redirect: this.$router.currentRoute.path }}"
               >
                 <b>{{this.currentUser.displayName}}</b>'s Profile
               </router-link>

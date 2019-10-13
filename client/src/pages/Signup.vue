@@ -14,7 +14,7 @@
               <h2>Sign up</h2>
               <p
                 class="text-muted"
-              >Create an account to your Unicamper account to access Planner and other features.</p>
+              >Create a Unicamper account to access Planner and other member only features.</p>
             </div>
             <form class="form-validate">
               <div class="form-group">
@@ -72,12 +72,6 @@
               </div>
               <button @click.prevent="signUp" class="btn btn-lg btn-block btn-primary">Sign up</button>
               <small class="text-danger">{{this.errorText}}</small>
-              <hr class="my-4" />
-              <p class="text-sm text-muted">
-                By signing up you agree to Directory's
-                <a href="#">Terms and Conditions</a> and
-                <a href="#">Privacy Policy</a>.
-              </p>
             </form>
             <router-link href class="close-absolute mr-md-5 mr-xl-6 pt-5" to="/login">
               <svg

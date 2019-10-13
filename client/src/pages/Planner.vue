@@ -183,7 +183,7 @@
                           <h2 id="exampleModalLabel" class="modal-title mb-3">Share your Plan</h2>
                           <p class="text-muted">
                             Shareable Link:
-                            <strong>www.unicamper.now.sh/#/plan?plan_id={{item.id}}</strong>
+                            <strong>https://unicamper.now.sh/#/plan?plan_id={{item.id}}</strong>
                           </p>
                         </div>
                         <div class="modal-footer justify-content-end">

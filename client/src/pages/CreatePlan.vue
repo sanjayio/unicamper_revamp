@@ -26,7 +26,7 @@
                 v-model="planName"
                 id="planName"
                 type="text"
-                placeholder="Grampians Camping trip"
+                placeholder="Give your plan a name. Eg: Grampians Camping trip"
                 autocomplete="off"
                 required
                 data-msg="Please enter your plan name"
@@ -41,7 +41,7 @@
                   id="form_dates"
                   name="bookingDate"
                   :ref="'bookingDate'"
-                  placeholder="Choose your dates"
+                  placeholder="Choose your travel dates"
                   class="form-control"
                 />
               </div>
@@ -52,9 +52,9 @@
                 ref="address"
                 id="search"
                 class="form-control"
-                placeholder="Search..."
+                placeholder="Meeting point Eg: Monash University Caulfield"
                 v-on:placechanged="getAddressData"
-                types="address"
+                types="establishment"
                 country="au"
               ></vue-google-autocomplete>
             </div>
@@ -193,7 +193,11 @@
                 <label
                   for="settings_allowothers"
                   class="custom-control-label"
-                >Allow other unicampers to join the plan</label>
+                >Allow other Unicampers to join your trip</label>
+                <br />
+                <small
+                  class="text-muted"
+                >By checking this option, you make your plan visible to other members in the Unicamper community and allow them to join you on your trip.</small>
               </div>
               <div class="custom-control custom-checkbox">
                 <input
@@ -207,6 +211,10 @@
                   for="settings_createshareable"
                   class="custom-control-label"
                 >Create shareable link</label>
+                <br />
+                <small
+                  class="text-muted"
+                >By checking this option, you give consent to create a publicly shareable link to your trip plan which can be shared with your friends.</small>
               </div>
             </div>
             <hr data-content="PUBLISH MY PLAN" class="my-3 hr-text letter-spacing-2" />

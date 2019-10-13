@@ -37,7 +37,7 @@
                 ref="address"
                 id="map"
                 class="form-control form-control-lg"
-                placeholder="Search suburb or postcode"
+                placeholder="Where do you want to go?"
                 v-on:placechanged="getAddressData"
                 types="(regions)"
                 country="au"

@@ -26,7 +26,7 @@
                   ref="address"
                   id="map"
                   class="form-control"
-                  :placeholder="fullAddress"
+                  placeholder="Search another location"
                   v-on:placechanged="getAddressData"
                   types="(regions)"
                   country="au"
@@ -247,7 +247,7 @@
                             value="showers"
                             v-model="checkFacilites"
                           />
-                          <label for="amenities_6" class="custom-control-label">Showes Available</label>
+                          <label for="amenities_6" class="custom-control-label">Showers Available</label>
                         </div>
                       </li>
                       <li class="list-inline-item">
